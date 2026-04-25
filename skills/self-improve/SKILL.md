@@ -1,7 +1,7 @@
 ---
 name: self-improve
 description: >
-  Use this skill to refine the corpus and skills in this repo based on what's been learned in a session. Two modes selected by prompt content. **Retrospective mode** (triggered by the SessionEnd hook with a transcript path): scan the just-ended session for explicit user corrections, contradicted facts, or repeated proof points; apply a conservative gate; open a draft PR with the proposed edits. **Curate mode** (manual or scheduled invocation): re-read all corpus and skills, look for duplication / drift / broken cross-references; open a draft consolidation PR. Triggers: invocation by `scripts/self_improve_hook.sh`, or manual prompts like "run self-improve in retrospective mode on transcript X" or "run self-improve in curate mode."
+  Use this skill to refine the corpus and skills in Riché's claude-code-skills repo based on what was learned in a session. Two modes. Retrospective mode is triggered by the SessionEnd hook with a transcript path; it scans the just-ended session for explicit user corrections, contradicted facts, or repeated proof points, applies a conservative gate, and opens a draft PR with proposed edits. Curate mode is invoked manually; it re-reads corpus and skills to find duplication, drift, or broken cross-references, then opens a draft consolidation PR. Trigger when the user says run self-improve, retrospective on transcript, curate the corpus, or check for corpus drift. Always opens draft PRs only.
 ---
 
 # self-improve — corpus + skills refinement loop
