@@ -1,0 +1,83 @@
+# Terminology — programmatic lookup
+# Companion to terminology-preferred.md and terminology-never-use.md.
+# Used by drafting and editing skills to flag terms automatically.
+
+preferred:
+  - context synthesis
+  - context orchestration
+  - consolidation
+  - decision-ready context
+  - context quality
+  - five-step context generation
+  - curate
+  - synthesize
+  - prioritize
+  - store intelligently
+  - "Data is not context"
+  - context architecture
+  - context system
+  - context generation
+
+never_use:
+  - AI-powered
+  - AI-driven
+  - leverage
+  - game-changing
+  - revolutionary
+  - unprecedented
+  - transformational
+  - paradigm-shifting
+  - world-class
+  - industry-leading
+  - best-in-class
+  - cutting-edge
+  - state-of-the-art
+  - navigate the complexities of
+  - navigate this changing landscape
+  - in today's rapidly evolving AI landscape
+  - in today's
+  - context intelligence
+  - retrieval-aware architectures
+  - AI-native paradigms
+  - semantically optimized
+  - Moreover
+  - Furthermore
+  - Additionally
+  - That being said
+  - It's worth noting
+  - On top of that
+  - What's more
+  - In addition to the above
+  - Let's dive in
+  - Buckle up
+  - Here's the thing
+  - Here's the deal
+  - Real talk
+  - Strap in
+  - Sit tight
+  - I'm thrilled to announce
+  - I'm excited to share
+  - I'm honored to be
+  - Beyond stoked to
+  - So pumped
+  - Pleased to share
+  - Delighted to announce
+  - Been saying it
+  - Just my two cents
+  - Mic drop
+  - Make it make sense
+  - There. I said it
+  - "I'll wait"
+  - based
+  - vibes
+  - "this is the way"
+  - no notes
+  - real ones know
+  - Key Takeaway
+  - Bottom Line
+  - "TL;DR"
+  - Main Point
+  - In conclusion
+  - As we navigate an increasingly AI-driven world
+  - We stand at an inflection point
+  - The future of work is being redefined
