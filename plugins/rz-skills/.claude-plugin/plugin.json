@@ -1,7 +1,7 @@
 {
   "name": "rz-skills",
   "version": "0.1.0",
-  "description": "Riché Zamor's personal skill bundle for Claude Code. Includes 9 skills (rz-copywriting, rz-product-management, rz-growth-marketing, rz-networking, rz-graphic-design, rz-product-design, rz-draft-content, rz-content-optimize, rz-self-improve) that share a 553-entry corpus of canonical knowledge across voice, content, PM frameworks, audience growth, brand system, UX principles, AI product UX, and evaluation frameworks.",
+  "description": "Riché Zamor's personal skill bundle for Claude Code. Includes 10 skills (rz-copywriting, rz-product-management, rz-growth-marketing, rz-networking, rz-networking-hand-curated-import, rz-graphic-design, rz-product-design, rz-draft-content, rz-content-optimize, rz-self-improve) that share a 553-entry corpus of canonical knowledge across voice, content, PM frameworks, audience growth, brand system, UX principles, AI product UX, and evaluation frameworks.",
   "author": {
     "name": "Riché Zamor"
   },
