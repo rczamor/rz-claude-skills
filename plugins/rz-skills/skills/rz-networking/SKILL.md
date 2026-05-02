@@ -1,7 +1,7 @@
 ---
 name: rz-networking
 description: >
-  Use this skill whenever Riché is working on relationship building, outreach, introductions, follow-ups, networking strategy, conference preparation, event follow-ups, DM drafting, warm intro requests, speaker pitch emails, advisory relationship building, mentor/mentee conversations, alumni network activation (Techstars, Antler, IBM), or community engagement. Also trigger when Riché needs to write a message to connect with someone, prepare for a meeting with a potential contact, or strategize about who to build relationships with and how. Trigger for any interpersonal professional communication that serves the audience development or career strategy.
+  Use when working on relationship building, outreach, introductions, follow-ups, conference prep, event follow-ups, DM drafting, warm intro requests, speaker pitch emails, advisory relationships, alumni network activation (Techstars, Antler, IBM, Hill Holliday, Phase2), or community engagement (Slack groups, ProductTank, in-person events). Trigger for any interpersonal professional communication that serves audience or career strategy.
 ---
 
 # Networking — Riché Zamor

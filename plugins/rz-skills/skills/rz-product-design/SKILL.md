@@ -1,7 +1,7 @@
 ---
 name: rz-product-design
 description: >
-  Use this skill whenever Riché is working on product design: UX flows, wireframes, interaction patterns, information architecture, user interface decisions, design system choices, accessibility, mobile vs. desktop decisions, prototyping, design reviews, or design critique. Also trigger when discussing AI product UX patterns (conversational UI, agent interfaces, context display, progressive disclosure of AI reasoning), when building or specifying UI for the Context Layer Demo, richezamor.com, or the Context Layer Engine admin UI. Trigger when Riché mentions design tools, component libraries, Tailwind, React patterns, or any visual/interaction decision.
+  Use when working on product design: UX flows, wireframes, interaction patterns, information architecture, UI decisions, design system choices, accessibility, mobile vs desktop, prototyping, or design reviews. Also for AI product UX patterns (conversational UI, agent interfaces, context display, progressive disclosure of reasoning) and UI for the Context Layer Demo, richezamor.com, or the Context Layer Engine admin.
 ---
 
 # Product Design — Riché Zamor

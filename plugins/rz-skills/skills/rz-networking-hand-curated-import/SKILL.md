@@ -1,7 +1,7 @@
 ---
 name: rz-networking-hand-curated-import
 description: >
-  Process a manually-curated Sales Navigator lead CSV through relevance scanning, warm opener drafting, HubSpot dedupe, and contact and deal creation in the Network Building pipeline. Use when Riché provides a CSV of hand-picked leads and wants them enriched and loaded into HubSpot. Trigger when Riché says import this CSV, run hand-curated import, process Sales Nav leads, or load these leads into HubSpot. Stages contacts at the Qualified entry stage with a warm opener seed; never auto-sends DMs.
+  Use when given a manually-curated Sales Navigator lead CSV to enrich, dedupe, score, and load into HubSpot. Trigger phrases: "import this CSV," "run hand-curated import," "process Sales Nav leads," "load these leads into HubSpot." Stages contacts at the Qualified entry stage with a warm opener seed; never auto-sends DMs.
 ---
 
 # Networking Hand-Curated Import

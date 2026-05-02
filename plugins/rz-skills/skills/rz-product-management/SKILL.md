@@ -1,7 +1,7 @@
 ---
 name: rz-product-management
 description: >
-  Use this skill whenever Riché is doing product management work: writing PRDs, defining product strategy, running discovery, structuring product thinking, building roadmaps, doing competitive analysis, defining metrics and OKRs, writing product specs, evaluating AI product architecture decisions, running pre-mortems, prioritizing features, or thinking through any product decision. Also trigger when the conversation involves AI product strategy, context architecture as a product decision, non-deterministic product design, eval frameworks for AI products, or when Riché references his work at Suzy, Grandstage, Helm Labs, or the Context Layer Engine. Trigger even for general product questions, feature prioritization, stakeholder alignment, or team structure discussions.
+  Use when working on product management tasks: PRDs, product strategy, discovery, roadmaps, competitive analysis, metrics/OKRs, product specs, AI product architecture decisions, pre-mortems, prioritization, or any product decision. Also for AI-product-specific framing (non-determinism, evals, context architecture as strategy) and when references involve Suzy, Grandstage, Helm Labs, or the Context Layer Engine.
 ---
 
 # Product Management — Riché Zamor

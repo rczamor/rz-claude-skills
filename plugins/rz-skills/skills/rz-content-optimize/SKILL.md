@@ -1,15 +1,7 @@
 ---
 name: rz-content-optimize
 description: >
-  Use this skill whenever Riché needs SEO or AIO (AI Optimization / answer
-  engine optimization) recommendations for a long-form article destined for
-  richezamor.com. Trigger when he asks to optimize a draft, when rz-draft-content
-  invokes it as a sub-step, or when he explicitly asks for keyword research,
-  SERP analysis, internal linking suggestions, schema markup, or AI citation
-  optimization. Covers title and meta optimization, H2 structure, target
-  keyword selection, entity coverage, quotable-sentence design for LLM
-  citations, and internal link graph recommendations across the Content Topics
-  database.
+  Use when an article on richezamor.com needs SEO or AIO (answer-engine optimization) recommendations. Trigger when optimizing a draft, when rz-draft-content invokes it as a sub-step, or when asked for keyword research, SERP analysis, internal linking, schema markup, or AI-citation optimization. Skip for site-level SEO strategy (that's rz-growth-marketing).
 ---
 
 # Content Optimize — Riché Zamor
@@ -53,6 +45,8 @@ If any section doesn't apply, say so explicitly rather than skipping it.
 ## Step 1 — Keyword Research (Ahrefs MCP)
 
 Use the Ahrefs MCP tools for this. Do NOT rely on training data for keyword volumes — they're stale by definition.
+
+**Canonical SEO methodology:** load `corpus/growth/seo/` for the free-stack approach (GSC + Keyword Planner + manual SERP review), the topic clusters that anchor Riché's authority territory, and the Target Keywords DB schema. Ahrefs MCP supplements those sources for keyword volume and SERP data; it does not replace them. SEO is owned by `rz-growth-marketing`; this skill applies it per-article.
 
 Tools to call, in order:
 

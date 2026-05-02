@@ -1,7 +1,7 @@
 ---
 name: rz-graphic-design
 description: >
-  Use this skill whenever Riché needs visual assets: social media graphics, LinkedIn post images, presentation slides, diagrams, infographics, architecture diagrams, framework visualizations, speaker one-sheets, brand assets, or any visual content. Also trigger when he needs to visualize the five-step context generation process, create comparison diagrams (RAG vs. Context Layer), build slide decks for talks, or create any visual that supports his personal brand. Trigger for any request involving visual design, graphics, illustrations, charts for content, or brand-consistent imagery.
+  Use when producing visual assets: social media graphics, LinkedIn post images, slides, diagrams, infographics, architecture diagrams, framework visualizations, speaker one-sheets, or brand-consistent imagery. Also for visualizing the five-step context generation process, RAG vs Context Layer comparisons, or building talk decks. Skip for product or UI design (use rz-product-design).
 ---
 
 # Graphic Design — Riché Zamor

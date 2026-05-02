@@ -1,18 +1,7 @@
 ---
 name: rz-website-audit
 description: >
-  Use this skill whenever Riché invokes /rz-website-audit, asks to "run the
-  website audit", "run the weekly site review", "weekly site QA", "audit
-  richezamor.com", or "website scorecard". Also trigger automatically each
-  Sunday at 8pm America/New_York via the Cowork cron with body "Run the
-  rz-website-audit skill". The skill runs a 6-step diagnostic on
-  richezamor.com against 22 dimensions (8 SEO atomic, 7 AIO atomic, 7
-  category-level for traffic & engagement, usability, design, brand, technical
-  QA, chatbot, keyword research), assigns severity (P0 / P1 / P2), assembles a
-  full report into the Weekly Audits Notion database, issues up to 5 Linear
-  tasks for actionable findings, and posts a one-line traffic-light headline
-  to #brand. Read-only on Vercel and Google Search Console; never modifies
-  the website itself.
+  Use when running the weekly diagnostic of richezamor.com or when fired by the Sunday 8pm America/New_York cron. Trigger phrases: "/rz-website-audit," "run the website audit," "weekly site review," "weekly site QA," "audit richezamor.com," "website scorecard." Read-only on Vercel and Google Search Console; never modifies the site itself.
 ---
 
 # Website Audit (Riché Zamor)

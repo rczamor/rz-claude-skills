@@ -1,7 +1,7 @@
 ---
 name: rz-growth-marketing
 description: >
-  Use this skill whenever Riché is working on audience growth, engagement metrics, LinkedIn analytics, content distribution strategy, SEO, newsletter strategy, follower growth tactics, community engagement, tracking metrics, or any aspect of growing his personal brand's reach. Also trigger for LinkedIn algorithm optimization, X engagement strategy, podcast pitch optimization, speaking opportunity outreach, email marketing, and conversion optimization. Trigger when Riché asks about metrics, analytics, what's working, what to double down on, or how to grow faster. Also use when discussing the audience development flywheel, engagement targets, or channel strategy.
+  Use when working on audience growth, engagement metrics, LinkedIn/X analytics, content distribution strategy, SEO, keyword research, SERP review, newsletter strategy, community engagement, speaking outreach, or podcast pitches. Also when discussing the audience flywheel, segment targeting, the 5.25-hr/week time budget, or what's working / what to double down on. Owns SEO methodology used by rz-website-audit and rz-content-optimize.
 ---
 
 # Growth Marketing — Riché Zamor

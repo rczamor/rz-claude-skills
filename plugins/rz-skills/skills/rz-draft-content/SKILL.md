@@ -1,15 +1,7 @@
 ---
 name: rz-draft-content
 description: >
-  Use this skill whenever Riché invokes /rz-draft-content, shares a source
-  (article URL, Daily Context Briefing, thought) and asks for it to be turned
-  into a content draft, or says "draft a post from this" or similar. This is
-  the orchestrating skill that runs the full content pipeline: source retrieval,
-  research, past-work check, grounding in brand documents, format decision,
-  drafting all assets, SEO/AIO optimization, and graphic generation. Produces
-  a completed Content Topic page in the Notion Content Topics database with
-  long-form article (when warranted), short-form LinkedIn and X articles,
-  promo posts, optimization recommendations, and a PNG + SVG graphic.
+  Use when given a source (article URL, Daily Context Briefing, or raw thought) and asked to turn it into a complete content piece for richezamor.com plus LinkedIn/X. Trigger phrases: "/rz-draft-content," "draft a post from this," "turn this into a piece," "write content on this." Output lands in the Notion Content Topics database.
 ---
 
 # Draft Content — Riché Zamor

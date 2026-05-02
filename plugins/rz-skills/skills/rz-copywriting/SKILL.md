@@ -1,7 +1,7 @@
 ---
 name: rz-copywriting
 description: >
-  Use this skill whenever Riché needs to write, draft, edit, or refine any public-facing content: LinkedIn posts, X posts, articles, newsletter drafts, speaker bios, talk abstracts, podcast pitch emails, conference CFP submissions, profile copy, or website copy. Also trigger when reviewing or editing existing drafts, when Riché says "write me a post about," "draft this," "help me write," or when any content needs to match his voice. Trigger for ALL writing tasks that will be published or shared externally. Also use when Riché asks for content ideas, headlines, hooks, or when planning content for the week.
+  Use when writing, drafting, editing, or refining any public-facing content (LinkedIn, X, articles, newsletter drafts, speaker bios, talk abstracts, podcast pitches, CFP submissions, profile copy, website copy). Also when reviewing existing drafts for voice match, generating content ideas/headlines/hooks, or planning the week's content. Trigger for any writing that will be published or shared externally.
 ---
 
 # Copywriting (Thought Leadership) — Riché Zamor
