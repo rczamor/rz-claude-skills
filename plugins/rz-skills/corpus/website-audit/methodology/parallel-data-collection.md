@@ -43,7 +43,7 @@ For each sub-step, the specific tool calls are:
 
 **2b Backlinks:** `Ahrefs:site-explorer-domain-rating`, `Ahrefs:site-explorer-refdomains-history` (90 days), `Ahrefs:site-explorer-domain-rating-history` (90 days), `Ahrefs:site-explorer-all-backlinks` filtered to last 7 days. Capture DR current vs last week, new and lost referring domains.
 
-**2c AIO:** Build the 20-query set per `corpus/website-audit/keyword-research/free-stack-overview.md`. For each query × 3 LLMs (Claude, ChatGPT, Perplexity) = 60 calls. Parse responses for richezamor.com presence; classify as `cited_first` / `cited` / `mentioned` / `absent`. Compare to last week. Also check AI crawler accessibility (HEAD on robots.txt, render check on home for JS-only content).
+**2c AIO:** Build the 20-query set per `corpus/growth/seo/free-stack-overview.md`. For each query × 3 LLMs (Claude, ChatGPT, Perplexity) = 60 calls. Parse responses for richezamor.com presence; classify as `cited_first` / `cited` / `mentioned` / `absent`. Compare to last week. Also check AI crawler accessibility (HEAD on robots.txt, render check on home for JS-only content).
 
 **2d Traffic:** `Zapier:list_enabled_zapier_actions` first to confirm available GA actions. Then `Zapier:execute_zapier_read_action` for sessions/users/pageviews, source/medium breakdown, top pages, conversion events, audience signals.
 

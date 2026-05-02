@@ -32,7 +32,7 @@ The P0 threshold is intentional. There are roughly 5 queries Riché's site shoul
 - Run the AIO citation check (per the methodology) against all 20 tracked queries × 3 LLMs = 60 calls.
 - For each query, classify result: `cited_first`, `cited`, `mentioned`, or `absent`.
 - Filter to queries where the result is `absent` across all 3 LLMs.
-- Cross-reference each absent query against the 5-query canonical list (defined in `corpus/website-audit/keyword-research/free-stack-overview.md`). Canonical absences = P0.
+- Cross-reference each absent query against the 5-query canonical list (defined in `corpus/growth/seo/free-stack-overview.md`). Canonical absences = P0.
 - Fix patterns:
   - **Identify the citation winner.** Who is being cited instead? What's their content like?
   - **Reverse-engineer.** Why are they being cited and not richezamor.com? Common factors: clearer entity recognition (better Person schema), explicit Q&A structure (FAQ schema), more quotable sentences, more inbound link authority on the topic, more recent updates.
@@ -48,7 +48,7 @@ The P0 threshold is intentional. There are roughly 5 queries Riché's site shoul
 - `corpus/website-audit/dimensions/aio/a2-citation-rank-decline.md` — when cited but slipping
 - `corpus/website-audit/dimensions/aio/a5-quotability-density.md` — quotable sentences are the citation surface
 - `corpus/website-audit/dimensions/aio/a7-ai-friendly-schema.md` — schema is a citation-decision input
-- `corpus/website-audit/keyword-research/free-stack-overview.md` — the canonical query list
+- `corpus/growth/seo/free-stack-overview.md` — the canonical query list
 - `corpus/website-audit/methodology/parallel-data-collection.md` — how the citation scan runs
 
 ## Anti-patterns

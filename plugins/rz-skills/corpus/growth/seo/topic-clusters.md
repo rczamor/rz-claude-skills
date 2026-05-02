@@ -1,10 +1,10 @@
 ---
 name: Priority Context Layer Topic Clusters
-domain: website-audit
-source_skill: website-audit
+domain: growth
+source_skill: growth-marketing
 entry_type: framework
 length_target: 400-700
-related: [corpus/website-audit/keyword-research/free-stack-overview.md, corpus/website-audit/keyword-research/keyword-planner-monthly.md, corpus/website-audit/keyword-research/serp-review-protocol.md, corpus/website-audit/dimensions/categories/keyword-research.md]
+related: [corpus/growth/seo/free-stack-overview.md, corpus/growth/seo/keyword-planner-monthly.md, corpus/growth/seo/serp-review-protocol.md, corpus/website-audit/dimensions/categories/keyword-research.md]
 ---
 
 # Priority Context Layer Topic Clusters
@@ -45,9 +45,9 @@ The 7 clusters are intentionally locked. Adding an eighth dilutes focus; removin
 3. **Out-of-cluster keyword.** Riché drafts a piece on "AI PM career path." It does not belong in Context Layer; it belongs in Domain = PM in the DB. The cluster system does not apply, but the piece still lands in the Content Topics DB tagged Domain = PM.
 
 ## Related entries
-- `corpus/website-audit/keyword-research/free-stack-overview.md`. How clusters fit into the broader methodology
-- `corpus/website-audit/keyword-research/keyword-planner-monthly.md`. Job 2 uses clusters as seed sources
-- `corpus/website-audit/keyword-research/serp-review-protocol.md`. Domain weight comes from cluster membership
+- `corpus/growth/seo/free-stack-overview.md`. How clusters fit into the broader methodology
+- `corpus/growth/seo/keyword-planner-monthly.md`. Job 2 uses clusters as seed sources
+- `corpus/growth/seo/serp-review-protocol.md`. Domain weight comes from cluster membership
 - `corpus/website-audit/dimensions/categories/keyword-research.md`. K4 fire criteria and recovery patterns
 
 ## Anti-patterns

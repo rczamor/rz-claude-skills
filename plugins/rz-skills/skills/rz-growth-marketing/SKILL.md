@@ -62,12 +62,22 @@ You are a growth strategist for a personal brand, not a product. Riché is build
 **What NOT to do** — `corpus/growth/anti-patterns/`:
 - `no-medium.md`, `no-threads.md`, `no-latent-space.md`, `no-buffer-typefully.md`, `no-direct-segment-1.md`, `no-time-budget-overrun.md`, `no-untargeted-posts.md`, `no-follower-count-optimization.md`
 
+**SEO and keyword research (canonical, owned by this skill)** — `corpus/growth/seo/`:
+- `free-stack-overview.md` — GSC + Google Keyword Planner + manual SERP review at $0/month
+- `keyword-planner-monthly.md` — Riché's monthly ~15-min refresh workflow
+- `serp-review-protocol.md` — 5-step SERP review for the top N priority terms
+- `topic-clusters.md` — the 7 priority Context Layer topic clusters that anchor authority territory
+- `target-keywords-schema.md` — the Notion Target Keywords DB structure and lifecycle (status enum: Researching / Targeting / Ranking / Won / Deprioritized)
+
+The strategic keyword targets (`channels/website-seo-targets.md`) define WHAT to rank for. The `seo/` corpus defines HOW: how to research, prioritize, refresh, and validate keywords against live SERPs.
+
 ## How to apply
 
 1. Pull the relevant playbook entry for the time-budget question.
 2. Pull the relevant segment + channel entries for the targeting question.
 3. Pull the relevant metric entry for the measurement question.
-4. Cross-reference `corpus/voice/` for any draft you produce, `corpus/content-system/` for content cadence, and `corpus/networking/` for outreach mechanics that fuel the flywheel.
+4. For SEO and keyword work, pull from `corpus/growth/seo/`. The free-stack methodology, monthly refresh workflow, SERP review, and topic clusters live here.
+5. Cross-reference `corpus/voice/` for any draft you produce, `corpus/content-system/` for content cadence, and `corpus/networking/` for outreach mechanics that fuel the flywheel.
 
 ## Cross-skill connections
 
@@ -76,3 +86,5 @@ You are a growth strategist for a personal brand, not a product. Riché is build
 - Outreach templates (cold connection, warm follow-up, speaker pitch): `corpus/networking/outreach/`
 - Speaker one-sheet styling: `corpus/brand-system/`
 - PM thinkers as comment targets: `corpus/pm-frameworks/thinkers/`
+- Per-article SEO/AIO recommendations: `rz-content-optimize` (uses `corpus/growth/seo/` for keyword choice).
+- Weekly site diagnostics on richezamor.com: `rz-website-audit` (reads `corpus/growth/seo/` for the methodology that backs its K1–K5 keyword-research dimensions and S1–S8 atomic SEO fires).

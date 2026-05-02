@@ -30,7 +30,7 @@ The diagnostic value is also high. A regression on a single query is usually con
 - Pull the top 20 queries by impressions for the last 7 days, with WoW position deltas.
 - For any query with a delta ≤ -3, capture: current position, previous position, query, ranking page URL, impressions, CTR, click delta.
 - Group by ranking page. If three or more queries on the same page regressed simultaneously, escalate to P0 regardless of individual query rank — this is a page-level issue, not a query-level one.
-- Inspect the page: content drift since last quarter, technical issues (broken canonical, 4xx anywhere in the path), competitor moves (run a SERP review per `corpus/website-audit/keyword-research/serp-review-protocol.md`).
+- Inspect the page: content drift since last quarter, technical issues (broken canonical, 4xx anywhere in the path), competitor moves (run a SERP review per `corpus/growth/seo/serp-review-protocol.md`).
 - Fix patterns: refresh content (add 200-400 words of substance), strengthen internal links from higher-authority pages, fix any technical issues, improve schema.
 
 ## Examples
@@ -42,7 +42,7 @@ The diagnostic value is also high. A regression on a single query is usually con
 - `corpus/website-audit/methodology/severity-scoring.md` — how P0/P1/P2 thresholds work
 - `corpus/website-audit/dimensions/seo/s2-low-ctr.md` — sibling check for impression-but-no-click pages
 - `corpus/website-audit/dimensions/seo/s3-quick-wins.md` — the inverse opportunity (positions 4-10 with traction)
-- `corpus/website-audit/keyword-research/serp-review-protocol.md` — how to run the SERP review when a regression is competitor-driven
+- `corpus/growth/seo/serp-review-protocol.md` — how to run the SERP review when a regression is competitor-driven
 
 ## Anti-patterns
 - Treating every position drop as actionable. Position fluctuations of 1-2 are noise; don't file Linear tasks for every wobble.

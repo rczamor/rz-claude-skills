@@ -46,9 +46,19 @@ SERP_ANALYSIS_TOP_N         = 5
 QUARTERLY_REBASELINE_MONTHS = January, April, July, October (first Sunday of)
 ```
 
+## Cross-skill dependencies (read these first)
+
+The audit does not own SEO methodology or brand voice. It LEVERAGES the canonical sources owned by other skills.
+
+**SEO and keyword research are owned by `rz-growth-marketing`.** Pull from `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's S1–S8 atomic dimensions and K1–K5 keyword-research category dimensions reference this corpus; they do NOT redefine SEO concepts.
+
+**Brand voice is owned by `rz-copywriting`.** Pull from `corpus/voice/` for the fatal-fifteen AI-tells list, voice anti-patterns, terminology rules, and the 50/30/20 domain balance frame. The audit's B1–B5 brand checks are detection rules ON TOP of the voice canon; they do NOT redefine voice rules.
+
+If a dimension entry's text contradicts these source-of-truth corpora, the source-of-truth corpora win. Surface the contradiction in `rz-self-improve` for cleanup.
+
 ## Load from corpus
 
-The audit reads its scoring rules, methodology, database schemas, and benchmarking protocols from the website-audit corpus. Pull the relevant entries before each run.
+The audit reads its scoring rules, methodology, and benchmarking protocols from `corpus/website-audit/`. SEO methodology and the Target Keywords DB schema load from `corpus/growth/seo/`. Voice rules load from `corpus/voice/`.
 
 **Dimensions (22 total).** Each dimension has an entry that defines the trigger, severity, source, and fix pattern.
 
@@ -75,10 +85,10 @@ Category-level (7). `corpus/website-audit/dimensions/categories/`:
 - `traffic-engagement.md`. Sessions, bounce, time-on-page rollups
 - `usability.md`. Heuristic checks across nav, forms, content
 - `design.md`. Type, color, spacing, OG image consistency
-- `brand.md`. Voice, positioning, B1 brand drift
+- `brand.md`. Voice, positioning, B1 brand drift (loads voice canon from `corpus/voice/`)
 - `technical-qa.md`. Lighthouse, Core Web Vitals, build health
 - `chatbot.md`. `/api/chat` health, eval probe, citation behavior
-- `keyword-research.md`. K1–K5 checks, free-stack methodology
+- `keyword-research.md`. K1–K5 checks (loads SEO methodology from `corpus/growth/seo/`)
 
 **Methodology (6)**. `corpus/website-audit/methodology/`:
 - `bootstrap.md`. Step 1 (read DBs, last audit, run ID generation)
@@ -88,14 +98,20 @@ Category-level (7). `corpus/website-audit/dimensions/categories/`:
 - `task-issuance.md`. Step 6a (Linear task creation, MAX_WEEKLY_TASKS cap)
 - `slack-notification.md`. Step 6b (one-line Slack post, traffic light, link)
 
-**Keyword research (4)**. `corpus/website-audit/keyword-research/`:
+**SEO methodology (5, owned by `rz-growth-marketing`)**. `corpus/growth/seo/`:
 - `free-stack-overview.md`. GSC + Keyword Planner + manual SERP review methodology
 - `keyword-planner-monthly.md`. Riché's monthly refresh workflow (~15 min)
 - `serp-review-protocol.md`. 5-step SERP review for the top N priority terms
 - `topic-clusters.md`. 7 priority Context Layer clusters
-
-**Databases (3)**. `corpus/website-audit/databases/`:
 - `target-keywords-schema.md`. Target Keywords DB structure and lifecycle
+
+**Voice canon (used by B1–B5, owned by `rz-copywriting`)**. `corpus/voice/`:
+- The fatal-fifteen AI-tells series (`fatal-fifteen-01-...` through `fatal-fifteen-15-...`)
+- Voice anti-patterns (em dashes, "navigate", "leverage" without object, etc.)
+- Three-domain balance overview (50/30/20)
+- Terminology rules (Context Layer vs context management system)
+
+**Audit-owned databases (2)**. `corpus/website-audit/databases/`:
 - `competitors-schema.md`. Competitors DB structure with Tier and Type
 - `weekly-audits-schema.md`. Weekly Audits DB where each run is stored
 
@@ -189,7 +205,9 @@ The Summary property is the one-sentence headline (≤140 chars) that mirrors th
 
 - Does not modify the website. Diagnoses only; fixes route to other skills.
 - Does not auto-publish content fixes. Page-level SEO and AIO fixes for pages flagged as P0 / P1 route to `rz-content-optimize`.
-- Does not run keyword discovery. New candidates come from the monthly Keyword Planner job (`keyword-planner-monthly.md`), which is Riché's manual session.
+- Does not own SEO methodology. The audit calls out from `corpus/growth/seo/`; canonical SEO knowledge lives with `rz-growth-marketing`.
+- Does not own brand voice rules. The audit's B1–B5 detection sits on top of `corpus/voice/`; canonical voice lives with `rz-copywriting`.
+- Does not run keyword discovery. New candidates come from the monthly Keyword Planner job (`corpus/growth/seo/keyword-planner-monthly.md`), which is Riché's manual session.
 - Does not benchmark Adjacent-tier competitors in full. Adjacent gets lightweight checks only.
 - Does not write to Google Search Console or Vercel. Read-only on both systems.
 - Does not auto-deprioritize keywords. The 90-days-zero-impressions guardrail prevents silent deletes; deprioritization is a manual call by Riché.
@@ -197,12 +215,19 @@ The Summary property is the one-sentence headline (≤140 chars) that mirrors th
 
 ## Cross-skill connections
 
+**Upstream (the audit reads from these for canonical knowledge):**
+
+- `rz-growth-marketing`. Owns SEO. Audit reads `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's K1–K5 dimensions and S1–S8 atomic fires use these as source of truth.
+- `rz-copywriting`. Owns brand voice. Audit reads `corpus/voice/` for the fatal-fifteen AI tells, voice anti-patterns, and the 50/30/20 domain balance frame. The audit's B1–B5 dimensions detect drift against this canon.
+
+**Downstream (the audit hands off to these for fixes):**
+
 - `rz-content-optimize`. Page-level SEO and AIO fixes flagged as P0 or P1 in S1, S2, S5, A1, A5, A7.
-- `rz-copywriting`. Brand voice fixes when B1 (brand drift) fires.
-- `rz-graphic-design`. OG image regeneration when D5 (OG image consistency) fires.
+- `rz-copywriting`. Voice rewrites when B1 fires. Audit surfaces the offending lines; copywriting authors the replacement.
+- `rz-graphic-design`. OG image regeneration when D5 fires.
 - `rz-draft-content`. When an audit P0 or P1 surfaces a content gap (K3 or K4) that needs a new article.
 - `rz-product-design`. When usability dimensions surface a flow change rather than a content change.
-- `rz-self-improve`. Corpus updates when the audit reveals a dimension's trigger or severity rule needs refinement.
+- `rz-self-improve`. Corpus updates when the audit reveals a dimension's trigger or severity rule needs refinement, or when SEO/voice canon drifts away from how the audit references it.
 
 ## Run outputs (summary)
 

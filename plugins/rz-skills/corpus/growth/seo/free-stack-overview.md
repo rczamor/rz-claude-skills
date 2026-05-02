@@ -1,10 +1,10 @@
 ---
 name: Free-Stack Keyword Research Overview
-domain: website-audit
-source_skill: website-audit
+domain: growth
+source_skill: growth-marketing
 entry_type: framework
 length_target: 600-900
-related: [corpus/website-audit/keyword-research/keyword-planner-monthly.md, corpus/website-audit/keyword-research/serp-review-protocol.md, corpus/website-audit/keyword-research/topic-clusters.md, corpus/website-audit/databases/target-keywords-schema.md]
+related: [corpus/growth/seo/keyword-planner-monthly.md, corpus/growth/seo/serp-review-protocol.md, corpus/growth/seo/topic-clusters.md, corpus/growth/seo/target-keywords-schema.md]
 ---
 
 # Free-Stack Keyword Research Overview
@@ -39,7 +39,7 @@ The build-vs-buy decision flips when content cadence exceeds ~15 articles per mo
 
 **Riché responsibility (monthly, ~15 minutes):**
 
-The monthly Keyword Planner session has two jobs (per `corpus/website-audit/keyword-research/keyword-planner-monthly.md`):
+The monthly Keyword Planner session has two jobs (per `corpus/growth/seo/keyword-planner-monthly.md`):
 
 - **Job 1 — Refresh volumes:** paste current Target Keywords list, export volumes, update Notion
 - **Job 2 — Discover new keywords:** seed-search expansion to surface 5-15 new candidate keywords
@@ -83,10 +83,10 @@ If after 90 days K2 fires on the same 5 terms every week, the issue is content p
 3. **Build-vs-buy revisit.** After 18 months, Riché's content cadence has scaled to 12 articles/month and a new outbound SEO channel is launching. The free-stack manual refresh is taking 45 minutes/month and the SERP review on 5 terms isn't enough coverage. Time to reconsider Mangools or Ahrefs proper.
 
 ## Related entries
-- `corpus/website-audit/keyword-research/keyword-planner-monthly.md` — Riché's monthly workflow
-- `corpus/website-audit/keyword-research/serp-review-protocol.md` — the SERP review for K3
-- `corpus/website-audit/keyword-research/topic-clusters.md` — the 7 priority topics for K4
-- `corpus/website-audit/databases/target-keywords-schema.md` — the Notion DB structure
+- `corpus/growth/seo/keyword-planner-monthly.md` — Riché's monthly workflow
+- `corpus/growth/seo/serp-review-protocol.md` — the SERP review for K3
+- `corpus/growth/seo/topic-clusters.md` — the 7 priority topics for K4
+- `corpus/growth/seo/target-keywords-schema.md` — the Notion DB structure
 - `corpus/website-audit/dimensions/categories/keyword-research.md` — the K1-K5 audit dimensions
 
 ## Anti-patterns

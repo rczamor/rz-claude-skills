@@ -1,10 +1,10 @@
 ---
 name: SERP Review Protocol
-domain: website-audit
-source_skill: website-audit
+domain: growth
+source_skill: growth-marketing
 entry_type: pattern
 length_target: 400-700
-related: [corpus/website-audit/keyword-research/free-stack-overview.md, corpus/website-audit/keyword-research/topic-clusters.md, corpus/website-audit/dimensions/categories/keyword-research.md, corpus/website-audit/databases/target-keywords-schema.md]
+related: [corpus/growth/seo/free-stack-overview.md, corpus/growth/seo/topic-clusters.md, corpus/website-audit/dimensions/categories/keyword-research.md, corpus/growth/seo/target-keywords-schema.md]
 ---
 
 # SERP Review Protocol
@@ -53,10 +53,10 @@ If `web_fetch` is blocked on a result (paywall, anti-bot), fall back to Tavily e
 3. **Mixed SERP, niche win.** Term: "evaluating context retrieval." Top 5: 2 academic papers, 1 vendor docs page, 2 Stack Overflow threads. Density: low (no thought leaders). Intent: informational. Freshness: docs page is 8 months old. Recommendation: K3 fires P1; the field is technical and Riché's Helm Labs eval framework piece would slot in.
 
 ## Related entries
-- `corpus/website-audit/keyword-research/free-stack-overview.md`. The broader free-stack methodology
-- `corpus/website-audit/keyword-research/topic-clusters.md`. Used to score domain weight
+- `corpus/growth/seo/free-stack-overview.md`. The broader free-stack methodology
+- `corpus/growth/seo/topic-clusters.md`. Used to score domain weight
 - `corpus/website-audit/dimensions/categories/keyword-research.md`. K3 fire criteria and severity rules
-- `corpus/website-audit/databases/target-keywords-schema.md`. The DB the protocol reads and writes
+- `corpus/growth/seo/target-keywords-schema.md`. The DB the protocol reads and writes
 
 ## Anti-patterns
 - Reviewing every keyword. Five is the cap; review discipline matters more than coverage.

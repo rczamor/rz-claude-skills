@@ -4,7 +4,7 @@ domain: website-audit
 source_skill: website-audit
 entry_type: rule
 length_target: 600-900
-related: [corpus/website-audit/keyword-research/free-stack-overview.md, corpus/website-audit/keyword-research/keyword-planner-monthly.md, corpus/website-audit/keyword-research/serp-review-protocol.md]
+related: [corpus/growth/seo/free-stack-overview.md, corpus/growth/seo/keyword-planner-monthly.md, corpus/growth/seo/serp-review-protocol.md]
 ---
 
 # Keyword Research Category
@@ -58,11 +58,11 @@ If `TARGET_KEYWORDS_DB_ID` returns zero rows or the database is unconfigured, lo
 5. **K5 fires with P1.** "context layer vs RAG" ranks at position 8; target page is a personal essay (narrative content type). Top SERP results are all comparison tables. Fix: refactor the ranking page to lead with a comparison table; keep the essay narrative as the explanatory section after.
 
 ## Related entries
-- `corpus/website-audit/keyword-research/free-stack-overview.md` — the methodology
-- `corpus/website-audit/keyword-research/keyword-planner-monthly.md` — the K1 fix workflow
-- `corpus/website-audit/keyword-research/serp-review-protocol.md` — the K3 protocol
-- `corpus/website-audit/keyword-research/topic-clusters.md` — the K4 cluster definitions
-- `corpus/website-audit/databases/target-keywords-schema.md` — the Notion DB structure
+- `corpus/growth/seo/free-stack-overview.md` — the methodology
+- `corpus/growth/seo/keyword-planner-monthly.md` — the K1 fix workflow
+- `corpus/growth/seo/serp-review-protocol.md` — the K3 protocol
+- `corpus/growth/seo/topic-clusters.md` — the K4 cluster definitions
+- `corpus/growth/seo/target-keywords-schema.md` — the Notion DB structure
 
 ## Anti-patterns
 - Filing Linear tasks for every K1 trigger. Stale data is a process issue, not a per-keyword issue. Aggregate.

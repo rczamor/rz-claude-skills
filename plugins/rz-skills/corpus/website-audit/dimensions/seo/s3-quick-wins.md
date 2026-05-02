@@ -4,7 +4,7 @@ domain: website-audit
 source_skill: website-audit
 entry_type: rule
 length_target: 300-800
-related: [corpus/website-audit/dimensions/seo/s1-ranking-regression.md, corpus/website-audit/dimensions/seo/s7-internal-linking.md, corpus/website-audit/keyword-research/serp-review-protocol.md]
+related: [corpus/website-audit/dimensions/seo/s1-ranking-regression.md, corpus/website-audit/dimensions/seo/s7-internal-linking.md, corpus/growth/seo/serp-review-protocol.md]
 ---
 
 # S3 — Quick-Win Queries
@@ -26,7 +26,7 @@ Quick wins also compound. A page that moves from position 6 to position 2 sends 
 ## How to apply
 - Pull GSC keywords data for the last 7 days. Filter to queries in positions 4–10 with impressions ≥100.
 - Sort by `impressions × (1 − current CTR ratio)` — proxy for "what's the ceiling." Prioritize queries with high impressions and current low CTR.
-- For each, identify the ranking page. Run a SERP review for the query (per `corpus/website-audit/keyword-research/serp-review-protocol.md`).
+- For each, identify the ranking page. Run a SERP review for the query (per `corpus/growth/seo/serp-review-protocol.md`).
 - The fix pattern is multi-pronged:
   - **Content depth.** Add 200-400 words of substance specifically on the angles the top-3 results cover that the ranking page doesn't.
   - **Internal links.** Add inbound internal links to the ranking page from higher-authority pages (home, /thesis, related /thinking articles).
@@ -42,8 +42,8 @@ Quick wins also compound. A page that moves from position 6 to position 2 sends 
 ## Related entries
 - `corpus/website-audit/dimensions/seo/s1-ranking-regression.md` — the inverse signal (ranking lost)
 - `corpus/website-audit/dimensions/seo/s7-internal-linking.md` — internal links are the most reliable lever
-- `corpus/website-audit/keyword-research/serp-review-protocol.md` — how to compare against top-3
-- `corpus/website-audit/keyword-research/free-stack-overview.md` — context for quick-win queries within the broader keyword strategy
+- `corpus/growth/seo/serp-review-protocol.md` — how to compare against top-3
+- `corpus/growth/seo/free-stack-overview.md` — context for quick-win queries within the broader keyword strategy
 
 ## Anti-patterns
 - Stuffing more keyword variants into the page hoping to boost it. Google's algorithm doesn't reward density; it rewards depth on the topic.

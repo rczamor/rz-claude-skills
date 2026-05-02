@@ -1,10 +1,10 @@
 ---
 name: Target Keywords Database Schema
-domain: website-audit
-source_skill: website-audit
+domain: growth
+source_skill: growth-marketing
 entry_type: resource
 length_target: 400-700
-related: [corpus/website-audit/keyword-research/free-stack-overview.md, corpus/website-audit/keyword-research/keyword-planner-monthly.md, corpus/website-audit/keyword-research/topic-clusters.md, corpus/website-audit/dimensions/categories/keyword-research.md]
+related: [corpus/growth/seo/free-stack-overview.md, corpus/growth/seo/keyword-planner-monthly.md, corpus/growth/seo/topic-clusters.md, corpus/website-audit/dimensions/categories/keyword-research.md]
 ---
 
 # Target Keywords Database Schema
@@ -59,9 +59,9 @@ The Status field is the lifecycle signal. Each transition is meaningful: Researc
 3. **Won → Ranking regression.** "context layer vs RAG" was at Won (position 7) for 4 weeks. This run shows position 14. Audit does NOT auto-transition the status; instead it logs the regression in the Weekly Audit page under Notable Movements and surfaces it for Riché to review.
 
 ## Related entries
-- `corpus/website-audit/keyword-research/free-stack-overview.md`. How the DB integrates with GSC and Keyword Planner
-- `corpus/website-audit/keyword-research/keyword-planner-monthly.md`. When new rows are created and volumes refreshed
-- `corpus/website-audit/keyword-research/topic-clusters.md`. The cluster taxonomy that anchors Domain = Context Layer rows
+- `corpus/growth/seo/free-stack-overview.md`. How the DB integrates with GSC and Keyword Planner
+- `corpus/growth/seo/keyword-planner-monthly.md`. When new rows are created and volumes refreshed
+- `corpus/growth/seo/topic-clusters.md`. The cluster taxonomy that anchors Domain = Context Layer rows
 - `corpus/website-audit/dimensions/categories/keyword-research.md`. The K1–K5 checks that read this DB
 
 ## Anti-patterns

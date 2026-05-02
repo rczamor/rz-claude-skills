@@ -1,6 +1,9 @@
 # corpus/website-audit/index.yaml
 # Flat index of every entry in this domain for skill-driven lookup.
-# Entry count: 37 across 7 sub-domains.
+# Entry count: 32 across 6 sub-domains.
+# SEO methodology and the Target Keywords DB schema are owned by rz-growth-marketing
+# and live at corpus/growth/seo/. The audit's S1-S8 atomic dimensions and K1-K5
+# keyword-research category dimensions reference that corpus.
 # Schema per entry: filename (relative to corpus/website-audit/), sub_domain, entry_type, one_liner.
 
 entries:
@@ -134,36 +137,12 @@ entries:
     one_liner: "The fifth step of the audit."
 
   # ============================================================
-  # keyword-research (4 entries)
-  # ============================================================
-  - filename: keyword-research/free-stack-overview.md
-    sub_domain: keyword-research
-    entry_type: framework
-    one_liner: "A keyword research methodology that uses three free sources together: Google Search Console (own-domain ranking data vi…"
-  - filename: keyword-research/keyword-planner-monthly.md
-    sub_domain: keyword-research
-    entry_type: template
-    one_liner: "Riché's once-a-month, ~15 minute workflow for refreshing search volumes on existing Target Keywords and discovering new…"
-  - filename: keyword-research/serp-review-protocol.md
-    sub_domain: keyword-research
-    entry_type: pattern
-    one_liner: "The 5-step manual SERP review applied each week to the top SERP_ANALYSIS_TOP_N (= 5) priority terms in the Target Keywo…"
-  - filename: keyword-research/topic-clusters.md
-    sub_domain: keyword-research
-    entry_type: framework
-    one_liner: "The 7 canonical topic areas where richezamor.com is building authority."
-
-  # ============================================================
-  # databases (3 entries)
+  # databases (2 entries)
   # ============================================================
   - filename: databases/competitors-schema.md
     sub_domain: databases
     entry_type: resource
     one_liner: "The Notion database that holds every competitor the audit benchmarks against."
-  - filename: databases/target-keywords-schema.md
-    sub_domain: databases
-    entry_type: resource
-    one_liner: "The Notion database that holds every keyword the audit tracks."
   - filename: databases/weekly-audits-schema.md
     sub_domain: databases
     entry_type: resource

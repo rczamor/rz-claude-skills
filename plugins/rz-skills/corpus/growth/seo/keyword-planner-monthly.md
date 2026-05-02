@@ -1,10 +1,10 @@
 ---
 name: Keyword Planner Monthly Refresh
-domain: website-audit
-source_skill: website-audit
+domain: growth
+source_skill: growth-marketing
 entry_type: template
 length_target: 500-800
-related: [corpus/website-audit/keyword-research/free-stack-overview.md, corpus/website-audit/keyword-research/topic-clusters.md, corpus/website-audit/databases/target-keywords-schema.md, corpus/website-audit/dimensions/categories/keyword-research.md]
+related: [corpus/growth/seo/free-stack-overview.md, corpus/growth/seo/topic-clusters.md, corpus/growth/seo/target-keywords-schema.md, corpus/website-audit/dimensions/categories/keyword-research.md]
 ---
 
 # Keyword Planner Monthly Refresh
@@ -61,9 +61,9 @@ The seed-search half of the session is what keeps the Target Keywords DB from go
 3. **Defer-and-recover.** Two months skipped due to travel. K1 fires on all 30 rows for two consecutive audits. Single recovery session takes 20 min (Job 1 only); Job 2 deferred one more week.
 
 ## Related entries
-- `corpus/website-audit/keyword-research/free-stack-overview.md` — the full free-stack methodology
-- `corpus/website-audit/keyword-research/topic-clusters.md` — the 7 priority topics that anchor seed selection
-- `corpus/website-audit/databases/target-keywords-schema.md` — the Notion DB structure
+- `corpus/growth/seo/free-stack-overview.md` — the full free-stack methodology
+- `corpus/growth/seo/topic-clusters.md` — the 7 priority topics that anchor seed selection
+- `corpus/growth/seo/target-keywords-schema.md` — the Notion DB structure
 - `corpus/website-audit/dimensions/categories/keyword-research.md` — K1 (stale data) and the audit dimensions
 
 ## Anti-patterns
