@@ -1,0 +1,370 @@
+# corpus/growth/index.yaml
+# Flat index of every entry in this domain for skill-driven lookup.
+# Entry count: 81 across 10 sub-domain(s).
+# Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
+
+entries:
+
+  # ============================================================
+  # anti-patterns (8 entries)
+  # ============================================================
+  - filename: anti-patterns/no-buffer-typefully.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: don't use third-party scheduling tools (Buffer, Typefully, Hootsuite, Later, etc.) for LinkedIn or X posting."
+  - filename: anti-patterns/no-direct-segment-1.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: never reach Segment 1 (AI Product Hiring Managers — VP/CPO-level) directly."
+  - filename: anti-patterns/no-follower-count-optimization.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: don't optimize for follower count."
+  - filename: anti-patterns/no-latent-space.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: don't invest time in the Latent Space community (Discord, podcast, conference)."
+  - filename: anti-patterns/no-medium.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: don't publish original content on Medium."
+  - filename: anti-patterns/no-threads.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: don't invest time in Meta's Threads platform."
+  - filename: anti-patterns/no-time-budget-overrun.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: never let growth activities exceed 5.25 hours per week."
+  - filename: anti-patterns/no-untargeted-posts.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: every post is written for a specific audience segment, with that segment's filter applied during the writing…"
+
+  # ============================================================
+  # channels (12 entries)
+  # ============================================================
+  - filename: channels/linkedin-articles.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "LinkedIn's long-form publishing surface — articles of 1,000–3,000+ words that live on the LinkedIn domain."
+  - filename: channels/linkedin-cadence.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "The minimum-viable LinkedIn posting cadence: 3–5 posts per week, using the Mon-Fri content types."
+  - filename: channels/linkedin-comment-sandwiching.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "The pattern of engaging in comments BEFORE and AFTER your own post — both on others' posts and on the comment thread of…"
+  - filename: channels/linkedin-premium-tracking.md
+    sub_domain: channels
+    entry_type: resource
+    one_liner: "LinkedIn Premium ($60–80/month tier) unlocks profile-view tracking — the ability to see who viewed the profile in the l…"
+  - filename: channels/linkedin-profile-optimization.md
+    sub_domain: channels
+    entry_type: template
+    one_liner: "The LinkedIn profile is the primary conversion surface for Segment 1 (hiring managers) — the page Segment 1 lands on af…"
+  - filename: channels/linkedin-tagging-rule.md
+    sub_domain: channels
+    entry_type: rule
+    one_liner: "Tag people in posts and comments only when genuinely referencing their work."
+  - filename: channels/website-context-layer-demo.md
+    sub_domain: channels
+    entry_type: resource
+    one_liner: "The interactive demo of the Context Layer Engine on richezamor.com — an in-browser walkthrough of the five-step context…"
+  - filename: channels/website-seo-targets.md
+    sub_domain: channels
+    entry_type: resource
+    one_liner: "The SEO keyword targets for richezamor.com: - \"context architecture\" - \"AI context management\" - \"context generation AI\""
+  - filename: channels/website-speaker-one-sheet.md
+    sub_domain: channels
+    entry_type: template
+    one_liner: "Two assets on richezamor.com optimized for Segment 4 (event organizers, podcast hosts) when they're verifying credibili…"
+  - filename: channels/x-engagement-targets.md
+    sub_domain: channels
+    entry_type: resource
+    one_liner: "The 9 X accounts that anchor Riché's X engagement: @shreaborhade, @lennysan, @joulee, @johncutlefish, @sachinrekhi, @ca…"
+  - filename: channels/x-quote-tweet-pattern.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "On X, quote-tweet with added perspective rather than just retweeting."
+  - filename: channels/x-thread-format.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "The format for adapting LinkedIn deep dives into X-native threads: 5–7 tweets, each tweet standalone-readable, leading…"
+
+  # ============================================================
+  # flywheel (6 entries)
+  # ============================================================
+  - filename: flywheel/echo-chamber-failure-mode.md
+    sub_domain: flywheel
+    entry_type: concept
+    one_liner: "The dominant failure mode of personal-brand content: posts circulate only inside a small set of direct followers, fail…"
+  - filename: flywheel/flywheel-overview.md
+    sub_domain: flywheel
+    entry_type: framework
+    one_liner: "The audience-development flywheel that connects every channel and segment into a self-reinforcing loop."
+  - filename: flywheel/passive-segment-1-reach.md
+    sub_domain: flywheel
+    entry_type: pattern
+    one_liner: "The mechanism by which Segment 1 (hiring managers) actually encounters Riché's work: not by reading content, but by pas…"
+  - filename: flywheel/peer-reshare-mechanics.md
+    sub_domain: flywheel
+    entry_type: pattern
+    one_liner: "The specific things that make a peer (Segment 2 product leader) reshare a post."
+  - filename: flywheel/recorded-content-fuel.md
+    sub_domain: flywheel
+    entry_type: pattern
+    one_liner: "The reuse loop that turns one stage appearance into 6+ months of content."
+  - filename: flywheel/starts-with-relationships.md
+    sub_domain: flywheel
+    entry_type: rule
+    one_liner: "The single most important rule for the entire growth strategy: the flywheel is anchored on Segment 2 relationships, not…"
+
+  # ============================================================
+  # hooks (4 entries)
+  # ============================================================
+  - filename: hooks/cognitive-science-backing.md
+    sub_domain: hooks
+    entry_type: concept
+    one_liner: "The third differentiation pillar: Riché's framework for context architecture is grounded in information theory and cogn…"
+  - filename: hooks/live-demo-capability.md
+    sub_domain: hooks
+    entry_type: concept
+    one_liner: "The second differentiation pillar: Riché can demo the Context Layer Engine live on stage."
+  - filename: hooks/practitioner-not-theorist.md
+    sub_domain: hooks
+    entry_type: concept
+    one_liner: "The first of the four differentiation pillars: Riché has shipped real AI products with real metrics."
+  - filename: hooks/specific-metrics-from-real-products.md
+    sub_domain: hooks
+    entry_type: concept
+    one_liner: "The fourth differentiation pillar: every credibility marker is a specific number from a real product, not a generic cla…"
+
+  # ============================================================
+  # metrics (10 entries)
+  # ============================================================
+  - filename: metrics/aarrr-personal-brand.md
+    sub_domain: metrics
+    entry_type: framework
+    one_liner: "Dave McClure's AARRR framework — Acquisition, Activation, Retention, Referral, Revenue — adapted to a personal-brand gr…"
+  - filename: metrics/anti-vanity-metrics.md
+    sub_domain: metrics
+    entry_type: rule
+    one_liner: "Followers and impressions are vanity metrics unless tied to segment proxies."
+  - filename: metrics/cold-start-personal-brand.md
+    sub_domain: metrics
+    entry_type: concept
+    one_liner: "Andrew Chen's *The Cold Start Problem* (2021) describes how networked products escape the early-stage chicken-and-egg p…"
+  - filename: metrics/dashboard-template.md
+    sub_domain: metrics
+    entry_type: template
+    one_liner: "The format for the weekly metrics dashboard, updated in the 15-min Friday admin block."
+  - filename: metrics/engagement-quality-vs-count.md
+    sub_domain: metrics
+    entry_type: rule
+    one_liner: "The discipline rule: optimize for engagement quality, not engagement count."
+  - filename: metrics/growth-loops-personal-brand.md
+    sub_domain: metrics
+    entry_type: framework
+    one_liner: "Brian Balfour's \"growth loops\" framework — popularized in his 2018 essay series at Reforge — argues that sustainable gr…"
+  - filename: metrics/k-factor-personal-brand.md
+    sub_domain: metrics
+    entry_type: metric
+    one_liner: "The viral coefficient (K-factor) — popularized by Sean Ellis and the early growth-hacking canon — measures how many new…"
+  - filename: metrics/leading-vs-lagging.md
+    sub_domain: metrics
+    entry_type: concept
+    one_liner: "The distinction at the core of Riché's metrics system."
+  - filename: metrics/quarterly-review-checklist.md
+    sub_domain: metrics
+    entry_type: template
+    one_liner: "The end-of-quarter audit."
+  - filename: metrics/segment-proxies-rollup.md
+    sub_domain: metrics
+    entry_type: metric
+    one_liner: "The consolidated table of leading-indicator proxies across all four audience segments — 16 proxies total, 4 per segment."
+
+  # ============================================================
+  # playbook (8 entries)
+  # ============================================================
+  - filename: playbook/admin-tracking.md
+    sub_domain: playbook
+    entry_type: pattern
+    one_liner: "The 15-minute weekly review block."
+  - filename: playbook/batch-writing-sunday.md
+    sub_domain: playbook
+    entry_type: pattern
+    one_liner: "All 5 posts for the week written in one 2-hour Sunday session."
+  - filename: playbook/budget-allocation.md
+    sub_domain: playbook
+    entry_type: framework
+    one_liner: "The total weekly time allocation for all growth activities."
+  - filename: playbook/comment-substance-rule.md
+    sub_domain: playbook
+    entry_type: rule
+    one_liner: "Every comment adds a perspective, not agreement."
+  - filename: playbook/dm-relationship-building.md
+    sub_domain: playbook
+    entry_type: pattern
+    one_liner: "2–3 direct messages per week on LinkedIn, sent to peers (Segment 2) when something they've posted maps to Riché's work…"
+  - filename: playbook/strategic-commenting.md
+    sub_domain: playbook
+    entry_type: pattern
+    one_liner: "The single highest-ROI activity in the entire growth system."
+  - filename: playbook/time-budget-discipline.md
+    sub_domain: playbook
+    entry_type: rule
+    one_liner: "The hard rule: refuse anything that doesn't fit in 5.25 hours/week."
+  - filename: playbook/x-cross-post-engagement.md
+    sub_domain: playbook
+    entry_type: pattern
+    one_liner: "15 minutes per day on X: adapt the LinkedIn batch posts for X format and engage with the 9 X target accounts (@shreabor…"
+
+  # ============================================================
+  # segments (16 entries)
+  # ============================================================
+  - filename: segments/segment-1-channels.md
+    sub_domain: segments
+    entry_type: pattern
+    one_liner: "Where Segment 1 (AI Product Hiring Managers) actually pays attention."
+  - filename: segments/segment-1-hiring-managers.md
+    sub_domain: segments
+    entry_type: concept
+    one_liner: "The smallest, highest-stakes audience: roughly 500–1,000 VP- and CPO-level product leaders at AI companies who hire sen…"
+  - filename: segments/segment-1-metrics.md
+    sub_domain: segments
+    entry_type: metric
+    one_liner: "The four leading-indicator proxies for Segment 1 (AI Product Hiring Managers) reach."
+  - filename: segments/segment-1-targeting-rules.md
+    sub_domain: segments
+    entry_type: rule
+    one_liner: "The hard rules for engaging (or not engaging) Segment 1 — VP/CPO-level AI product hiring managers."
+  - filename: segments/segment-2-channels.md
+    sub_domain: segments
+    entry_type: pattern
+    one_liner: "Where Segment 2 (Product Leader Peers) actually shows up."
+  - filename: segments/segment-2-metrics.md
+    sub_domain: segments
+    entry_type: metric
+    one_liner: "The four leading-indicator proxies for Segment 2 (Product Leader Peers) reach:"
+  - filename: segments/segment-2-product-leader-peers.md
+    sub_domain: segments
+    entry_type: concept
+    one_liner: "The PRIMARY engagement segment."
+  - filename: segments/segment-2-targeting-rules.md
+    sub_domain: segments
+    entry_type: rule
+    one_liner: "The rules for engaging Segment 2 — Product Leader Peers."
+  - filename: segments/segment-3-channels.md
+    sub_domain: segments
+    entry_type: pattern
+    one_liner: "Where Segment 3 (Founders Building AI Products) actually pays attention."
+  - filename: segments/segment-3-founders.md
+    sub_domain: segments
+    entry_type: concept
+    one_liner: "Seed to Series B AI founders — the technical/product founders shipping AI products who need architecture and product st…"
+  - filename: segments/segment-3-metrics.md
+    sub_domain: segments
+    entry_type: metric
+    one_liner: "The four leading-indicator proxies for Segment 3 (AI Founders) reach:"
+  - filename: segments/segment-3-targeting-rules.md
+    sub_domain: segments
+    entry_type: rule
+    one_liner: "Rules for engaging Segment 3 — Seed to Series B AI founders."
+  - filename: segments/segment-4-channels.md
+    sub_domain: segments
+    entry_type: pattern
+    one_liner: "Where Segment 4 (Event Organizers and Podcast Hosts) actually receives pitches."
+  - filename: segments/segment-4-event-organizers.md
+    sub_domain: segments
+    entry_type: concept
+    one_liner: "The gatekeepers to stages and recorded content: ProductTank organizers, Mind the Product CFP committee, AI Product Summ…"
+  - filename: segments/segment-4-metrics.md
+    sub_domain: segments
+    entry_type: metric
+    one_liner: "The four leading-indicator proxies for Segment 4 (Event Organizers and Podcast Hosts) reach:"
+  - filename: segments/segment-4-targeting-rules.md
+    sub_domain: segments
+    entry_type: rule
+    one_liner: "The rules for engaging Segment 4 — Event Organizers and Podcast Hosts."
+
+  # ============================================================
+  # seo (5 entries)
+  # ============================================================
+  - filename: seo/free-stack-overview.md
+    sub_domain: seo
+    entry_type: framework
+    one_liner: "A keyword research methodology that uses three free sources together: Google Search Console (own-domain ranking data vi…"
+  - filename: seo/keyword-planner-monthly.md
+    sub_domain: seo
+    entry_type: template
+    one_liner: "Riché's once-a-month, ~15 minute workflow for refreshing search volumes on existing Target Keywords and discovering new…"
+  - filename: seo/serp-review-protocol.md
+    sub_domain: seo
+    entry_type: pattern
+    one_liner: "The 5-step manual SERP review applied each week to the top SERP_ANALYSIS_TOP_N (= 5) priority terms in the Target Keywo…"
+  - filename: seo/target-keywords-schema.md
+    sub_domain: seo
+    entry_type: resource
+    one_liner: "The Notion database that holds every keyword the audit tracks."
+  - filename: seo/topic-clusters.md
+    sub_domain: seo
+    entry_type: framework
+    one_liner: "The 7 canonical topic areas where richezamor.com is building authority."
+
+  # ============================================================
+  # speaking (8 entries)
+  # ============================================================
+  - filename: speaking/cfp-template-structure.md
+    sub_domain: speaking
+    entry_type: template
+    one_liner: "The structure for Call-for-Proposal (CFP) submissions to major conferences (Mind the Product, AI Product Summit, Produc…"
+  - filename: speaking/differentiation.md
+    sub_domain: speaking
+    entry_type: concept
+    one_liner: "The four pillars that differentiate Riché as a speaker from the broader pool of AI/PM voices:"
+  - filename: speaking/follow-up-after-talk.md
+    sub_domain: speaking
+    entry_type: pattern
+    one_liner: "The within-48-hour workflow after delivering a talk."
+  - filename: speaking/podcast-pitch-template.md
+    sub_domain: speaking
+    entry_type: template
+    one_liner: "The structure for podcast guest pitches."
+  - filename: speaking/recorded-content-strategy.md
+    sub_domain: speaking
+    entry_type: pattern
+    one_liner: "The workflow for turning a single talk recording into 6+ months of derivative content."
+  - filename: speaking/target-events.md
+    sub_domain: speaking
+    entry_type: resource
+    one_liner: "The priority list of speaking events for Segment 4 outreach:"
+  - filename: speaking/target-podcasts.md
+    sub_domain: speaking
+    entry_type: resource
+    one_liner: "The priority list of podcasts for Segment 4 outreach:"
+  - filename: speaking/the-hook.md
+    sub_domain: speaking
+    entry_type: template
+    one_liner: "The differentiated speaker hook — the one-sentence pitch that opens every Segment 4 outreach (event organizer DMs, CFP…"
+
+  # ============================================================
+  # target-accounts (4 entries)
+  # ============================================================
+  - filename: target-accounts/comment-personalization.md
+    sub_domain: target-accounts
+    entry_type: rule
+    one_liner: "Each target account gets a personalized comment angle that reflects their public work and Riché's positioning."
+  - filename: target-accounts/escalation-cadence.md
+    sub_domain: target-accounts
+    entry_type: pattern
+    one_liner: "The cadence for moving a target-account relationship from public comments to direct messages to real-world meetings."
+  - filename: target-accounts/linkedin-targets.md
+    sub_domain: target-accounts
+    entry_type: resource
+    one_liner: "The 18 LinkedIn accounts to comment on regularly."
+  - filename: target-accounts/x-targets.md
+    sub_domain: target-accounts
+    entry_type: resource
+    one_liner: "The 9 X accounts that anchor Riché's X engagement: @shreaborhade, @lennysan, @joulee, @johncutlefish, @sachinrekhi, @ca…"

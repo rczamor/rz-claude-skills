@@ -1,0 +1,154 @@
+# corpus/networking/index.yaml
+# Flat index of every entry in this domain for skill-driven lookup.
+# Entry count: 30 across 7 sub-domain(s).
+# Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
+
+entries:
+
+  # ============================================================
+  # communities (6 entries)
+  # ============================================================
+  - filename: communities/engagement-rules.md
+    sub_domain: communities
+    entry_type: rule
+    one_liner: "Four rules that govern how Riché engages in any product community — Slack, in-person, online forums, conference backcha…"
+  - filename: communities/in-person-venues.md
+    sub_domain: communities
+    entry_type: resource
+    one_liner: "The recurring in-person product community venues Riché should be present at — three venues, three different cadences an…"
+  - filename: communities/slack-cpo-club.md
+    sub_domain: communities
+    entry_type: resource
+    one_liner: "A curated Slack community for Chief Product Officers and senior product leaders, with 40+ channels covering topics from…"
+  - filename: communities/slack-lennys-newsletter.md
+    sub_domain: communities
+    entry_type: resource
+    one_liner: "The paid Slack community attached to Lenny's Newsletter — one of the highest-quality, most curated PM communities on th…"
+  - filename: communities/slack-mind-the-product.md
+    sub_domain: communities
+    entry_type: resource
+    one_liner: "Two of the largest active PM-focused Slack communities — Mind the Product (MTP, ~14,000 members) and Product-Led Allian…"
+  - filename: communities/slack-product-school.md
+    sub_domain: communities
+    entry_type: resource
+    one_liner: "A broad Slack community attached to Product School's PM courses and certifications."
+
+  # ============================================================
+  # conferences (6 entries)
+  # ============================================================
+  - filename: conferences/before-event-prep.md
+    sub_domain: conferences
+    entry_type: template
+    one_liner: "The structured preparation Riché does before any conference, meetup, or networking event — typically 2-4 hours of work…"
+  - filename: conferences/conversational-pitch-line.md
+    sub_domain: conferences
+    entry_type: template
+    one_liner: "The single sentence Riché uses when someone asks \"what do you do?\" at a conference, meetup, or in any in-person network…"
+  - filename: conferences/during-event-posture.md
+    sub_domain: conferences
+    entry_type: pattern
+    one_liner: "The behavioral pattern Riché holds during a conference or meetup — how he opens conversations, what he says, how he lis…"
+  - filename: conferences/intent-driven-contact-exchange.md
+    sub_domain: conferences
+    entry_type: rule
+    one_liner: "A specific protocol for exchanging contact info at the close of a conversation: never \"let's connect on LinkedIn\" alone."
+  - filename: conferences/question-templates.md
+    sub_domain: conferences
+    entry_type: template
+    one_liner: "The 2-3 questions Riché prepares before any event — questions designed to demonstrate genuine curiosity about the recip…"
+  - filename: conferences/within-48h-follow-up.md
+    sub_domain: conferences
+    entry_type: template
+    one_liner: "The post-event protocol Riché executes within 48 hours of any conference or meetup."
+
+  # ============================================================
+  # crm (4 entries)
+  # ============================================================
+  - filename: crm/data-model.md
+    sub_domain: crm
+    entry_type: template
+    one_liner: "A lightweight five-field row structure for tracking key relationships across all four tiers."
+  - filename: crm/lightweight-tooling.md
+    sub_domain: crm
+    entry_type: resource
+    one_liner: "The recommended tools for housing the relationship CRM."
+  - filename: crm/tier-movement-rules.md
+    sub_domain: crm
+    entry_type: rule
+    one_liner: "Explicit promotion and demotion rules for moving people between Tier 1, Tier 2, Tier 3, and Tier 4 in the CRM."
+  - filename: crm/weekly-review-cadence.md
+    sub_domain: crm
+    entry_type: pattern
+    one_liner: "A 15-minute weekly review of the relationship CRM, embedded inside the weekly admin block defined in the growth-marketi…"
+
+  # ============================================================
+  # cross-skill (2 entries)
+  # ============================================================
+  - filename: cross-skill/segment-priority.md
+    sub_domain: cross-skill
+    entry_type: rule
+    one_liner: "A rule for prioritizing who to invest networking time in: use the four audience segments defined in corpus/growth/segme…"
+  - filename: cross-skill/voice-discipline.md
+    sub_domain: cross-skill
+    entry_type: rule
+    one_liner: "A standing rule: every networking message — DM, email, comment, intro request, follow-up, speaker pitch, advisory respo…"
+
+  # ============================================================
+  # outreach (5 entries)
+  # ============================================================
+  - filename: outreach/advisory-inquiry-response.md
+    sub_domain: outreach
+    entry_type: template
+    one_liner: "The response Riché sends when a founder, product leader, or peer reaches out for architecture advice — typically a \"can…"
+  - filename: outreach/cold-linkedin-connection.md
+    sub_domain: outreach
+    entry_type: template
+    one_liner: "A first-touch LinkedIn connection request where Riché has no prior relationship with the recipient."
+  - filename: outreach/network-activation-dormant.md
+    sub_domain: outreach
+    entry_type: template
+    one_liner: "The reconnect message sent to dormant network contacts — Techstars alumni, Antler peers, IBM colleagues, Hill Holliday…"
+  - filename: outreach/speaker-pitch.md
+    sub_domain: outreach
+    entry_type: template
+    one_liner: "The email or DM Riché sends to event organizers, conference programmers, and meetup hosts to pitch a speaking slot."
+  - filename: outreach/warm-follow-up-after-engagement.md
+    sub_domain: outreach
+    entry_type: template
+    one_liner: "A direct message sent after a comment-thread exchange or post engagement on LinkedIn."
+
+  # ============================================================
+  # philosophy (3 entries)
+  # ============================================================
+  - filename: philosophy/connect-around-shared-problems.md
+    sub_domain: philosophy
+    entry_type: concept
+    one_liner: "Riché's networking entry point is never a pitch and never a generic compliment — it's a problem the other person is vis…"
+  - filename: philosophy/mutual-value-test.md
+    sub_domain: philosophy
+    entry_type: rule
+    one_liner: "Every relationship Riché invests in must pass one test: both parties should be smarter for knowing each other."
+  - filename: philosophy/read-aloud-test.md
+    sub_domain: philosophy
+    entry_type: rule
+    one_liner: "A diagnostic for any outreach message: if the recipient read this message out loud to a friend in the next room, would…"
+
+  # ============================================================
+  # tiers (4 entries)
+  # ============================================================
+  - filename: tiers/tier-1-inner-circle.md
+    sub_domain: tiers
+    entry_type: concept
+    one_liner: "Five to ten people in deep mutual-mentorship relationships with Riché."
+  - filename: tiers/tier-2-active-network.md
+    sub_domain: tiers
+    entry_type: concept
+    one_liner: "Thirty to fifty people Riché engages with regularly through LinkedIn comments, occasional DMs, and event encounters."
+  - filename: tiers/tier-3-extended-network.md
+    sub_domain: tiers
+    entry_type: concept
+    one_liner: "Two hundred-plus people aware of Riché's work primarily through content — they see his LinkedIn posts in their feed, th…"
+  - filename: tiers/tier-4-dormant-network.md
+    sub_domain: tiers
+    entry_type: concept
+    one_liner: "People who already know Riché — Techstars cohort alumni, Antler portfolio peers, IBM colleagues, Hill Holliday and Phas…"

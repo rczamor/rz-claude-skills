@@ -1,0 +1,150 @@
+# corpus/brand-system/index.yaml
+# Flat index of every entry in this domain for skill-driven lookup.
+# Entry count: 30 across 6 sub-domain(s).
+# Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
+
+entries:
+
+  # ============================================================
+  # diagrams (4 entries)
+  # ============================================================
+  - filename: diagrams/context-quality-framework.md
+    sub_domain: diagrams
+    entry_type: template
+    one_liner: "The visual that names the four dimensions context must satisfy to be useful for a model:"
+  - filename: diagrams/five-step-context-flow.md
+    sub_domain: diagrams
+    entry_type: template
+    one_liner: "The canonical visual for Riché's central thesis: context generation is not a pipeline, it's an active process."
+  - filename: diagrams/flywheel-diagrams.md
+    sub_domain: diagrams
+    entry_type: template
+    one_liner: "Circular diagrams showing reinforcing loops — used for audience development and content strategy visuals."
+  - filename: diagrams/rag-vs-context-layer-comparison.md
+    sub_domain: diagrams
+    entry_type: template
+    one_liner: "A side-by-side visual that makes the Context Layer argument by contrast."
+
+  # ============================================================
+  # identity (8 entries)
+  # ============================================================
+  - filename: identity/accent-colors.md
+    sub_domain: identity
+    entry_type: resource
+    one_liner: "A single accent color is selected per project from a tight technical palette: electric blue, emerald green, or amber."
+  - filename: identity/color-anti-patterns.md
+    sub_domain: identity
+    entry_type: rule
+    one_liner: "Three categories of color use that are disqualified from every Riché asset, regardless of medium: pastels, decorative g…"
+  - filename: identity/color-palette.md
+    sub_domain: identity
+    entry_type: resource
+    one_liner: "The base color system for every Riché visual asset."
+  - filename: identity/imagery-anti-patterns.md
+    sub_domain: identity
+    entry_type: rule
+    one_liner: "Three categories of imagery that are categorically banned from every Riché asset, because each one signals a position t…"
+  - filename: identity/imagery-style.md
+    sub_domain: identity
+    entry_type: rule
+    one_liner: "Riché's visual content is architectural, structural, and systems-oriented."
+  - filename: identity/logo-feel.md
+    sub_domain: identity
+    entry_type: concept
+    one_liner: "When any branded mark is needed — a favicon, a section badge, a watermark, an avatar — it should feel like an IDE icon…"
+  - filename: identity/neural-architect-overview.md
+    sub_domain: identity
+    entry_type: concept
+    one_liner: "The \"Neural Architect\" is Riché's unifying visual identity."
+  - filename: identity/typography-rules.md
+    sub_domain: identity
+    entry_type: resource
+    one_liner: "A two-font system: a clean modern sans-serif (Inter, system-ui fallbacks) for body text and headlines, and a monospace…"
+
+  # ============================================================
+  # implementation (4 entries)
+  # ============================================================
+  - filename: implementation/2x-export-retina.md
+    sub_domain: implementation
+    entry_type: rule
+    one_liner: "Static exports of any visual asset render at 2x the target display resolution."
+  - filename: implementation/css-tailwind-layouts.md
+    sub_domain: implementation
+    entry_type: pattern
+    one_liner: "For layout-based visuals — comparison tables, card grids, framework displays — use CSS / Tailwind rather than authoring…"
+  - filename: implementation/react-interactive.md
+    sub_domain: implementation
+    entry_type: pattern
+    one_liner: "For visualizations on richezamor.com that benefit from interactivity — hover states, plot-your-own-system tools, animat…"
+  - filename: implementation/svg-for-diagrams.md
+    sub_domain: implementation
+    entry_type: pattern
+    one_liner: "SVG is the default rendering format for all diagrams and icons."
+
+  # ============================================================
+  # presentation (6 entries)
+  # ============================================================
+  - filename: presentation/code-and-architecture-anchors.md
+    sub_domain: presentation
+    entry_type: rule
+    one_liner: "When a slide needs visual weight, default to a code snippet or an architecture diagram — not a stock illustration, not…"
+  - filename: presentation/dark-bg-high-contrast.md
+    sub_domain: presentation
+    entry_type: rule
+    one_liner: "Slide backgrounds default to the Neural Architect dark palette: #0a0a0a to #1a1a1a."
+  - filename: presentation/minimal-text-max-impact.md
+    sub_domain: presentation
+    entry_type: rule
+    one_liner: "The slide provides the anchor."
+  - filename: presentation/no-bullet-walls.md
+    sub_domain: presentation
+    entry_type: rule
+    one_liner: "Slides with stacked bullet lists are banned."
+  - filename: presentation/one-idea-per-slide.md
+    sub_domain: presentation
+    entry_type: rule
+    one_liner: "Each slide carries exactly one idea."
+  - filename: presentation/talk-structure-template.md
+    sub_domain: presentation
+    entry_type: template
+    one_liner: "A six-step arc for any conference talk, keynote, or pitch presentation Riché delivers."
+
+  # ============================================================
+  # principles (2 entries)
+  # ============================================================
+  - filename: principles/consistent-visual-language.md
+    sub_domain: principles
+    entry_type: rule
+    one_liner: "Across every output — slide deck, LinkedIn graphic, website page, email signature, blog inline diagram, conference one-…"
+  - filename: principles/medium-determines-spec.md
+    sub_domain: principles
+    entry_type: rule
+    one_liner: "When Riché needs a visual and the medium isn't specified, ask first."
+
+  # ============================================================
+  # social (6 entries)
+  # ============================================================
+  - filename: social/aspect-ratios.md
+    sub_domain: social
+    entry_type: resource
+    one_liner: "Standard dimensions for social graphics across the platforms Riché publishes on."
+  - filename: social/attribution-placement.md
+    sub_domain: social
+    entry_type: rule
+    one_liner: "Every social graphic includes Riché's name or handle subtly placed in the corner."
+  - filename: social/corner-treatment.md
+    sub_domain: social
+    entry_type: rule
+    one_liner: "Containers, cards, code panels, and any rectangular shape in a Riché visual asset use a slight border radius — between…"
+  - filename: social/diagrams-over-abstract.md
+    sub_domain: social
+    entry_type: rule
+    one_liner: "For social graphics, diagrams and frameworks beat abstract decorative imagery — every time."
+  - filename: social/mobile-thumbnail-readability.md
+    sub_domain: social
+    entry_type: rule
+    one_liner: "Every social graphic must be readable at 375px width — the standard mobile thumbnail."
+  - filename: social/non-templated-feel.md
+    sub_domain: social
+    entry_type: rule
+    one_liner: "Every social graphic should be brand-consistent but feel crafted, not template-generated."

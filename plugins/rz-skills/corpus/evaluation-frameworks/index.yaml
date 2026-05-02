@@ -1,0 +1,186 @@
+# corpus/evaluation-frameworks/index.yaml
+# Flat index of every entry in this domain for skill-driven lookup.
+# Entry count: 40 across 5 sub-domain(s).
+# Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
+
+entries:
+
+  # ============================================================
+  # cognitive-patterns (18 entries)
+  # ============================================================
+  - filename: cognitive-patterns/01-classification-instinct.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Categorize every decision by reversibility x magnitude."
+  - filename: cognitive-patterns/02-paranoid-scanning.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Continuously scan for strategic inflection points, cultural drift, talent erosion, and process-as-proxy disease."
+  - filename: cognitive-patterns/03-inversion-reflex.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "For every \"how do we win?\" also ask \"what would make us fail?\" Charlie Munger's inversion: solve hard problems by askin…"
+  - filename: cognitive-patterns/04-focus-as-subtraction.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "The primary value-add of a CEO is what they say no to."
+  - filename: cognitive-patterns/05-people-first-sequencing.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "People, products, profits — always in that order."
+  - filename: cognitive-patterns/06-speed-calibration.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Fast is the default."
+  - filename: cognitive-patterns/07-proxy-skepticism.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Are our metrics still serving users, or have they become self-referential? Bezos's \"Day 1 vs."
+  - filename: cognitive-patterns/08-narrative-coherence.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Hard decisions need clear framing."
+  - filename: cognitive-patterns/09-temporal-depth.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Think in 5-10 year arcs."
+  - filename: cognitive-patterns/10-founder-mode-bias.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Deep involvement isn't micromanagement if it expands (rather than constrains) the team's thinking."
+  - filename: cognitive-patterns/11-wartime-awareness.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Correctly diagnose peacetime vs."
+  - filename: cognitive-patterns/12-courage-accumulation.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Confidence comes from making hard decisions, not before them."
+  - filename: cognitive-patterns/13-willfulness-as-strategy.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Be intentionally willful."
+  - filename: cognitive-patterns/14-leverage-obsession.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Find the inputs where small effort creates massive output."
+  - filename: cognitive-patterns/15-hierarchy-as-service.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Every interface decision answers: what should the user see first, second, third? Visual hierarchy is not about prettify…"
+  - filename: cognitive-patterns/16-edge-case-paranoia-design.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "What if the name is 47 characters? Zero results? Network fails mid-action? First-time user vs."
+  - filename: cognitive-patterns/17-subtraction-default.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "\"As little design as possible.\" Dieter Rams' principle: if a UI element doesn't earn its pixels, cut it."
+  - filename: cognitive-patterns/18-design-for-trust.md
+    sub_domain: cognitive-patterns
+    entry_type: concept
+    one_liner: "Every interface decision either builds or erodes user trust."
+
+  # ============================================================
+  # design-rubric (3 entries)
+  # ============================================================
+  - filename: design-rubric/0-10-anchors.md
+    sub_domain: design-rubric
+    entry_type: template
+    one_liner: "The rating method used in /plan-design-review and /design-review."
+  - filename: design-rubric/dimensions.md
+    sub_domain: design-rubric
+    entry_type: template
+    one_liner: "The seven dimensions evaluated by /plan-design-review's 7-pass rubric."
+  - filename: design-rubric/explain-then-improve.md
+    sub_domain: design-rubric
+    entry_type: template
+    one_liner: "The rule that governs every design rating in /plan-design-review."
+
+  # ============================================================
+  # modes (4 entries)
+  # ============================================================
+  - filename: modes/hold-scope.md
+    sub_domain: modes
+    entry_type: framework
+    one_liner: "The mode for plans whose scope is right and needs to stay right."
+  - filename: modes/scope-expansion.md
+    sub_domain: modes
+    entry_type: framework
+    one_liner: "The mode for plans that are good but could be great."
+  - filename: modes/scope-reduction.md
+    sub_domain: modes
+    entry_type: framework
+    one_liner: "The mode for plans that are overbuilt or wrong-headed."
+  - filename: modes/selective-expansion.md
+    sub_domain: modes
+    entry_type: framework
+    one_liner: "The mode for plans whose stated scope is the baseline, but the user wants to see what else is possible."
+
+  # ============================================================
+  # review-sections (11 entries)
+  # ============================================================
+  - filename: review-sections/01-architecture.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "The first of 11 mandatory review sections."
+  - filename: review-sections/02-error-rescue-map.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "The section that catches silent failures."
+  - filename: review-sections/03-security-threat-model.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Security is not a sub-bullet of architecture."
+  - filename: review-sections/04-data-flow-edge-cases.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Section 4 traces data through the system and interactions through the UI with adversarial thoroughness."
+  - filename: review-sections/05-code-quality.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Section 5 evaluates code-level quality concerns at the plan level: organization and module structure fit, DRY violation…"
+  - filename: review-sections/06-test-review.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Section 6 makes a complete diagram of every new thing the plan introduces — UX flows, data flows, codepaths, background…"
+  - filename: review-sections/07-performance.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Section 7 evaluates the plan's performance posture: N+1 queries, memory usage, database indexes, caching opportunities,…"
+  - filename: review-sections/08-observability.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "New systems break."
+  - filename: review-sections/09-deployment-rollout.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Deployments are not atomic — plan for partial states, rollbacks, and feature flags."
+  - filename: review-sections/10-long-term-trajectory.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "Section 10 zooms out from the present plan to its position on a 12-month arc."
+  - filename: review-sections/11-design-ux-review.md
+    sub_domain: review-sections
+    entry_type: template
+    one_liner: "The CEO calling in the designer."
+
+  # ============================================================
+  # step-0 (4 entries)
+  # ============================================================
+  - filename: step-0/dream-state-mapping.md
+    sub_domain: step-0
+    entry_type: template
+    one_liner: "Step 0C of CEO plan review."
+  - filename: step-0/implementation-alternatives.md
+    sub_domain: step-0
+    entry_type: template
+    one_liner: "A mandatory step in every CEO plan review."
+  - filename: step-0/outside-voice-challenge.md
+    sub_domain: step-0
+    entry_type: template
+    one_liner: "After all 11 review sections are complete, the Outside Voice step offers an independent second opinion from a different…"
+  - filename: step-0/premise-challenge.md
+    sub_domain: step-0
+    entry_type: template
+    one_liner: "The first move of every CEO plan review."

@@ -1,0 +1,154 @@
+# corpus/ai-product-ux/index.yaml
+# Flat index of every entry in this domain for skill-driven lookup.
+# Entry count: 30 across 7 sub-domain(s).
+# Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
+
+entries:
+
+  # ============================================================
+  # autonomy (4 entries)
+  # ============================================================
+  - filename: autonomy/cagan-empowerment-mapping.md
+    sub_domain: autonomy
+    entry_type: concept
+    one_liner: "A concept that maps the AI-product progressive-autonomy pattern directly onto Marty Cagan's empowerment framework from…"
+  - filename: autonomy/revoke-autonomy-ux.md
+    sub_domain: autonomy
+    entry_type: pattern
+    one_liner: "A pattern: an easy off-ramp when the AI errs in a higher autonomy tier."
+  - filename: autonomy/three-tier-model.md
+    sub_domain: autonomy
+    entry_type: framework
+    one_liner: "A framework: suggested → confirmed → autonomous."
+  - filename: autonomy/trust-building-pattern.md
+    sub_domain: autonomy
+    entry_type: pattern
+    one_liner: "The operational mechanics of moving a user up the autonomy tiers: start AI-assisted, log accuracy, prompt the user to g…"
+
+  # ============================================================
+  # confidence (4 entries)
+  # ============================================================
+  - filename: confidence/calibration-anti-patterns.md
+    sub_domain: confidence
+    entry_type: rule
+    one_liner: "A rule."
+  - filename: confidence/expressing-uncertainty.md
+    sub_domain: confidence
+    entry_type: pattern
+    one_liner: "A three-level taxonomy for AI uncertainty, each with a distinct UI affordance: known good (assertive output, full UI we…"
+  - filename: confidence/textual-encoding.md
+    sub_domain: confidence
+    entry_type: template
+    one_liner: "A template for qualifying language that signals confidence in AI outputs."
+  - filename: confidence/visual-encoding.md
+    sub_domain: confidence
+    entry_type: template
+    one_liner: "A template for visual confidence indicators using color, opacity, iconography, and weight."
+
+  # ============================================================
+  # context (5 entries)
+  # ============================================================
+  - filename: context/audit-log.md
+    sub_domain: context
+    entry_type: template
+    one_liner: "A template UI for the time-series record of context: what context was used at each decision point, what sources fired,…"
+  - filename: context/context-as-product-surface.md
+    sub_domain: context
+    entry_type: concept
+    one_liner: "A concept."
+  - filename: context/context-quality-display.md
+    sub_domain: context
+    entry_type: template
+    one_liner: "A template UI for surfacing the four context-quality dimensions from the five-step framework: freshness (how recent), c…"
+  - filename: context/correction-interface.md
+    sub_domain: context
+    entry_type: template
+    one_liner: "A template UI that lets users edit, remove, or re-rank the context that informs an AI's decisions."
+  - filename: context/sources-panel.md
+    sub_domain: context
+    entry_type: template
+    one_liner: "A template UI for displaying the sources informing an AI answer — typically a side panel or expandable section that lis…"
+
+  # ============================================================
+  # design-system (3 entries)
+  # ============================================================
+  - filename: design-system/admin-ui-stack.md
+    sub_domain: design-system
+    entry_type: resource
+    one_liner: "The default frontend stack for Riché's internal / admin-facing surfaces — primarily the Context Layer Engine admin UI."
+  - filename: design-system/motion-rules.md
+    sub_domain: design-system
+    entry_type: rule
+    one_liner: "A rule set for motion in Riché's AI product surfaces."
+  - filename: design-system/web-stack.md
+    sub_domain: design-system
+    entry_type: resource
+    one_liner: "The default frontend stack for Riché's customer-facing AI product surfaces — richezamor.com, the Context Layer Demo, co…"
+
+  # ============================================================
+  # failure (4 entries)
+  # ============================================================
+  - filename: failure/design-the-failure-first.md
+    sub_domain: failure
+    entry_type: rule
+    one_liner: "A rule."
+  - filename: failure/error-recovery-paths.md
+    sub_domain: failure
+    entry_type: template
+    one_liner: "A template: every AI failure must offer at least one of three recovery paths — retry, refine, fall back to human."
+  - filename: failure/hallucination-handoff.md
+    sub_domain: failure
+    entry_type: pattern
+    one_liner: "A pattern for the moment a hallucination is detected — by groundedness check, citation mismatch, contradiction with ret…"
+  - filename: failure/timeout-and-rate-limit-ux.md
+    sub_domain: failure
+    entry_type: pattern
+    one_liner: "A pattern for the two most common AI-API failure modes: timeout (the model takes too long) and rate limit (the API has…"
+
+  # ============================================================
+  # patterns (6 entries)
+  # ============================================================
+  - filename: patterns/confidence-indicators.md
+    sub_domain: patterns
+    entry_type: pattern
+    one_liner: "Confidence indicators signal whether an AI output is high-confidence, hedged, or uncertain."
+  - filename: patterns/context-display.md
+    sub_domain: patterns
+    entry_type: pattern
+    one_liner: "Context display is the AI UX pattern of showing users what context the AI is using to make decisions — the sources retr…"
+  - filename: patterns/graceful-degradation.md
+    sub_domain: patterns
+    entry_type: pattern
+    one_liner: "Graceful degradation is the pattern of designing the failure state of an AI product before designing the success state."
+  - filename: patterns/progressive-autonomy.md
+    sub_domain: patterns
+    entry_type: pattern
+    one_liner: "Progressive autonomy is the pattern of letting users start with AI-assisted workflows — where the human reviews every o…"
+  - filename: patterns/rag-vs-context-layer-interfaces.md
+    sub_domain: patterns
+    entry_type: pattern
+    one_liner: "This pattern is the visual demonstration of the difference between raw retrieval (RAG: pull chunks, stuff into prompt,…"
+  - filename: patterns/reasoning-transparency.md
+    sub_domain: patterns
+    entry_type: pattern
+    one_liner: "Reasoning transparency is the AI UX pattern of showing users *why* the AI made a decision, not just *what* it decided."
+
+  # ============================================================
+  # reasoning (4 entries)
+  # ============================================================
+  - filename: reasoning/reasoning-vs-output.md
+    sub_domain: reasoning
+    entry_type: concept
+    one_liner: "A concept."
+  - filename: reasoning/show-the-work-rule.md
+    sub_domain: reasoning
+    entry_type: rule
+    one_liner: "A rule."
+  - filename: reasoning/sidebar-pattern.md
+    sub_domain: reasoning
+    entry_type: template
+    one_liner: "A template UI for displaying AI reasoning: a collapsible, scrollable, time-stamped sidebar that sits alongside the AI o…"
+  - filename: reasoning/skip-reasoning-rule.md
+    sub_domain: reasoning
+    entry_type: rule
+    one_liner: "A rule."
