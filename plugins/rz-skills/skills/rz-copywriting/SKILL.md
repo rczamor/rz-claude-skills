@@ -78,9 +78,13 @@ When drafting content:
 1. Ask which content type (hot take, signal, deep dive, framework, story) unless obvious from context
 2. Load the relevant `corpus/voice/` and `corpus/content-system/` entries for the format
 3. Write the first draft in Riché's voice using the patterns
-4. Self-check against the Fatal Fifteen (`corpus/voice/fatal-fifteen-*.md`) before presenting
+4. Self-check against the Fatal Fifteen. Fast path: `python3 scripts/fatal_fifteen_lint.py <draft>` for a regex pass on rules 1-15 plus em dashes. Then read `corpus/voice/fatal-fifteen-*.md` for the judgment-call rules the linter cannot catch (paragraph rhythm in context, voice attributes).
 5. If the draft could have been written by any AI thought leader, rewrite (`corpus/voice/principle-no-generic-ai-voice.md`)
 6. Final test: does it contain a specific moment, decision, metric, or named tool? Does it take a clear position? Could Riché say this out loud?
+
+## Scripts
+
+- `scripts/fatal_fifteen_lint.py` runs the regex-mappable Fatal Fifteen rules plus em-dash detection and structural checks (paragraph rhythm, multi-phrase bolding). Pipe a draft via stdin or pass a path. Use `--json` for machine-readable output. Heuristic only; the linter complements judgment, never replaces it.
 
 When editing existing drafts:
 
@@ -94,7 +98,7 @@ When editing existing drafts:
 
 | Mistake | What goes wrong | Fix |
 |---|---|---|
-| Skipping the Fatal Fifteen self-check | Generic AI tells slip through (in today's, key takeaway blocks, smooth transitions) | Run `workflow-fatal-fifteen-gate.md` before presenting any draft |
+| Skipping the Fatal Fifteen self-check | Generic AI tells slip through (in today's, key takeaway blocks, smooth transitions) | Run `scripts/fatal_fifteen_lint.py <draft.md>` for a fast regex pass, then `workflow-fatal-fifteen-gate.md` for judgment-call rules |
 | Using em dashes for emphasis | Reads like generic AI prose, breaks the warm-direct attribute | Use commas, periods, or parentheses (see `anti-pattern-em-dashes.md`) |
 | Using "navigate" or "unlock" metaphorically | Banned terminology, signals jargon | Check `terminology-never-use.md`, prefer concrete verbs |
 | Starting with a thesis instead of a moment | Loses story-driven attribute, sounds like a thinkpiece | Open with a specific decision, metric, or scene (see `attribute-story-driven.md`) |

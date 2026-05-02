@@ -110,6 +110,13 @@ If a dimension entry's text contradicts these source-of-truth corpora, the sourc
 - `rz-product-design`. When usability dimensions surface a flow change rather than a content change.
 - `rz-self-improve`. Corpus updates when the audit reveals a dimension's trigger or severity rule needs refinement, or when SEO/voice canon drifts away from how the audit references it.
 
+## Scripts
+
+Deterministic logic lives in `scripts/`. Prefer these over reimplementing in prose.
+
+- `scripts/severity_score.py` computes P0/P1/P2 per finding and the per-dimension and overall traffic lights from a JSON list of findings. Implements the rules in `corpus/website-audit/methodology/severity-scoring.md` exactly. Run `--self-test` to verify against the canonical examples.
+- `scripts/run_lighthouse.sh` runs Lighthouse against a URL on mobile profile (override with `--form-factor desktop`) and emits the audit-relevant subset as one-line JSON: scores (performance, accessibility, best-practices, SEO) plus Core Web Vitals (LCP, INP, CLS, TTFB). Pipe to `severity_score.py` for the Q-dimension fire decisions.
+
 ## Run outputs
 
 Every successful run produces: one dated page in the Weekly Audits DB, updated rows in Target Keywords and Competitors DBs, up to 5 Linear tasks, and one `#brand` Slack post.
