@@ -23,7 +23,8 @@ You are a growth strategist for a personal brand, not a product. Riché is build
 | Speaking, podcast, or hook decisions | `corpus/growth/speaking/` | Live-demo hook is the differentiator |
 | Voice / narrative / creator-as-product | `corpus/growth/creator-dynamics/` | Voice = moat; narrative arc filters every artifact |
 | Engagement drop / channel issue | `corpus/growth/diagnostics/` | Symptom-first lookup; observe before pivoting |
-| Quarterly priorities or review | `corpus/growth/playbook/quarterly-channel-review.md` + `quarterly-priorities-template.md` | 60-min review process; 1-3 priorities per quarter |
+| Quarterly priorities or review | `corpus/growth/playbook/quarterly-channel-review.md` + `quarterly-priorities-template.md` | 60-min review process; 1-3 priorities per quarter. Tactical execution: `rz-quarterly-review` skill |
+| Quarterly Reviews Notion DB | `corpus/growth/databases/quarterly-reviews-schema.md` | Output schema for `rz-quarterly-review`; one page per quarter |
 | Adding a channel (gates) | `corpus/growth/playbook/channel-gates-for-adding.md` | Channel-specific readiness; all gates must pass |
 | Cutting a channel | `corpus/growth/playbook/cutting-criteria.md` | 3-criteria rule; ROI + audience + alternative must all be true |
 | What NOT to do | `corpus/growth/anti-patterns/` | 11 anti-patterns; check before suggesting any new tactic |
@@ -79,6 +80,9 @@ You are a growth strategist for a personal brand, not a product. Riché is build
 - `engagement-drop-diagnostic.md` — 5-step symptom-first lookup for impression/engagement drops
 - `algorithm-change-response.md` — observe 2-4 weeks; adapt hooks not strategy; don't panic-pivot
 - `deplatforming-prep.md` — the Plan B; pre-positioned infrastructure + 48-hour activation playbook
+
+**Database schemas** — `corpus/growth/databases/`:
+- `quarterly-reviews-schema.md` — Notion DB structure for the quarterly review output (consumed by `rz-quarterly-review`)
 
 **Weekly playbook (5.25 hrs/week)** — `corpus/growth/playbook/`:
 - `budget-allocation.md` — total 5.25 hrs split across activities
@@ -165,5 +169,6 @@ The strategic keyword targets (`channels/website-seo-targets.md`) define WHAT to
 
 **Downstream (hands off to these for execution):**
 - `rz-content-optimize`. Uses `corpus/growth/seo/` for per-article SEO and AIO keyword choice.
-- `rz-website-audit`. Reads `corpus/growth/seo/` for the methodology that backs its K1 to K5 keyword-research dimensions and S1 to S8 atomic SEO fires.
+- `rz-website-audit`. Weekly tactical skill. Reads `corpus/growth/seo/` for the methodology that backs its K1 to K5 keyword-research dimensions and S1 to S8 atomic SEO fires.
+- `rz-quarterly-review`. Quarterly tactical skill. Reads the entire `corpus/growth/` corpus to run the 60-min channel review, gate-check deferred candidates, and set 1-3 next-quarter priorities into the Quarterly Reviews Notion DB. Output schema lives at `corpus/growth/databases/quarterly-reviews-schema.md`.
 - `rz-graphic-design`. Triggered for speaker one-sheet styling (`corpus/brand-system/`) and content visuals.

@@ -1,6 +1,6 @@
 # corpus/growth/index.yaml
 # Flat index of every entry in this domain for skill-driven lookup.
-# Entry count: 110 across 12 sub-domain(s).
+# Entry count: 111 across 13 sub-domain(s).
 # Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
 
 entries:
@@ -148,6 +148,14 @@ entries:
     sub_domain: creator-dynamics
     entry_type: framework
     one_liner: "Post-resolution vulnerability strengthens the brand; pre-resolution uncertainty undermines it. The line and where it bends."
+
+  # ============================================================
+  # databases (1 entry)
+  # ============================================================
+  - filename: databases/quarterly-reviews-schema.md
+    sub_domain: databases
+    entry_type: resource
+    one_liner: "Notion DB schema for the Quarterly Reviews — output of rz-quarterly-review. One page per quarter, headline traffic light, priorities."
 
   # ============================================================
   # diagnostics (3 entries)
