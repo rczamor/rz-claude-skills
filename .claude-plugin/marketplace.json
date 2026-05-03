@@ -1,7 +1,7 @@
 {
   "name": "rz-claude-code-skills",
   "metadata": {
-    "description": "Riché Zamor's personal skills for Claude Code: voice and copywriting, product management, growth marketing, networking, brand and product design, website auditing, and a self-improvement loop. All skills share a 585-entry corpus of canonical knowledge."
+    "description": "Riché Zamor's personal skills for Claude Code: voice and copywriting, product management, growth marketing, networking, brand and product design, website auditing, and a self-improvement loop. All skills share a 592-entry corpus of canonical knowledge."
   },
   "owner": {
     "name": "Riché Zamor"
@@ -9,7 +9,7 @@
   "plugins": [
     {
       "name": "rz-skills",
-      "description": "Riché's personal skill bundle: copywriting, product management, growth, networking, graphic design, product design, draft-content, content optimization, website-audit, and self-improve. All skills reference a shared corpus of 585 canonical entries.",
+      "description": "Riché's personal skill bundle: copywriting, product management, growth, networking, graphic design, product design, draft-content, content optimization, website-audit, and self-improve. All skills reference a shared corpus of 592 canonical entries.",
       "category": "personal",
       "source": "./plugins/rz-skills"
     }
