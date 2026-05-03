@@ -1,24 +1,92 @@
 ---
 name: rz-website-audit
 description: >
-  Use when running the weekly diagnostic of richezamor.com or when fired by the Sunday 8pm America/New_York cron. Trigger phrases: "/rz-website-audit," "run the website audit," "weekly site review," "weekly site QA," "audit richezamor.com," "website scorecard." Read-only on Vercel and Google Search Console; never modifies the site itself.
+  Use this skill whenever Riché invokes /rz-website-audit, asks to "run the
+  website audit", "run the weekly site review", "audit richezamor.com", or
+  when the Cowork shortcut fires the Sunday 8pm trigger with the body
+  "Run the rz-website-audit skill." Also invoke for any request that mentions
+  website audit, website QA, website scorecard, AI citation tracking,
+  website regression check, weekly site review of richezamor.com, SEO
+  health check, AIO health check, or competitor benchmarking against
+  richezamor.com. This is the orchestrating skill that runs the full weekly
+  audit across SEO (S1–S8 atomic), AIO (A1–A7 atomic), Traffic & Engagement,
+  Usability, Design, Brand, Technical QA, the Ask Riché chatbot, Keyword
+  Research, and Competitor Benchmarking. Produces a Notion page in the
+  Weekly Website Audits database, creates up to 5 P0/P1 Linear tasks in the
+  Brand project with spaced due dates Mon–Fri, and pings #brand in Slack
+  with a one-line traffic-light headline.
 ---
 
-# Website Audit (Riché Zamor)
+# Website Audit — Riché Zamor
 
-A 6-step weekly diagnostic of richezamor.com against 22 scoring dimensions. Assigns severity, writes a structured Notion report, files up to 5 Linear tasks, and posts a Slack headline. Diagnostic only; fixes route to `rz-content-optimize`, `rz-draft-content`, `rz-copywriting`, and `rz-graphic-design`.
+Weekly site audit of richezamor.com. Runs every Sunday at 8pm America/New_York via Claude Cowork shortcut, or manually via `/rz-website-audit` in Claude Code. Produces a structured Notion page, issues up to 5 prioritized Linear tasks, and posts a single-line headline to Slack.
 
-## Quick Reference
+## Cross-skill dependencies (read these first)
 
-| Situation | Load | Notes |
-|---|---|---|
-| Dimension lookup | `corpus/website-audit/dimensions/{seo,aio,categories}/` | 22 entries; trigger, severity, source, fix pattern |
-| Severity score | `corpus/website-audit/methodology/severity-scoring.md` | P0/P1/P2 rules; do not guess |
-| Competitor benchmark | `corpus/website-audit/competitor-benchmarking/` | Tier discipline: Direct + Aspirational full, Adjacent lightweight |
-| Report assembly | `references/step-5-report-assembly.md` | Dated page, properties, body sections, Summary headline |
-| Slack post | `references/step-6-task-issuance-and-slack.md` | One-line headline plus link only; never the full body |
+The audit is a tactical skill. It does not own SEO methodology or brand voice. It LEVERAGES the canonical sources owned by other role-based skills.
 
-## Configuration constants
+**SEO and keyword research are owned by `rz-growth-marketing`.** Pull from `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's S1–S8 atomic dimensions and K1–K5 keyword-research category dimensions reference this corpus; they do NOT redefine SEO concepts.
+
+**Brand voice is owned by `rz-copywriting`.** Pull from `corpus/voice/` for the fatal-fifteen AI-tells list, voice anti-patterns, terminology rules, and the 50/30/20 domain balance frame. The audit's B1–B5 brand checks are detection rules ON TOP of the voice canon; they do NOT redefine voice rules.
+
+If a dimension entry's text contradicts these source-of-truth corpora, the source-of-truth corpora win. Surface the contradiction in `rz-self-improve` for cleanup.
+
+## Load from corpus
+
+Read these in order before running. The corpus carries the actual audit logic; this file is the orchestrator.
+
+**Methodology (always)**
+- `corpus/website-audit/methodology/bootstrap.md`
+- `corpus/website-audit/methodology/parallel-data-collection.md`
+- `corpus/website-audit/methodology/severity-scoring.md`
+- `corpus/website-audit/methodology/report-assembly.md`
+- `corpus/website-audit/methodology/task-issuance.md`
+- `corpus/website-audit/methodology/slack-notification.md`
+
+**Database schemas (always)**
+- `corpus/growth/seo/target-keywords-schema.md` *(owned by rz-growth-marketing)*
+- `corpus/website-audit/databases/competitors-schema.md`
+- `corpus/website-audit/databases/weekly-audits-schema.md`
+
+**SEO atomic dimensions**
+- `corpus/website-audit/dimensions/seo/s1-ranking-regression.md`
+- `corpus/website-audit/dimensions/seo/s2-low-ctr.md`
+- `corpus/website-audit/dimensions/seo/s3-quick-wins.md`
+- `corpus/website-audit/dimensions/seo/s4-indexability.md`
+- `corpus/website-audit/dimensions/seo/s5-metadata-completeness.md`
+- `corpus/website-audit/dimensions/seo/s6-structured-data.md`
+- `corpus/website-audit/dimensions/seo/s7-internal-linking.md`
+- `corpus/website-audit/dimensions/seo/s8-backlink-loss.md`
+
+**AIO atomic dimensions**
+- `corpus/website-audit/dimensions/aio/a1-citation-absence.md`
+- `corpus/website-audit/dimensions/aio/a2-citation-rank-decline.md`
+- `corpus/website-audit/dimensions/aio/a3-crawler-accessibility.md`
+- `corpus/website-audit/dimensions/aio/a4-js-only-content.md`
+- `corpus/website-audit/dimensions/aio/a5-quotability-density.md`
+- `corpus/website-audit/dimensions/aio/a6-entity-consistency.md`
+- `corpus/website-audit/dimensions/aio/a7-ai-friendly-schema.md`
+
+**Category-level dimensions**
+- `corpus/website-audit/dimensions/categories/traffic-engagement.md`
+- `corpus/website-audit/dimensions/categories/usability.md`
+- `corpus/website-audit/dimensions/categories/design.md`
+- `corpus/website-audit/dimensions/categories/brand.md`
+- `corpus/website-audit/dimensions/categories/technical-qa.md`
+- `corpus/website-audit/dimensions/categories/chatbot.md`
+- `corpus/website-audit/dimensions/categories/keyword-research.md`
+
+**Keyword research methodology** *(owned by rz-growth-marketing)*
+- `corpus/growth/seo/free-stack-overview.md`
+- `corpus/growth/seo/keyword-planner-monthly.md`
+- `corpus/growth/seo/serp-review-protocol.md`
+- `corpus/growth/seo/topic-clusters.md`
+
+**Competitor benchmarking**
+- `corpus/website-audit/competitor-benchmarking/read-protocol.md`
+- `corpus/website-audit/competitor-benchmarking/what-gets-benchmarked.md`
+
+## Constants
 
 ```
 WEBSITE_DOMAIN              = richezamor.com
@@ -26,10 +94,10 @@ MAX_WEEKLY_TASKS            = 5
 RUN_TIMEZONE                = America/New_York
 VERCEL_PROJECT_ID           = prj_qtI2I2fvlAH5qeTnc4EVW52stG9t
 VERCEL_TEAM_ID              = team_G5bsJ43GY5r9RqMjT4iEYO5c
-LINEAR_TEAM_ID              = 72132418-b477-4450-a30a-77391d5cfc47   (Riche Zamor team)
-LINEAR_PROJECT_ID           = 085484ef-b523-4142-bce2-7f9a23a05fa1   (Brand project)
-LINEAR_ASSIGNEE_ID          = 646e8aef-65f5-47de-ba40-4f2ad99bbc15   (Riché)
-NOTION_PARENT_ID            = 333ac0ea4f658086bcafcd3f53299b89       (Personal Brand)
+LINEAR_TEAM_ID              = 72132418-b477-4450-a30a-77391d5cfc47
+LINEAR_PROJECT_ID           = 085484ef-b523-4142-bce2-7f9a23a05fa1
+LINEAR_ASSIGNEE_ID          = 646e8aef-65f5-47de-ba40-4f2ad99bbc15
+NOTION_PARENT_ID            = 333ac0ea4f658086bcafcd3f53299b89
 NOTION_AUDIT_DB_ID          = 6d5673aef5a94f17867602778949f869
 NOTION_AUDIT_DS_ID          = 889093b4-fb7d-4db5-a871-19e7bbe159fd
 TARGET_KEYWORDS_DB_ID       = f5521fe72dec42c1808555fbac2d0d62
@@ -42,89 +110,85 @@ SLACK_CHANNEL               = #brand
 DOMAIN_BALANCE_TARGET       = 50% Context Layer / 30% PM / 20% Leadership
 KEYWORD_PLANNER_STALE_DAYS  = 30
 SERP_ANALYSIS_TOP_N         = 5
-QUARTERLY_REBASELINE_MONTHS = January, April, July, October (first Sunday of)
+QUARTERLY_REBASELINE_MONTHS = January, April, July, October (first Sunday)
 ```
 
-## Cross-skill dependencies (read these first)
+## Process
 
-The audit does not own SEO methodology or brand voice. It LEVERAGES the canonical sources owned by other skills.
+### Step 1 — Bootstrap
+Per `methodology/bootstrap.md`:
+1. Verify required MCP connectors are reachable (Notion, Linear, Slack, Vercel, Tavily, Ahrefs).
+2. Read prior audit page from Weekly Audits DS for diff baseline.
+3. Read Target Keywords DB and Competitors DB into memory.
+4. Initialize empty findings buffer for each dimension.
 
-**SEO and keyword research are owned by `rz-growth-marketing`.** Pull from `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's S1–S8 atomic dimensions and K1–K5 keyword-research category dimensions reference this corpus; they do NOT redefine SEO concepts.
+### Step 2 — Parallel data collection
+Per `methodology/parallel-data-collection.md`. Concurrent fetches:
+- GSC data via Ahrefs Webmaster Tools (positions, CTR, impressions, anonymous queries, link reports)
+- richezamor.com crawl: every page in sitemap, fetch + render-without-JS check
+- AIO 20-query set across the LLMs Riché tracks
+- Competitors DB benchmarks per `competitor-benchmarking/read-protocol.md` (~30 min, the longest block)
+- Vercel deployment status and recent build logs
 
-**Brand voice is owned by `rz-copywriting`.** Pull from `corpus/voice/` for the fatal-fifteen AI-tells list, voice anti-patterns, terminology rules, and the 50/30/20 domain balance frame. The audit's B1–B5 brand checks are detection rules ON TOP of the voice canon; they do NOT redefine voice rules.
+### Step 3 — Run dimensions
+For each dimension corpus entry, evaluate against collected data. Write findings to the buffer with severity (P0/P1/P2) per `methodology/severity-scoring.md`. Order:
 
-If a dimension entry's text contradicts these source-of-truth corpora, the source-of-truth corpora win. Surface the contradiction in `rz-self-improve` for cleanup.
+1. SEO S1–S8 (atomic — each is its own corpus entry)
+2. AIO A1–A7 (atomic)
+3. Traffic & Engagement T1–T5 (single corpus entry)
+4. Usability U1–U4 (single corpus entry)
+5. Design D1–D5 (single corpus entry)
+6. Brand B1–B5 (single corpus entry)
+7. Technical QA Q1–Q9 (single corpus entry)
+8. Chatbot C1–C5 (single corpus entry)
+9. Keyword Research K1–K5 (single corpus entry; SERP review per `serp-review-protocol.md` runs here)
+10. Competitor Benchmarking deltas (writes back to Competitors DB then surfaces deltas)
 
-## Load from corpus
+### Step 4 — Assemble report
+Per `methodology/report-assembly.md`. Build the 15-section audit page in memory. Compute headline color per the rules in `databases/weekly-audits-schema.md`. Do not write to Notion yet.
 
-- `corpus/website-audit/dimensions/` (22 entries: 8 SEO atomic in `seo/`, 7 AIO atomic in `aio/`, 7 category-level in `categories/`). Each defines trigger, severity, source, fix pattern.
-- `corpus/website-audit/methodology/` (6 files: bootstrap, parallel data collection, severity scoring, report assembly, task issuance, Slack notification).
-- `corpus/growth/seo/` (5 files, owned by `rz-growth-marketing`): free-stack, Keyword Planner, SERP review, topic clusters, Target Keywords schema.
-- `corpus/voice/` (owned by `rz-copywriting`): fatal-fifteen AI-tells, anti-patterns, three-domain balance, terminology.
-- `corpus/website-audit/databases/` (competitors, weekly audits schemas) and `corpus/website-audit/competitor-benchmarking/` (read protocol, what-gets-benchmarked).
+### Step 5 — Issue tasks
+Per `methodology/task-issuance.md`. Take the top P0 + P1 findings, capped at MAX_WEEKLY_TASKS (5). Create Linear issues in LINEAR_PROJECT_ID, assigned to LINEAR_ASSIGNEE_ID, with due dates spaced Mon–Fri across the coming week. Use the create-then-update pattern (create simple, then update with full content) — direct create-with-full-payload errors out unreliably. Capture the TRZ-### IDs.
 
-## The 6 steps
+### Step 6 — Write Notion page
+Single write to Weekly Audits DS using NOTION_AUDIT_DS_ID. Include the Linear TRZ-### IDs in the Tasks Issued section. Set headline color last, after task issuance is confirmed.
 
-1. **Bootstrap.** Generate run ID; read Target Keywords, Competitors, last audit, content strategy. See [references/step-1-bootstrap.md](references/step-1-bootstrap.md).
-2. **Parallel data collection.** 11 concurrent sub-steps (GSC, Lighthouse, Vercel, chatbot, AIO, SERP, links, fetches, schema, voice, competitors). See [references/step-2-parallel-data-collection.md](references/step-2-parallel-data-collection.md).
-3. **Score the 22 dimensions.** Evaluate triggers, assign P0/P1/P2, compute traffic lights. See [references/step-3-dimension-scoring.md](references/step-3-dimension-scoring.md).
-4. **Competitor benchmarking.** Full benchmark for Direct + Aspirational; lightweight for Adjacent. Write back and diff. See [references/step-4-competitor-benchmarking.md](references/step-4-competitor-benchmarking.md).
-5. **Assemble report.** Create a dated page in Weekly Audits DB with properties, body sections, and a Summary headline. See [references/step-5-report-assembly.md](references/step-5-report-assembly.md).
-6. **Issue tasks and post Slack.** Up to `MAX_WEEKLY_TASKS` Linear tasks in priority order, then a one-line `#brand` post. See [references/step-6-task-issuance-and-slack.md](references/step-6-task-issuance-and-slack.md).
+### Step 7 — Slack notification
+Per `methodology/slack-notification.md`. One-line headline to SLACK_CHANNEL with traffic-light emoji, task count, and a link to the Notion audit page.
+
+### Step 8 — Update Target Keywords DB
+Write back `Current Position` and `Last Checked` for every Researching/Targeting/Ranking row processed. Fire status promotions (Ranking → Won) per the 4-week confirmation rule in `corpus/growth/seo/target-keywords-schema.md`.
+
+### Step 9 — Update Competitors DB
+Already handled in Step 2's competitor block, but confirm `Last Audited` updated on every row touched.
+
+## Quarterly rebaseline
+
+On the first Sunday of January, April, July, and October, the audit additionally:
+- Re-scores all 14 competitors regardless of tier
+- Reviews Won and Deprioritized rows in Target Keywords DB for any needed status changes
+- Logs a quarterly summary section at the top of the audit page
+
+The constant `QUARTERLY_REBASELINE_MONTHS` flags this; bootstrap reads it.
 
 ## What this skill does NOT do
 
-- Does not modify the website. Diagnoses only; fixes route to other skills.
-- Does not auto-publish content fixes. P0/P1 page-level SEO and AIO fixes route to `rz-content-optimize`.
-- Does not own SEO methodology. Canonical SEO lives with `rz-growth-marketing` in `corpus/growth/seo/`.
-- Does not own brand voice rules. Canonical voice lives with `rz-copywriting` in `corpus/voice/`.
-- Does not run keyword discovery. New candidates come from the monthly Keyword Planner job (Riché's manual session).
-- Does not benchmark Adjacent-tier competitors in full. Adjacent gets lightweight checks only.
-- Does not write to Google Search Console or Vercel. Read-only on both systems.
-- Does not auto-deprioritize keywords. The 90-days-zero-impressions guardrail prevents silent deletes; deprioritization is a manual call by Riché.
-- Does not retro-edit prior audit pages. Each run lives in its own dated page; the time series is append-only.
-
-## Common Mistakes
-
-| Mistake | What goes wrong | Fix |
-|---|---|---|
-| Auto-deprioritizing keywords before 90 days of zero impressions | Silent deletes erode the keyword set Riché has been building | Honor the 90-days-zero-impressions guardrail; deprioritization is a manual call |
-| Posting full audit body to Slack | Spams `#brand`; buries the headline | Slack gets one line plus the Notion link, nothing more |
-| Creating Notion page before audit completes | Partial pages pollute the time series | Assemble the full report, then create the dated page once |
-| Benchmarking every competitor every week | Burns time on Adjacent tier that does not move the needle | Direct + Aspirational get full; Adjacent gets lightweight only |
-| Letting overall traffic light drift to green by ignoring small issues | Aggregated health hides accumulating P2s | Roll P2 counts up into the headline so small issues stay visible |
+- It does not draft or publish content. K3 fires issue Linear tasks; Riché writes the article via `/rz-draft-content`.
+- It does not refresh Keyword Planner volumes. That's Riché's monthly manual workflow per `corpus/growth/seo/keyword-planner-monthly.md`.
+- It does not re-tier competitors. Tier changes are a quarterly Riché decision.
+- It does not auto-fix any issues it finds. It diagnoses, scores, and issues tasks. Fixes happen via separate skills or manual Riché work.
+- It does not run Lighthouse via the official Lighthouse CLI. It approximates Lighthouse scoring from public-web signals only, weighted 40/20/20/20 per `competitor-benchmarking/what-gets-benchmarked.md`.
 
 ## Cross-skill connections
 
 **Upstream (the audit reads from these for canonical knowledge):**
 
-- `rz-growth-marketing`. Owns SEO. Audit reads `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's K1–K5 dimensions and S1–S8 atomic fires use these as source of truth.
-- `rz-copywriting`. Owns brand voice. Audit reads `corpus/voice/` for the fatal-fifteen AI tells, voice anti-patterns, and the 50/30/20 domain balance frame. The audit's B1–B5 dimensions detect drift against this canon.
+- `rz-growth-marketing` — owns SEO and keyword research methodology. The audit reads `corpus/growth/seo/` for the free-stack approach, SERP review protocol, topic clusters, monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's K1–K5 dimensions and S1–S8 atomic fires use these as source of truth.
+- `rz-copywriting` — owns brand voice. The audit reads `corpus/voice/` for the fatal-fifteen AI tells and the 50/30/20 domain balance. B1–B5 dimensions detect drift against this canon.
 
 **Downstream (the audit hands off to these for fixes):**
 
-- `rz-content-optimize`. Page-level SEO and AIO fixes flagged as P0 or P1 in S1, S2, S5, A1, A5, A7.
-- `rz-copywriting`. Voice rewrites when B1 fires. Audit surfaces the offending lines; copywriting authors the replacement.
-- `rz-graphic-design`. OG image regeneration when D5 fires.
-- `rz-draft-content`. When an audit P0 or P1 surfaces a content gap (K3 or K4) that needs a new article.
-- `rz-product-design`. When usability dimensions surface a flow change rather than a content change.
-- `rz-self-improve`. Corpus updates when the audit reveals a dimension's trigger or severity rule needs refinement, or when SEO/voice canon drifts away from how the audit references it.
-
-## Scripts
-
-Deterministic logic lives in `scripts/`. Prefer these over reimplementing in prose.
-
-- `scripts/severity_score.py` computes P0/P1/P2 per finding and the per-dimension and overall traffic lights from a JSON list of findings. Implements the rules in `corpus/website-audit/methodology/severity-scoring.md` exactly. Run `--self-test` to verify against the canonical examples.
-- `scripts/run_lighthouse.sh` runs Lighthouse against a URL on mobile profile (override with `--form-factor desktop`) and emits the audit-relevant subset as one-line JSON: scores (performance, accessibility, best-practices, SEO) plus Core Web Vitals (LCP, INP, CLS, TTFB). Pipe to `severity_score.py` for the Q-dimension fire decisions.
-
-## Run outputs
-
-Every successful run produces: one dated page in the Weekly Audits DB, updated rows in Target Keywords and Competitors DBs, up to 5 Linear tasks, and one `#brand` Slack post.
-
-## Failure modes and recovery
-
-Common failures (GSC, chatbot, Lighthouse, Notion, Linear, Slack) each have a defined skip-or-degrade path so the run still completes. See [references/failure-modes.md](references/failure-modes.md) for the per-system rules.
-
-## Quarterly rebaseline (first Sunday of January, April, July, October)
-
-On `QUARTERLY_REBASELINE_MONTHS` runs, extend the normal run with a retrospective pass over the last quarter of audits, topic clusters, and competitor tiers. See [references/quarterly-rebaseline.md](references/quarterly-rebaseline.md) for the 5-step retrospective.
+- `rz-content-optimize` — when K3 fires and a Linear task is issued, that task references rz-content-optimize for keyword + entity coverage when Riché drafts the article.
+- `rz-copywriting` — B1 (voice) findings reference rz-copywriting's voice rules. The audit detects voice drift; rz-copywriting fixes it.
+- `rz-graphic-design` — D5 (OG images) findings reference rz-graphic-design when an article ships without proper OG asset.
+- `rz-self-improve` — runs as the SessionEnd hook in retrospective mode; logs any audit-time exceptions for next-run improvement.

@@ -1,17 +1,25 @@
 # corpus/growth/index.yaml
 # Flat index of every entry in this domain for skill-driven lookup.
-# Entry count: 81 across 10 sub-domain(s).
+# Entry count: 110 across 12 sub-domain(s).
 # Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
 
 entries:
 
   # ============================================================
-  # anti-patterns (8 entries)
+  # anti-patterns (11 entries)
   # ============================================================
   - filename: anti-patterns/no-buffer-typefully.md
     sub_domain: anti-patterns
     entry_type: rule
     one_liner: "The rule: don't use third-party scheduling tools (Buffer, Typefully, Hootsuite, Later, etc.) for LinkedIn or X posting."
+  - filename: anti-patterns/no-channel-sprawl.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: never add a new channel without explicitly retiring or downgrading an existing one. Every add requires a cut."
+  - filename: anti-patterns/no-cross-platform-copy-paste.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: never publish the identical post on LinkedIn and X (or any two platforms). Cross-posting requires adaptation."
   - filename: anti-patterns/no-direct-segment-1.md
     sub_domain: anti-patterns
     entry_type: rule
@@ -32,6 +40,10 @@ entries:
     sub_domain: anti-patterns
     entry_type: rule
     one_liner: "The rule: don't invest time in Meta's Threads platform."
+  - filename: anti-patterns/no-tiktok-reels.md
+    sub_domain: anti-patterns
+    entry_type: rule
+    one_liner: "The rule: don't produce content for TikTok, Instagram Reels, or YouTube Shorts. Wrong audience density for the 4 segments."
   - filename: anti-patterns/no-time-budget-overrun.md
     sub_domain: anti-patterns
     entry_type: rule
@@ -42,8 +54,16 @@ entries:
     one_liner: "The rule: every post is written for a specific audience segment, with that segment's filter applied during the writing…"
 
   # ============================================================
-  # channels (12 entries)
+  # channels (18 entries)
   # ============================================================
+  - filename: channels/github-as-distribution.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "Public GitHub repos and READMEs as a credibility-and-discovery channel — structurally underused by AI/PM thought leaders."
+  - filename: channels/hackernews-launch-mechanics.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "Show HN as the highest-leverage one-shot launch surface for a working technical artifact. ~15% success rate, ~6hr cost."
   - filename: channels/linkedin-articles.md
     sub_domain: channels
     entry_type: pattern
@@ -68,6 +88,18 @@ entries:
     sub_domain: channels
     entry_type: rule
     one_liner: "Tag people in posts and comments only when genuinely referencing their work."
+  - filename: channels/newsletter-evaluation.md
+    sub_domain: channels
+    entry_type: framework
+    one_liner: "Newsletter (Substack/Beehiiv/Kit) channel evaluation. Currently deferred until LinkedIn ≥1,500 + 3 inbound invites/month."
+  - filename: channels/own-podcast-evaluation.md
+    sub_domain: channels
+    entry_type: framework
+    one_liner: "Own-podcast hosting (vs guesting) evaluation. Currently deferred until ≥10 guesting appearances + 5K LinkedIn + newsletter."
+  - filename: channels/reddit-niche-engagement.md
+    sub_domain: channels
+    entry_type: pattern
+    one_liner: "Comment-driven engagement in r/ProductManagement, r/MachineLearning, r/LocalLLaMA. Strict link-discipline; ~30 min/week."
   - filename: channels/website-context-layer-demo.md
     sub_domain: channels
     entry_type: resource
@@ -92,6 +124,46 @@ entries:
     sub_domain: channels
     entry_type: pattern
     one_liner: "The format for adapting LinkedIn deep dives into X-native threads: 5–7 tweets, each tweet standalone-readable, leading…"
+  - filename: channels/youtube-evaluation.md
+    sub_domain: channels
+    entry_type: framework
+    one_liner: "YouTube evaluation — long-form video as the most durable creator asset. Deferred until ≥3 talk recordings + clean setup."
+
+  # ============================================================
+  # creator-dynamics (4 entries)
+  # ============================================================
+  - filename: creator-dynamics/authentic-voice-as-moat.md
+    sub_domain: creator-dynamics
+    entry_type: framework
+    one_liner: "Voice is the only durable competitive advantage for a creator brand in the post-LLM era. Voice discipline is the moat."
+  - filename: creator-dynamics/founder-narrative-as-product.md
+    sub_domain: creator-dynamics
+    entry_type: framework
+    one_liner: "The narrative arc IS the strategy. Every artifact filtered through Riché's past→present→future story; arc-fit compounds."
+  - filename: creator-dynamics/frequency-vs-quality-tradeoff.md
+    sub_domain: creator-dynamics
+    entry_type: framework
+    one_liner: "The 80/20 split between frequency posts (algorithm signal) and depth pieces (authority + reshare). Both modes; both required."
+  - filename: creator-dynamics/vulnerability-vs-authority-balance.md
+    sub_domain: creator-dynamics
+    entry_type: framework
+    one_liner: "Post-resolution vulnerability strengthens the brand; pre-resolution uncertainty undermines it. The line and where it bends."
+
+  # ============================================================
+  # diagnostics (3 entries)
+  # ============================================================
+  - filename: diagnostics/algorithm-change-response.md
+    sub_domain: diagnostics
+    entry_type: pattern
+    one_liner: "When a platform algorithm changes: observe 2-4 weeks holding discipline; adapt hooks/formats not strategy. Don't panic-pivot."
+  - filename: diagnostics/deplatforming-prep.md
+    sub_domain: diagnostics
+    entry_type: framework
+    one_liner: "The Plan B for when a primary rented channel becomes unusable. Pre-positioned infrastructure + 48-hour activation playbook."
+  - filename: diagnostics/engagement-drop-diagnostic.md
+    sub_domain: diagnostics
+    entry_type: pattern
+    one_liner: "The 5-step symptom-first lookup when LinkedIn engagement drops >20% WoW or >30% MoM. Stop at the first explained cause."
 
   # ============================================================
   # flywheel (6 entries)
@@ -142,7 +214,7 @@ entries:
     one_liner: "The fourth differentiation pillar: every credibility marker is a specific number from a real product, not a generic cla…"
 
   # ============================================================
-  # metrics (10 entries)
+  # metrics (13 entries)
   # ============================================================
   - filename: metrics/aarrr-personal-brand.md
     sub_domain: metrics
@@ -152,10 +224,18 @@ entries:
     sub_domain: metrics
     entry_type: rule
     one_liner: "Followers and impressions are vanity metrics unless tied to segment proxies."
+  - filename: metrics/channel-roi-calculation.md
+    sub_domain: metrics
+    entry_type: framework
+    one_liner: "ROI per channel: weighted segment outcomes ÷ hours invested. The objective metric for quarterly allocation decisions."
   - filename: metrics/cold-start-personal-brand.md
     sub_domain: metrics
     entry_type: concept
     one_liner: "Andrew Chen's *The Cold Start Problem* (2021) describes how networked products escape the early-stage chicken-and-egg p…"
+  - filename: metrics/content-decay-analysis.md
+    sub_domain: metrics
+    entry_type: framework
+    one_liner: "Half-lives by channel: X tweet ~4hr, LinkedIn post ~24hr, /thinking article 12mo+. Informs repurposing timing and investment."
   - filename: metrics/dashboard-template.md
     sub_domain: metrics
     entry_type: template
@@ -180,13 +260,17 @@ entries:
     sub_domain: metrics
     entry_type: template
     one_liner: "The end-of-quarter audit."
+  - filename: metrics/repurpose-vs-create-decision.md
+    sub_domain: metrics
+    entry_type: pattern
+    one_liner: "The decision tree at every batch session: extend an existing source, refresh an old one, or author new. Default: extend."
   - filename: metrics/segment-proxies-rollup.md
     sub_domain: metrics
     entry_type: metric
     one_liner: "The consolidated table of leading-indicator proxies across all four audience segments — 16 proxies total, 4 per segment."
 
   # ============================================================
-  # playbook (8 entries)
+  # playbook (12 entries)
   # ============================================================
   - filename: playbook/admin-tracking.md
     sub_domain: playbook
@@ -200,14 +284,30 @@ entries:
     sub_domain: playbook
     entry_type: framework
     one_liner: "The total weekly time allocation for all growth activities."
+  - filename: playbook/channel-gates-for-adding.md
+    sub_domain: playbook
+    entry_type: framework
+    one_liner: "Channel-specific readiness gates that must all pass before a candidate channel is launched. Newsletter, YouTube, etc."
   - filename: playbook/comment-substance-rule.md
     sub_domain: playbook
     entry_type: rule
     one_liner: "Every comment adds a perspective, not agreement."
+  - filename: playbook/cutting-criteria.md
+    sub_domain: playbook
+    entry_type: framework
+    one_liner: "The 3-criteria rule for retiring a channel: ROI below median 2 quarters + audience shrinking + clear alternative exists."
   - filename: playbook/dm-relationship-building.md
     sub_domain: playbook
     entry_type: pattern
     one_liner: "2–3 direct messages per week on LinkedIn, sent to peers (Segment 2) when something they've posted maps to Riché's work…"
+  - filename: playbook/quarterly-channel-review.md
+    sub_domain: playbook
+    entry_type: template
+    one_liner: "The structured 60-minute end-of-quarter review. Re-score active, gate-check deferred, lock next quarter's allocation."
+  - filename: playbook/quarterly-priorities-template.md
+    sub_domain: playbook
+    entry_type: template
+    one_liner: "Translates evergreen corpus into 1-3 named quarterly priorities. Output goes to Notion (dated); not stored in corpus."
   - filename: playbook/strategic-commenting.md
     sub_domain: playbook
     entry_type: pattern
@@ -348,6 +448,34 @@ entries:
     sub_domain: speaking
     entry_type: template
     one_liner: "The differentiated speaker hook — the one-sentence pitch that opens every Segment 4 outreach (event organizer DMs, CFP…"
+
+  # ============================================================
+  # strategy (6 entries)
+  # ============================================================
+  - filename: strategy/audience-portability.md
+    sub_domain: strategy
+    entry_type: framework
+    one_liner: "Email is the only portable audience asset. Capture intent now (pre-newsletter); make every other channel feed the list."
+  - filename: strategy/channel-evaluation-framework.md
+    sub_domain: strategy
+    entry_type: framework
+    one_liner: "5-criteria scoring rubric for any candidate channel: audience overlap, time efficiency, repurposing fit, discovery, flywheel."
+  - filename: strategy/channel-maturity-model.md
+    sub_domain: strategy
+    entry_type: framework
+    one_liner: "5-stage lifecycle: Experiment → Invest → Optimize → Harvest → Cut. Different goals, time, and metrics per stage."
+  - filename: strategy/creator-as-product.md
+    sub_domain: strategy
+    entry_type: framework
+    one_liner: "When the brand is a person, 6 dynamics shift: voice = moat, burnout = product risk, narrative filtering, founder-led growth limits."
+  - filename: strategy/owned-vs-rented-channels.md
+    sub_domain: strategy
+    entry_type: framework
+    one_liner: "Rented channels (LinkedIn, X) are platform-mediated; owned (website, email) survive platform shifts. 30% owned-channel floor."
+  - filename: strategy/repurposing-matrix.md
+    sub_domain: strategy
+    entry_type: framework
+    one_liner: "Each source artifact (talk, article, demo) maps to 6-12 derivatives across channels. The mapping that makes 5.25 hr/week work."
 
   # ============================================================
   # target-accounts (4 entries)
