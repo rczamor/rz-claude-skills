@@ -1,7 +1,7 @@
 # corpus/networking/index.yaml
 # Flat index of every entry in this domain for skill-driven lookup.
-# Entry count: 30 across 7 sub-domain(s).
-# Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
+# Entry count: 37 across 8 sub-domain(s).
+# Schema per entry: filename (relative to corpus/networking/), sub_domain, entry_type, one_liner.
 
 entries:
 
@@ -92,6 +92,38 @@ entries:
     sub_domain: cross-skill
     entry_type: rule
     one_liner: "A standing rule: every networking message — DM, email, comment, intro request, follow-up, speaker pitch, advisory respo…"
+
+  # ============================================================
+  # import-pipeline (7 entries)
+  # ============================================================
+  - filename: import-pipeline/company-check.md
+    sub_domain: import-pipeline
+    entry_type: pattern
+    one_liner: "A short pass on the contact's company LinkedIn page to capture the structural facts that inform fit score and (if the p…"
+  - filename: import-pipeline/dedupe.md
+    sub_domain: import-pipeline
+    entry_type: pattern
+    one_liner: "The check that prevents rz-networking-hand-curated-import from creating duplicate contacts in HubSpot when the CSV incl…"
+  - filename: import-pipeline/fit-score.md
+    sub_domain: import-pipeline
+    entry_type: rule
+    one_liner: "A 1-to-5 rubric that combines profile signal strength, title fit, and company stage fit into a single score."
+  - filename: import-pipeline/hubspot-write.md
+    sub_domain: import-pipeline
+    entry_type: pattern
+    one_liner: "The canonical pattern for creating or updating a contact in HubSpot from a networking pipeline run."
+  - filename: import-pipeline/pacing-and-friction.md
+    sub_domain: import-pipeline
+    entry_type: rule
+    one_liner: "The hard rules that govern how fast either networking import skill scans LinkedIn profiles and what happens when Linked…"
+  - filename: import-pipeline/relevance-scan.md
+    sub_domain: import-pipeline
+    entry_type: pattern
+    one_liner: "The activity scan applied to a LinkedIn profile to determine whether a contact is signal-relevant for Riché's positioni…"
+  - filename: import-pipeline/warm-opener-seed.md
+    sub_domain: import-pipeline
+    entry_type: template
+    one_liner: "A one-sentence draft that sits in the contact's HubSpot warm_opener_seed property."
 
   # ============================================================
   # outreach (5 entries)

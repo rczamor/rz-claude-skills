@@ -10,14 +10,14 @@
 | 2 | content-system           | 31      | [INVENTORY/content-system.md](INVENTORY/content-system.md) |
 | 3 | pm-frameworks            | 110     | [INVENTORY/pm-frameworks.md](INVENTORY/pm-frameworks.md) |
 | 4 | growth                   | 81      | [INVENTORY/growth.md](INVENTORY/growth.md) (+ section 4 below for the new SEO sub-domain) |
-| 5 | networking               | 30      | [INVENTORY/networking.md](INVENTORY/networking.md) |
+| 5 | networking               | 37      | [INVENTORY/networking.md](INVENTORY/networking.md) (+ section 5 below for the new import-pipeline sub-domain) |
 | 6 | office-hours             | 30      | [INVENTORY/office-hours.md](INVENTORY/office-hours.md) |
 | 7 | brand-system             | 30      | [INVENTORY/brand-system.md](INVENTORY/brand-system.md) |
 | 8 | ux-principles            | 100     | [INVENTORY/ux-principles.md](INVENTORY/ux-principles.md) |
 | 9 | ai-product-ux            | 30      | [INVENTORY/ai-product-ux.md](INVENTORY/ai-product-ux.md) |
 | 10| evaluation-frameworks    | 40      | [INVENTORY/evaluation-frameworks.md](INVENTORY/evaluation-frameworks.md) |
 | 11| website-audit            | 32      | (this file, section 11)                                                  |
-|   | **Total**                | **585** | |
+|   | **Total**                | **592** | |
 
 The total exceeds the 450 estimate from the previous session because the granular per-audit-item approach in `ux-principles` (one entry per atomic rule) and the deeper PM/Growth coverage are richer than the original ballpark. If 531 is too many, the natural levers to reduce:
 
@@ -40,8 +40,8 @@ Discovery (10), prioritization (11), strategy (14), lifecycle (11), metrics (15)
 ### 4. growth (81 entries)
 4 segments × 4 entries each (16), engagement flywheel (6), weekly playbook 5.25 hrs/week (8), channel-specific tactics (12), target accounts (4 markdown + 2 YAML), speaking & podcasts (8), growth metrics & loops (10), what-NOT-to-do guardrails (8), hooks/differentiation (4), and SEO methodology (5: free-stack overview, monthly Keyword Planner workflow, SERP review protocol, the 7 priority Context Layer topic clusters, and the Target Keywords DB schema). The SEO sub-folder is the canonical source for all SEO and keyword research knowledge in the repo; `rz-website-audit` and `rz-content-optimize` both read from `corpus/growth/seo/` rather than redefining SEO concepts.
 
-### 5. networking (30 entries)
-Networking philosophy (3), relationship tiers (4), outreach templates (5), conference preparation (6), community engagement (6), relationship CRM (4), cross-skill principles (2).
+### 5. networking (37 entries)
+Networking philosophy (3), relationship tiers (4), outreach templates (5), conference preparation (6), community engagement (6), relationship CRM (4), cross-skill principles (2), and the import pipeline (7: relevance scan, company check, fit score, warm opener seed, HubSpot write pattern, pacing and friction stops, dedupe). The `import-pipeline/` sub-folder is shared canonical procedure used by both `rz-networking-hand-curated-import` (creates new contacts from a Sales Nav CSV) and `rz-networking-refresh-contacts` (re-scores and refreshes existing HubSpot contacts). HubSpot writes use the contact object only (no deals); relationship state lives on the contact's Lifecycle Stage.
 
 ### 6. office-hours (30 entries)
 Six forcing questions + smart-routing (7), startup-mode operating principles (6), anti-sycophancy rules (5), pushback patterns (5), builder-mode operating principles (4), founder signal synthesis (3).
