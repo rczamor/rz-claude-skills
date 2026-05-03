@@ -23,13 +23,19 @@ HubSpot portal: `245808914`. Networking uses the **contact** object only; no dea
 
 ## Input contract
 
-Three ways to scope the run, in order of precedence:
+Four ways to scope the run, in order of precedence:
 
 1. `--list-id <hubspot_list_id>`. Refresh every contact in a saved HubSpot list
 2. `--lifecycle-stage <stage>`. Refresh every contact at the named stage (e.g., `lead`)
 3. `--stale-days <N>`. Refresh every contact where `last_sequence_action_date` is older than N days
+4. `--task-window <window>`. Refresh every contact associated with a HubSpot task whose `hs_timestamp` falls within the named window. Values:
+   - `current-month` — first day of current month through last day inclusive
+   - `current-week` — Monday through Sunday of current week
+   - `next-N-days` — today through today+N (e.g., `next-7-days`)
 
-Combinable: `--lifecycle-stage lead --stale-days 30` is the default invocation pattern (every Lead contact untouched in the last 30 days).
+   The skill resolves the date range at execution time, queries the `tasks` object via `search_crm_objects` (filter `hs_timestamp` GTE start, LTE end), maps to associated contacts via the `tasks → contacts` association (use `associatedWith` filter, `IN` operator, ≤30 task IDs per call to avoid HubSpot internal errors), dedupes by contact ID, then runs the standard per-contact pipeline.
+
+Combinable: `--lifecycle-stage lead --stale-days 30` is the default invocation pattern (every Lead contact untouched in the last 30 days). `--task-window current-month --lifecycle-stage lead` is the standard monthly-routine pattern (every Lead contact with a task due this month).
 
 Optional flags:
 - `--regenerate-opener`. Force-redraft the warm opener seed even if populated. Use sparingly; the default conditional behavior preserves Riché's edits.
@@ -46,8 +52,8 @@ Optional flags:
 
 Loads from `corpus/networking/import-pipeline/`. Same entries as `rz-networking-hand-curated-import`, minus dedupe (the contact already exists) and minus contact creation (this skill only updates).
 
-1. **Pull contact from HubSpot.** Read all relevant properties: `firstname`, `lastname`, `jobtitle`, `company`, `linkedin_url`, `warm_opener_seed`, `last_sequence_action_date`, `relevance_score`, `hs_lifecyclestage`, plus existing `Notes`.
-2. **Open the LinkedIn profile.** Use `linkedin_url` from the contact. Pacing rules apply (see `corpus/networking/import-pipeline/pacing-and-friction.md`).
+1. **Pull contact from HubSpot.** Read all relevant properties: `firstname`, `lastname`, `jobtitle`, `company`, `hs_linkedin_url`, `warm_opener_seed`, `last_sequence_action_date`, `relevance_score`, `lifecyclestage`, plus existing `Notes`. Note: this portal uses HubSpot's standard `hs_linkedin_url` field (not a custom `linkedin_url` property). The standard `lifecyclestage` field is queryable; `hs_lifecyclestage` is not.
+2. **Open the LinkedIn profile.** Use `hs_linkedin_url` from the contact. Pacing rules apply (see `corpus/networking/import-pipeline/pacing-and-friction.md`). Sales Navigator obfuscated URLs (`/in/ACwAA...`) redirect to canonical handles when opened in a logged-in LinkedIn session.
 3. **Relevance scan.** Capture up to 3 signals from the last 30-60 days. See `corpus/networking/import-pipeline/relevance-scan.md`.
 4. **Company check.** Headcount, funding stage, recent news. See `corpus/networking/import-pipeline/company-check.md`. Compare against any company context already in Notes; flag material changes.
 5. **Fit score.** Recompute the 1-5 score using the same rubric. See `corpus/networking/import-pipeline/fit-score.md`. Compare against the existing `relevance_score`; flag changes of 2+.
@@ -103,14 +109,16 @@ Run log: [Notion link]
 
 ## Required HubSpot setup
 
-Same as `rz-networking-hand-curated-import`. The custom properties on the Contact object must already exist:
-- `linkedin_url`
+Same as `rz-networking-hand-curated-import`. Required custom properties on the Contact object:
 - `trigger_source`
 - `warm_opener_seed`
 - `last_sequence_action_date`
 - `relevance_score`
 
-Verify before first run; the skill will not create them.
+Plus this standard HubSpot field, which must be populated (not custom-created):
+- `hs_linkedin_url` — HubSpot's built-in LinkedIn URL field. The skill reads from this property, not from a custom `linkedin_url`.
+
+Verify the custom properties exist before first run; the skill will not create them. HubSpot also caps `manage_crm_objects` batch updates at 10 records per call — the skill must split larger waves accordingly.
 
 ## Cross-skill connections
 
