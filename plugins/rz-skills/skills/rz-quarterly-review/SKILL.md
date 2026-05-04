@@ -24,6 +24,8 @@ The review reads from canonical sources owned by other skills.
 
 **Recent website audit data** comes from `rz-website-audit`'s most recent Sunday run. The Quarterly Review reads the most recent Weekly Audits DS page (and the prior 12 weekly pages for trend) to inform channel-level signals on richezamor.com performance.
 
+**LinkedIn outbound activity data** comes from Riché's monthly LinkedIn data archive export, dropped into `Linkedin Archive > {MM01YY}/` on Google Drive. See `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the export workflow and what each file contains. The skill reads 4 monthly archives per quarter (one per month spanning the quarter, plus the most recent for snapshot data).
+
 If a strategic frame's text is being applied differently than the canonical corpus says, the canonical corpus wins. Surface drift in `rz-self-improve`.
 
 ## Constants
@@ -58,6 +60,7 @@ Read these in order before running. The corpus carries the strategic frames; thi
 - `corpus/growth/playbook/channel-gates-for-adding.md` — deferred-candidate gate evaluation
 - `corpus/growth/playbook/cutting-criteria.md` — retirement decision rules
 - `corpus/growth/playbook/budget-allocation.md` — the 5.25 hr ceiling
+- `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` — the LinkedIn data archive convention used by Step 2e
 
 **Strategic frames (always)**
 - `corpus/growth/strategy/channel-evaluation-framework.md` — the 5-criteria scoring
@@ -110,15 +113,90 @@ Per `quarterly-channel-review.md` Block 1, plus skill-specific setup:
 4. Pull current Target Keywords DB and Competitors DB state (high level — not full audit).
 5. Initialize empty data buffer for review output.
 
-### Step 2 — Pull data (10 min)
-Per `quarterly-channel-review.md` Block 1 data pull. Concurrent reads where possible:
-- LinkedIn analytics: per-post engagement rate trend, follower growth, peer comments (last 13 weeks)
-- HubSpot: Segment 1 inbound count, Segment 4 invitations, hire-relevant signals (last 13 weeks)
-- Google Analytics (or richezamor.com analytics): traffic, signups, traffic sources (last 13 weeks)
-- Notion: published /thinking article count, podcast appearances, speaking engagements (last 13 weeks)
-- Calendar audit: estimate hours invested per channel (acceptable range ±15%)
+### Step 2 — Pull data (15-20 min)
+Concurrent reads across 8 substeps. Each names the MCP tool and the specific query. The data window is the prior 90 days unless otherwise noted.
 
-Compute per-channel ROI per `corpus/growth/metrics/channel-roi-calculation.md`. Output: a one-page per-channel summary table.
+**Important scope notes:**
+- **X is intentionally not pulled.** X is a secondary channel; engagement metrics there are not load-bearing for current quarterly decisions. X cadence is still tracked indirectly via Calendar (see 2h). Revisit when X is repromoted from secondary to primary.
+- **LinkedIn engagement *received* (likes/comments/impressions on Riché's posts) is not in the LinkedIn data export.** The skill measures **outbound** activity (cadence, commenting, target-account engagement, connection growth) as the leading indicators per `corpus/growth/metrics/leading-vs-lagging.md`. If engagement-received metrics are needed for a specific priority, Riché must capture them manually as a one-off snapshot.
+
+**2a. Prior 13 Weekly Audit pages (trend context)**
+- MCP: `notion-fetch` against `NOTION_AUDIT_DS_ID` (`889093b4-fb7d-4db5-a871-19e7bbe159fd`)
+- Query: filter by Date in last 90 days
+- Extract: per-week Traffic Light, P0/P1 counts, Overall Dimension Lights
+- Output: list of weeks with declining/stable/improving signals per dimension; recurring dimension-reds across the quarter
+
+**2b. Notion DBs (state at end-of-quarter)**
+- Target Keywords DB (`f5521fe72dec42c1808555fbac2d0d62`): status distribution; new Won/Deprioritized rows this quarter; position improvements vs Q-start
+- Competitors DB (`c99eaa6d2e7448f0859ce6feba22a3ac`): tier distribution; Last Audited freshness
+- Content Topics DB (`2c224f29490d44f99e7b58cb2e377086`): articles published this quarter, by domain (Context Layer / PM / Leadership) and topic cluster
+- MCP: `notion-fetch` per data source; `notion-search` for cross-DB lookups
+- Output: counts + named items per DB
+
+**2c. richezamor.com performance (via Ahrefs)**
+- GSC keywords + performance: `mcp__bff08770-..._gsc-keywords`, `_gsc-performance-history`, `_gsc-pages-history` for `richezamor.com`, last 90 days
+- Web traffic: `mcp__bff08770-..._web-analytics-stats`, `_web-analytics-source-channels`, `_web-analytics-top-pages`, last 90 days
+- Output: keyword count by GSC status, position trends, total clicks/impressions; visits, source breakdown, top-pages by traffic; week-over-week and month-over-month deltas
+
+**2d. AIO citation trends (via Ahrefs Brand Radar)**
+- MCP: `mcp__bff08770-..._brand-radar-mentions-history`, `_brand-radar-cited-pages`, `_brand-radar-sov-history`, last 90 days
+- Output: citation count trend across the 20-query AIO set; citation rank changes per query; share-of-voice trend
+
+**2e. LinkedIn outbound activity (via Google Drive monthly dumps)**
+
+Riché exports the LinkedIn data archive monthly into `Linkedin Archive > {MM01YY}/` on Google Drive. See `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the export workflow. The quarterly review reads the 4 monthly archives covering the quarter being reviewed.
+
+Example: for a Q2 2026 review run on the first Sunday of July, pull the archives `04012026`, `05012026`, `06012026`, `07012026`. The first three cover the quarter; the fourth gives the most recent-month snapshot needed for connection counts.
+
+- MCP: `mcp__247d7a69-..._search_files` with query `title = '{MM01YY}' and mimeType = 'application/vnd.google-apps.folder'` per archive month
+- For each archive folder, `_search_files` with `parentId = '{folder-id}'` to get the file IDs
+- Read these specific files via `_read_file_content`:
+  - **Shares** — Riché's posts; columns: Date, ShareLink, ShareCommentary, MediaUrl, Visibility. Count rows with Date in quarter for posting cadence per week. Categorize ShareCommentary length (short / standard / long) and any MediaUrl presence.
+  - **Comments** — Riché's comments on others' posts; columns: Date, Link, Message. Count rows in quarter for strategic-commenting block held? (target: 15-20 min/day = ~5-10 substantive comments/week). Compute average Message length as a proxy for substance per `corpus/growth/playbook/comment-substance-rule.md`.
+  - **Reactions** — Riché's reactions given; columns: Date, Type, Link. Count by type. Cross-reference Link against `corpus/growth/target-accounts/linkedin.yaml` to count target-account engagement.
+  - **InstantReposts** — Riché's reshares; columns: Date, ShareLink. Count and identify what was reshared (cross-reference with Member_Follows / target accounts).
+  - **Connections** — total connection list; columns include URL of connection, Connected On (date). Total row count = current connections; rows with Connected On in quarter = quarter's net new connections.
+- Output:
+  - Posting cadence per week (target: 3-5/week per `linkedin-cadence.md`)
+  - Strategic commenting cadence per week (target: 15-20 min/day → ~5-10 quality comments/week)
+  - Connection count + quarter-over-quarter growth rate
+  - Target-account engagement count (reactions + comments on accounts in `target-accounts/linkedin.yaml`)
+  - Share-of-voice across content types (hot take / signal / deep dive / framework / story per `corpus/content-system/`)
+
+If any monthly archive is missing or empty, note the gap and proceed with available data. Do not fail the whole pull on one missing month.
+
+**2f. HubSpot (Segment 1 / Segment 4 inbound)**
+- MCP: `mcp__f20a4db5-..._search_crm_objects`
+- Query: contacts created last 90 days, filtered by lifecycle stage and segment tag
+  - Segment 1: title contains "VP Product" / "Chief Product" / "Head of Product" / "VP AI" at AI-PM target companies
+  - Segment 4: tag includes "event-organizer" or "podcast-host"
+- Also: `_get_campaign_analytics` for any campaigns active during the quarter
+- Output: counts + named individuals per segment; any direct outreach that landed
+
+**2g. Linear (priority execution status)**
+- MCP: `mcp__5f47df39-..._list_issues`
+- Query: project = `LINEAR_PROJECT_ID` (`085484ef-b523-4142-bce2-7f9a23a05fa1`), updated in last 90 days
+- Extract: tasks completed; tasks in flight; tasks linked to prior-quarter priorities (the TRZ-### IDs from the prior Quarterly Review page)
+- Output: prior-quarter priority status — for each prior priority's seed task, mark as done / in-flight / dropped / replaced
+
+**2h. Time investment proxy (Google Calendar)**
+- MCP: `mcp__c70f51ca-..._list_events` for primary calendar
+- Query: `timeMin` 90 days ago, `timeMax` today
+- Extract: events whose title or description contains channel keywords. Bucket per channel:
+  - **LinkedIn writing/batch:** "Sunday batch", "LinkedIn", "writing block"
+  - **Strategic commenting:** "comment block", "LinkedIn comments"
+  - **X cross-post:** "X cross-post", "Twitter"
+  - **Speaking/podcasts:** "talk prep", "podcast", "speaking"
+  - **richezamor.com articles:** "/thinking article", "article writing"
+  - **Networking DMs:** "DM block", "outreach"
+- Output: hours per channel, ±15% accuracy. Compare against the budget allocation in `corpus/growth/playbook/budget-allocation.md`. Flag channels significantly over or under their allocated time.
+
+**Compute per-channel ROI** per `corpus/growth/metrics/channel-roi-calculation.md` using the data above:
+- Numerator: weighted segment outcomes (Segment 1 contacts ×5, Segment 2 reshares ×3, Segment 4 invites ×4, Segment 3 inbound ×2, signups ×1, hire signals ×10)
+- Denominator: hours invested (from 2h)
+- Caveat: Segment 2 reshares cannot be directly measured from the LinkedIn dump (engagement received is not in the export). If the prior Quarterly Review page captured a manual snapshot, use it as the baseline; otherwise track Segment 2 reshares qualitatively from observed activity rather than as a hard number.
+
+**Output:** a one-page per-channel summary table containing: hours invested, outcomes by segment, ROI per hour, cadence held Y/N, score change vs prior quarter (filled in Step 3).
 
 ### Step 3 — Score active channels (10 min)
 Per `quarterly-channel-review.md` Block 2. Re-score every active channel via `corpus/growth/strategy/channel-evaluation-framework.md`. Compare to last quarter's scores (from prior review page if it exists).

@@ -1,6 +1,6 @@
 # corpus/growth/index.yaml
 # Flat index of every entry in this domain for skill-driven lookup.
-# Entry count: 111 across 13 sub-domain(s).
+# Entry count: 112 across 13 sub-domain(s).
 # Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
 
 entries:
@@ -278,7 +278,7 @@ entries:
     one_liner: "The consolidated table of leading-indicator proxies across all four audience segments — 16 proxies total, 4 per segment."
 
   # ============================================================
-  # playbook (12 entries)
+  # playbook (13 entries)
   # ============================================================
   - filename: playbook/admin-tracking.md
     sub_domain: playbook
@@ -308,6 +308,10 @@ entries:
     sub_domain: playbook
     entry_type: pattern
     one_liner: "2–3 direct messages per week on LinkedIn, sent to peers (Segment 2) when something they've posted maps to Riché's work…"
+  - filename: playbook/linkedin-monthly-dump-workflow.md
+    sub_domain: playbook
+    entry_type: template
+    one_liner: "Monthly ~10-min workflow exporting LinkedIn data archive into Google Drive at Linkedin Archive/{MM01YY}/. Data spine for audit + quarterly review."
   - filename: playbook/quarterly-channel-review.md
     sub_domain: playbook
     entry_type: template
