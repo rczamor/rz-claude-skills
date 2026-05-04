@@ -24,7 +24,7 @@ The review reads from canonical sources owned by other skills.
 
 **Recent website audit data** comes from `rz-website-audit`'s most recent Sunday run. The Quarterly Review reads the most recent Weekly Audits DS page (and the prior 12 weekly pages for trend) to inform channel-level signals on richezamor.com performance.
 
-**LinkedIn outbound activity data** comes from Riché's monthly LinkedIn data archive export, dropped into `Linkedin Archive > {MM01YY}/` on Google Drive. See `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the export workflow and what each file contains. The skill reads 4 monthly archives per quarter (one per month spanning the quarter, plus the most recent for snapshot data).
+**LinkedIn data** comes from Riché's monthly exports dropped into `Career > Brand > LinkedIn Archive/` on Google Drive. Two exports per month: the data archive (in `{MM01YY}/` subfolders) and the content analytics export (in `_Content Analytics/`). See `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the workflow. The skill reads the **most-recent** monthly archive and the **most-recent** content analytics file (each export contains full history; rows are filtered by Date column for the 90-day window).
 
 If a strategic frame's text is being applied differently than the canonical corpus says, the canonical corpus wins. Surface drift in `rz-self-improve`.
 
@@ -142,28 +142,49 @@ Concurrent reads across 8 substeps. Each names the MCP tool and the specific que
 - MCP: `mcp__bff08770-..._brand-radar-mentions-history`, `_brand-radar-cited-pages`, `_brand-radar-sov-history`, last 90 days
 - Output: citation count trend across the 20-query AIO set; citation rank changes per query; share-of-voice trend
 
-**2e. LinkedIn outbound activity (via Google Drive monthly dumps)**
+**2e. LinkedIn activity + engagement (via Google Drive monthly exports)**
 
-Riché exports the LinkedIn data archive monthly into `Linkedin Archive > {MM01YY}/` on Google Drive. See `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the export workflow. The quarterly review reads the 4 monthly archives covering the quarter being reviewed.
+Riché runs two monthly exports into `Career > Brand > LinkedIn Archive/` on Google Drive. See `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the full workflow.
 
-Example: for a Q2 2026 review run on the first Sunday of July, pull the archives `04012026`, `05012026`, `06012026`, `07012026`. The first three cover the quarter; the fourth gives the most recent-month snapshot needed for connection counts.
+- **Monthly data archive** in subfolders named `{MM01YY}` (e.g., `05012026`). Outbound activity + connection state. **Each export is FULL HISTORY**, not delta — the skill reads only the **most-recent** archive folder, then filters rows by Date column for the past 90 days.
+- **Content analytics exports** in subfolder `_Content Analytics/`. Files named `Content_{YYYY-MM-DD}_{YYYY-MM-DD}_RichéZamor`. The skill reads the **most-recent** file by name, then filters daily-metric tables by Date column for the past 90 days.
 
-- MCP: `mcp__247d7a69-..._search_files` with query `title = '{MM01YY}' and mimeType = 'application/vnd.google-apps.folder'` per archive month
-- For each archive folder, `_search_files` with `parentId = '{folder-id}'` to get the file IDs
-- Read these specific files via `_read_file_content`:
-  - **Shares** — Riché's posts; columns: Date, ShareLink, ShareCommentary, MediaUrl, Visibility. Count rows with Date in quarter for posting cadence per week. Categorize ShareCommentary length (short / standard / long) and any MediaUrl presence.
-  - **Comments** — Riché's comments on others' posts; columns: Date, Link, Message. Count rows in quarter for strategic-commenting block held? (target: 15-20 min/day = ~5-10 substantive comments/week). Compute average Message length as a proxy for substance per `corpus/growth/playbook/comment-substance-rule.md`.
-  - **Reactions** — Riché's reactions given; columns: Date, Type, Link. Count by type. Cross-reference Link against `corpus/growth/target-accounts/linkedin.yaml` to count target-account engagement.
-  - **InstantReposts** — Riché's reshares; columns: Date, ShareLink. Count and identify what was reshared (cross-reference with Member_Follows / target accounts).
-  - **Connections** — total connection list; columns include URL of connection, Connected On (date). Total row count = current connections; rows with Connected On in quarter = quarter's net new connections.
-- Output:
-  - Posting cadence per week (target: 3-5/week per `linkedin-cadence.md`)
-  - Strategic commenting cadence per week (target: 15-20 min/day → ~5-10 quality comments/week)
-  - Connection count + quarter-over-quarter growth rate
-  - Target-account engagement count (reactions + comments on accounts in `target-accounts/linkedin.yaml`)
-  - Share-of-voice across content types (hot take / signal / deep dive / framework / story per `corpus/content-system/`)
+**MCP queries:**
+1. Resolve `Career > Brand > LinkedIn Archive` folder ID via `mcp__247d7a69-..._search_files` with `title = 'Linkedin Archive' and mimeType = 'application/vnd.google-apps.folder'`.
+2. List children: `_search_files` with `parentId = '{linkedin-archive-id}'`. Identify (a) the most-recent `{MM01YY}` subfolder by name (lexicographic: highest year > highest month) and (b) the `_Content Analytics` subfolder.
+3. List most-recent monthly archive contents: `_search_files` with `parentId = '{most-recent-MM01YY-id}'` to get file IDs.
+4. List Content Analytics files: `_search_files` with `parentId = '{content-analytics-id}'`. Pick the file with the most-recent end-date in its filename (`Content_*_{YYYY-MM-DD}_*`).
 
-If any monthly archive is missing or empty, note the gap and proceed with available data. Do not fail the whole pull on one missing month.
+**From the most-recent monthly archive — read via `_read_file_content`:**
+- **Shares** — columns: Date, ShareLink, ShareCommentary, MediaUrl, Visibility. Filter Date in past 90 days. Count rows for posting cadence per week. ShareCommentary length distribution (short < 100 chars / standard 100-1000 / long > 1000). MediaUrl present count for visual content frequency.
+- **Comments** — columns: Date, Link, Message. Filter Date in past 90 days. Count rows for strategic-commenting cadence (target: 15-20 min/day → ~5-10 substantive comments/week per `corpus/growth/playbook/strategic-commenting.md`). Average Message length as substance proxy per `corpus/growth/playbook/comment-substance-rule.md`. Cross-reference Link against `corpus/growth/target-accounts/linkedin.yaml` to count target-account engagement.
+- **Reactions** — columns: Date, Type, Link. Filter Date in past 90 days. Count by Type. Cross-reference Link against target accounts for target-account-reaction count.
+- **InstantReposts** — columns: Date, ShareLink. Filter past 90 days; count and identify reshare patterns.
+- **Connections** — columns include Connected On, profile URL. Total row count = current connection count (follower-equivalent state). Filter rows with Connected On in past 90 days = quarter's net new connections; compute growth rate vs. prior period.
+
+**From the most-recent Content Analytics file — read via `_read_file_content`:**
+The file has 6 stacked tables (separated by blank lines and new headers).
+- **Overall Performance** (header row): Total Impressions and Members Reached for the export date range.
+- **Daily Impressions + Engagements**: Date | Impressions | Engagements. Filter Date in past 90 days. Compute weekly engagement rate (Engagements ÷ Impressions). Compare quarter-over-quarter.
+- **Top posts by Engagements**: Post URL | Post publish date | Engagements. Filter publish date in past 90 days; surface the 5 highest-engagement posts.
+- **Top posts by Impressions**: Post URL | Post publish date | Impressions. Filter publish date in past 90 days; surface the 5 highest-impression posts. Compare to the engagement leaders — divergence signals "high-reach low-engagement" or vice versa.
+- **New followers per day**: Date | New followers. Filter Date in past 90 days. Sum = quarter's net new followers; trend = follower-growth velocity.
+- **Top Demographics**: Job titles, Locations, Industries, Seniority, Company size, Companies (each with Value + Percentage). Use as-is (current snapshot, not time-filtered). Validate Segment 2 audience density: % of audience with Director/Senior PM/VP titles. Validate Segment 3: % Founder/Co-Founder. Validate Segment 1: % CXO + Director seniority + AI-PM target companies.
+
+**Output (LinkedIn portion of the per-channel summary table):**
+- Posting cadence per week (target: 3-5/week)
+- Strategic commenting cadence per week (target: ~5-10 quality comments/week)
+- Connection count + 90-day growth rate
+- New followers count + 90-day trend
+- Engagement rate weekly trend across the quarter
+- Top 5 posts by engagement and by impressions
+- Audience composition vs. segment targets
+- Target-account engagement count (Reactions + Comments matched against `corpus/growth/target-accounts/linkedin.yaml`)
+
+**Gap-handling:**
+- If `_Content Analytics/` exists but has no files: note that engagement-received metrics are unavailable this quarter; proceed with outbound-only data.
+- If the most-recent monthly archive is more than 5 weeks old: note staleness; the data archive workflow has been skipped.
+- If the most-recent Content Analytics file's end-date is more than 5 weeks old: same staleness flag; recommend re-export before proceeding with the review.
 
 **2f. HubSpot (Segment 1 / Segment 4 inbound)**
 - MCP: `mcp__f20a4db5-..._search_crm_objects`

@@ -1,127 +1,171 @@
 ---
-name: LinkedIn Monthly Data Archive — Export Workflow
+name: LinkedIn Monthly Exports — Data Archive + Content Analytics Workflow
 domain: growth
 source_skill: growth-marketing
 entry_type: template
-length_target: 500-800
+length_target: 600-1000
 related: [corpus/growth/playbook/admin-tracking.md, corpus/growth/playbook/strategic-commenting.md, corpus/growth/channels/linkedin-cadence.md, corpus/growth/metrics/segment-proxies-rollup.md, corpus/growth/databases/quarterly-reviews-schema.md]
 ---
 
-# LinkedIn Monthly Data Archive — Export Workflow
+# LinkedIn Monthly Exports — Data Archive + Content Analytics Workflow
 
 ## What it is
-Riché's monthly ~10-minute workflow for exporting his complete LinkedIn data archive and dropping it into Google Drive at a predictable folder path. The export becomes the data spine for outbound LinkedIn activity tracking — used by `rz-website-audit` (weekly trend) and `rz-quarterly-review` (quarterly-spanning analysis). Without this workflow, neither skill has reliable data on Riché's LinkedIn activity.
+Riché's monthly ~15-minute workflow for capturing two LinkedIn exports and dropping them into Google Drive at predictable paths. Together, the two exports give a complete picture of LinkedIn outbound activity (data archive) AND inbound engagement received (content analytics). The exports are the data spine for `rz-website-audit` (weekly) and `rz-quarterly-review` (quarterly).
+
+Two exports, one monthly cadence:
+
+1. **LinkedIn Data Archive** — the full data export from LinkedIn's "Get a copy of your data" tool. ~50 CSV files covering outbound activity (Shares, Comments, Reactions given, InstantReposts) plus connection state. **The export is FULL HISTORY each time, not delta.**
+2. **LinkedIn Content Analytics** — engagement-received metrics export from LinkedIn's analytics dashboard. Per-day impressions/engagements, per-post performance, new followers per day, and audience demographics. Date range chosen at export time.
 
 ## Why it matters
-LinkedIn does not expose engagement-tracking data via any third-party API at Riché's account tier. The native `/me/data` export is the only complete, machine-readable record of his LinkedIn activity. Once a month, it gives:
+LinkedIn does not expose engagement data via any third-party API at Riché's account tier. These two exports are the only complete machine-readable record. Together they cover:
 
-- **Outbound activity:** every post (Shares), every comment (Comments), every reaction given (Reactions), every reshare (InstantReposts)
-- **Connection state:** every connection with their connection date (Connections)
-- **Self-tracking:** Profile state, Articles published, Companies/People followed
+- **Outbound activity:** every post, every comment, every reaction given, every reshare (data archive)
+- **Inbound engagement:** impressions per day, engagements per day, top posts by engagement and impressions, new followers per day (content analytics)
+- **Audience composition:** demographics by job title, location, industry, seniority, company size, company (content analytics — used to verify Segment 1/2/3/4 mix in the actual audience)
 
-Without this monthly cadence, the audit and quarterly review can only rely on Calendar-block estimation for cadence — much less reliable than the archive's direct row counts.
+Without this monthly cadence, the audit and quarterly review are blind to LinkedIn — the primary channel where Segment 2 lives.
 
-The 10-minute monthly cost is below the threshold where automation pays back. It also gives Riché a single deterministic moment per month to confirm "yes, I posted N times, I commented M times, I added P connections" — which is its own discipline value.
+## Where the exports live
 
-## Where the archive lives
+**Path:** `Career > Brand > LinkedIn Archive/`
 
-**Google Drive path:** `LinkedIn Archive > {MM01YY}/`
+Within that folder:
+- **Monthly data archives:** subfolders named `{MM01YY}` (e.g., `05012026`, `06012026`). Contain the ~50 CSV files from "Get a copy of your data" plus sub-folders for Articles, Jobs, Verifications, Services Marketplace.
+- **Content analytics exports:** all in a single `_Content Analytics/` subfolder. Files named `Content_{YYYY-MM-DD}_{YYYY-MM-DD}_RichéZamor` (date range in filename matches the export's chosen range).
 
-`{MM01YY}` = month + 01 + 2-digit year for the export. Examples:
-- May 2026 export: `05012026`
-- January 2027 export: `01012027`
+The folder structure and naming convention are LOCKED. Skills that consume this data resolve the folders by these conventions; renaming or restructuring breaks the consumers.
 
-The folder convention is locked. Skills that consume this data search for the folder by the title pattern; renaming or restructuring breaks the consumers.
-
-## The monthly export workflow (~10 min)
+## The monthly workflow (~15 min)
 
 **Cadence:** First Sunday of each month, after the strategic-commenting block. Bundles into `corpus/growth/playbook/admin-tracking.md`.
 
+### Part A — LinkedIn Data Archive (~10 min)
+
 1. **Request the export** (1 min)
-   - Go to LinkedIn → Settings & Privacy → Data Privacy → Get a copy of your data
+   - LinkedIn → Settings & Privacy → Data Privacy → Get a copy of your data
    - Select "The works" (or equivalent: full archive including activity data)
    - Submit. LinkedIn emails the download link within 10-30 minutes.
 
-2. **Wait for the email** (passive — the rest of the workflow happens after the email arrives, typically same day)
+2. **Wait for the email** (passive)
 
-3. **Download the .zip** (1 min) when the email arrives. File is typically a `Basic_LinkedInDataExport_*.zip`.
+3. **Download the .zip** (1 min) when the email arrives.
 
-4. **Extract the .zip locally** (1 min). It contains ~50 CSV files plus folders for Articles, Jobs, Verifications, Services Marketplace.
+4. **Extract locally** (1 min). Contains ~50 CSVs plus folders for Articles, Jobs, Verifications, Services Marketplace.
 
 5. **Upload to Google Drive** (5 min)
-   - Navigate to `LinkedIn Archive` folder in Google Drive
-   - Create a new folder named `{MM01YY}` (e.g., `05012026`)
-   - Upload all extracted files into the folder. Sub-folders (Articles, Jobs, Verifications, Services Marketplace) preserved as Google Drive sub-folders.
-   - Convert CSVs to Google Sheets via right-click → Open with → Google Sheets → Save back. (Skills consume Google Sheets format; raw CSVs work but conversion is one-time per file and makes downstream reading reliable.)
+   - Navigate to `Career > Brand > LinkedIn Archive/`
+   - Create a new folder named `{MM01YY}` (e.g., `05012026` for May 2026)
+   - Upload all extracted files. Sub-folders preserved.
+   - Convert CSVs to Google Sheets via right-click → Open with → Google Sheets → Save back. (Skills consume Google Sheets format.)
 
 6. **Verify upload** (1 min)
-   - Open the Shares sheet; confirm the most-recent row is from within the last 24-48 hours
-   - Open the Connections sheet; confirm the row count matches the LinkedIn UI's "X connections" badge ±5
+   - Open Shares; confirm most-recent row is from within last 24-48 hours
+   - Open Connections; confirm row count matches LinkedIn's "X connections" badge ±5
 
-## What's IN the archive (high-value files)
+### Part B — LinkedIn Content Analytics (~5 min)
 
-These are the files the audit and quarterly review consume:
+1. **Open LinkedIn analytics** (1 min)
+   - LinkedIn → Me → View Profile → Analytics (or directly at the Analytics page)
+
+2. **Set date range and export** (2 min)
+   - For monthly cadence: pick a fixed start date (e.g., Jan 1 of the year, or Jan 1 of when LinkedIn tracking began) through today. Each month, the range grows by ~30 days.
+   - Alternative: just-prior-month (e.g., Apr 1 – Apr 30). Either works — the consuming skills filter rows by Date column inside the file.
+   - Click "Export" or the equivalent CSV download.
+   - File downloads as something like `Content_2026-01-01_2026-05-04_RichéZamor.xlsx`.
+
+3. **Upload to Google Drive** (1 min)
+   - Navigate to `Career > Brand > LinkedIn Archive > _Content Analytics/`
+   - Upload the file. Convert to Google Sheets.
+
+4. **Verify** (1 min)
+   - Open the file; confirm "Overall Performance" section header shows the right date range
+   - Confirm the daily metrics table reaches up to the export date
+
+## What's IN the data archive
+
+These are the files the audit and quarterly review consume from the monthly `{MM01YY}/` folder:
 
 | File | Direction | Columns | Used for |
 |---|---|---|---|
-| **Shares** | Outbound (Riché's posts) | Date, ShareLink, ShareCommentary, MediaUrl, Visibility | Posting cadence per week; ShareCommentary length distribution; MediaUrl frequency (carousel/image/video usage) |
+| **Shares** | Outbound (Riché's posts) | Date, ShareLink, ShareCommentary, MediaUrl, Visibility | Posting cadence per week; ShareCommentary length distribution; MediaUrl frequency |
 | **Comments** | Outbound (Riché's comments) | Date, Link, Message | Strategic commenting cadence; Message length as substance proxy |
-| **Reactions** | Outbound (Riché's reactions given) | Date, Type (LIKE/PRAISE/EMPATHY/...), Link | Engagement-given count; Link cross-ref to target accounts in `corpus/growth/target-accounts/linkedin.yaml` |
+| **Reactions** | Outbound (Riché's reactions given) | Date, Type (LIKE/PRAISE/EMPATHY/...), Link | Engagement-given count; Link cross-ref to target accounts |
 | **InstantReposts** | Outbound (Riché's reshares) | Date, ShareLink | Reshare cadence; what's being amplified |
-| **Connections** | State (current connection set) | Connected On, ... | Total count = follower-equivalent; rows with Connected On in window = net new connections |
-| **Articles** (folder) | Outbound (Riché's LinkedIn-articles) | Folder of HTML files | Long-form publishing cadence (less frequent than posts) |
-| **Member_Follows** | State (who Riché follows) | Date, profile URL | Following pattern; cross-ref to target accounts |
-| **Company Follows** | State (companies Riché follows) | Followed on, company name | Company-level tracking |
-| **Invitations** | Outbound + inbound | Direction, Date, ... | Invite cadence; cold-vs-warm patterns |
+| **Connections** | State (current connection set) | Connected On, ... | Total count = follower-equivalent state; rows with Connected On in window = net new connections |
+| **Articles** (folder) | Outbound (LinkedIn articles) | Folder of HTML files | Long-form publishing cadence |
+| **Member_Follows** | State | Date, profile URL | Following pattern; cross-ref to target accounts |
+| **Company Follows** | State | Followed on, company name | Company-level tracking |
+| **Invitations** | Outbound + inbound | Direction, Date, ... | Invite cadence |
 | **Profile Summary** | State | Aggregate profile stats | Profile-side baseline |
 
-## What's NOT in the archive
+**The data archive is FULL HISTORY each time.** Each monthly export contains all data from account creation up to the export date. Skills only need to read the most-recent monthly folder; older folders are kept for redundancy/disaster-recovery but not actively consumed.
 
-The LinkedIn data export is structurally outbound-and-state. It does NOT contain:
+## What's IN the content analytics export
 
-- ❌ **Engagement received on Riché's posts** (likes/reactions received, comments received, impressions, click-throughs)
-- ❌ **Profile views** (unless on LinkedIn Premium with view-tracking enabled, separate workflow)
-- ❌ **Engagement rate** per post
-- ❌ **Search appearances**
-- ❌ **Reach/audience data**
+The Content Analytics file has 4-5 stacked tables in one Google Sheet:
 
-For these, see `corpus/growth/channels/linkedin-premium-tracking.md` for the LinkedIn Premium workflow that supplements the archive with profile-view data. Engagement received per-post is genuinely unavailable without LinkedIn Marketing Developer Platform access (enterprise tier).
+1. **Overall Performance** — header row + Impressions total + Members reached total for the date range
+2. **Daily Impressions + Engagements** — Date | Impressions | Engagements (one row per day in range)
+3. **Top posts by Engagements** — Post URL | Post publish date | Engagements (sorted descending)
+4. **Top posts by Impressions** — Post URL | Post publish date | Impressions (sorted descending)
+5. **New followers per day** — Date | New followers
+6. **Top Demographics** — Job titles, Locations, Industries, Seniority, Company size, Companies (each with Value + Percentage)
 
-For the quarterly review, this is by design: outbound activity is the leading indicator (per `corpus/growth/metrics/leading-vs-lagging.md`); engagement received is the lagging indicator. Optimizing for outbound activity that fits Riché's strategy is what's controllable.
+Used for:
+- **Engagement-rate trend:** Engagements ÷ Impressions per day, smoothed weekly
+- **Best-performing posts:** identify what content types win on engagement vs impressions
+- **Follower growth velocity:** new-followers-per-day trend across the quarter
+- **Audience composition validation:** verify Segment 1 (CXO/Director seniority + AI-PM target companies), Segment 2 (Director/Senior Product Manager titles), Segment 3 (Founder/Co-Founder titles), Segment 4 (event-organizer / podcast-host roles in Companies section)
 
-## How the archive gets consumed
+## What's NOT in either export
+
+- ❌ Profile views (LinkedIn Premium feature; separate workflow per `corpus/growth/channels/linkedin-premium-tracking.md`)
+- ❌ Per-post comment text (have the URL, not the comments themselves; would require a separate scrape)
+- ❌ Search appearances (LinkedIn analytics has it but not in the export)
+- ❌ Reach by country/city below "Locations" demographic
+- ❌ Per-comment-author engagement on Riché's posts (would let you measure peer-reshare-rate; not available)
+
+## How the exports get consumed
 
 **By `rz-website-audit` (weekly):**
-The weekly audit reads only the most-recent monthly archive. For LinkedIn-related dimensions (T-engagement, B-voice, K-content cluster checks), it uses the Shares sheet to verify cadence held this week and to surface this week's posts for voice/dimension scoring.
+The weekly audit reads the **most-recent** monthly archive folder (one folder, not a series). It filters rows by Date column for the past 7 days. From the data archive: Shares (cadence held this week?), Comments (commenting block held?). Optionally also reads the most-recent Content Analytics file for engagement-rate this week.
 
 **By `rz-quarterly-review` (quarterly):**
-The quarterly review reads 4 monthly archives covering the quarter. For Q2 2026 review (early July 2026): pulls 04012026, 05012026, 06012026, 07012026. The first 3 cover April-June; the 4th gives the most recent connection-count snapshot.
+The quarterly review reads:
+- The **most-recent** monthly archive folder. Filter all relevant files by Date column for past 90 days.
+- The **most-recent** Content Analytics file. Filter the daily tables by Date for past 90 days.
+
+For first-run scenarios where some history is missing (e.g., only one monthly archive exists), the skill works with what's available. Connections file in the most-recent archive contains all historical connections, including those before the data-export workflow started, so connection-growth-over-90-days is always answerable from the most-recent archive.
 
 **By `rz-self-improve` (occasional):**
-When patterns emerge in voice or content drift, self-improve reads the Shares ShareCommentary text across recent archives to surface the drift evidence.
+When patterns emerge in voice or content drift, self-improve reads the Shares ShareCommentary text and the Top posts by Engagements/Impressions tables to surface what's working vs not.
 
-## When to skip / accept gaps
+## Edge cases and gaps
 
-- **Travel month:** if the monthly export was missed, the next month's archive contains everything anyway (LinkedIn keeps the full history, not delta). Just upload as `{MM01YY}` for the month you're catching up on.
-- **No new activity month:** still upload the archive even if Shares are zero. The skills check for missing archives differently than zero-activity archives.
+- **First-time setup:** the first export is the baseline; consumers don't fail on lack of prior history. The Connections file in the first export already contains all historical connections.
+- **Travel month:** if you miss a month, the next month's full export contains all the data anyway. Catch up by uploading the next export normally; older folders just don't get filled in.
 - **LinkedIn export delays:** if the email takes >24 hours, defer the upload to the next day. Don't delay the rest of the Sunday review.
+- **Content Analytics date range chosen narrowly:** if you exported only a 30-day range and the quarterly review needs 90 days, it'll fall short. Defaulting to a "from a fixed start through today" range avoids this — each month grows by ~30 days, always covers the prior 90 with margin.
+- **`Content_*` filename includes the user's display name:** `Content_2026-01-01_2026-05-04_RichéZamor.xlsx`. The É is preserved correctly in Drive but consuming code should not split on character class — match the filename pattern as `Content_*.xlsx` or `Content_*_RichéZamor.xlsx`.
 
 ## Examples
-1. **Standard monthly export.** First Sunday of June 2026, ~10 minutes. Riché requests the export Sunday morning, the email arrives 23 minutes later, downloads + extracts + uploads to `LinkedIn Archive > 06012026/`. Verifies Shares contains rows through May 31. Done.
-2. **Catch-up after travel.** Riché missed April. In May, he runs the workflow normally for May (`05012026`), then runs it again immediately for April-data-only (he can't request a backdated export, but the May export contains April data too, so he doesn't need to). The April folder gets the same May-exported files but in a folder named `04012026`. Note: this is suboptimal but acceptable; the consumer skills filter by the Date column inside each file, not by the folder name.
-3. **Failed verification.** Riché uploads the May archive but the Connections sheet shows 1,180 rows when LinkedIn UI says "1,247 connections." The export failed mid-way. He re-requests, re-uploads. Notes the issue in the next quarterly review notes.
+1. **Standard monthly export.** First Sunday of June 2026, ~15 minutes total. Riché requests the data archive (Part A), and while waiting, exports Content Analytics for `2026-01-01_2026-06-07` (Part B), uploads to `_Content Analytics/`. When the data archive email arrives, downloads + extracts + uploads to `06012026/`. Done.
+2. **First-time setup (May 2026).** Riché creates `Career > Brand > LinkedIn Archive/` and `_Content Analytics/` subfolder. Runs the May 1 data archive export → uploads to `05012026/`. Runs the Content Analytics export for `2026-01-01_2026-05-04` → uploads to `_Content Analytics/`. From this point forward, monthly cadence holds.
+3. **Quarterly review consumption (Q3 2026).** First Sunday of October 2026. The skill identifies the most-recent monthly archive (`10012026/`) and the most-recent Content Analytics file (`Content_2026-01-01_2026-10-04_RichéZamor`). Filters Shares/Comments by Date for last 90 days. Filters Content Analytics daily-impressions table by Date for last 90 days. Uses the demographics section as-is (current snapshot). Produces a complete LinkedIn picture for Q3.
 
 ## Related entries
 - `corpus/growth/playbook/admin-tracking.md` — the broader monthly-Sunday admin block
-- `corpus/growth/playbook/strategic-commenting.md` — the daily activity Riché is doing that the Comments file captures
-- `corpus/growth/channels/linkedin-cadence.md` — the cadence the Shares file verifies
-- `corpus/growth/channels/linkedin-premium-tracking.md` — supplements the archive with profile-view data
-- `corpus/growth/metrics/segment-proxies-rollup.md` — uses outbound activity as leading indicators
-- `corpus/growth/databases/quarterly-reviews-schema.md` — Quarterly Reviews DB consumes the per-quarter rollup
+- `corpus/growth/playbook/strategic-commenting.md` — the daily activity captured in Comments
+- `corpus/growth/channels/linkedin-cadence.md` — the cadence verified by Shares
+- `corpus/growth/channels/linkedin-premium-tracking.md` — supplements with profile-view data
+- `corpus/growth/metrics/segment-proxies-rollup.md` — uses outbound activity as leading indicators; uses Content Analytics demographics as actual audience composition
+- `corpus/growth/databases/quarterly-reviews-schema.md` — Quarterly Reviews DB consumes per-quarter rollup
 
 ## Anti-patterns
-- Renaming folders. Skills find archives via the `{MM01YY}` title pattern; renames break the search.
-- Skipping months thinking "I'll do two next month." The export gives full history each time, so you can recover, but the discipline cost of the missed month compounds. Plus the consumer skills look for monthly folders; they degrade gracefully on missing folders but report the gap.
-- Storing CSVs without converting to Google Sheets. Possible but increases skill-side parsing complexity. Convert once at upload time.
-- Using a different folder convention. The `LinkedIn Archive > {MM01YY}` path is hard-referenced in `rz-website-audit` and `rz-quarterly-review`. Changes require updating both skills.
-- Treating the archive as a substitute for engagement-received metrics. It's not in the data; don't synthesize fake numbers.
+- Renaming folders. Skills resolve via the `{MM01YY}` and `_Content Analytics` patterns; renames break the search.
+- Treating the data archive as delta. It's full history each time; reading multiple monthly folders for one analysis duplicates data.
+- Skipping the content analytics export because "it's tedious." Content Analytics is the ONLY source for engagement-received metrics; without it, the audit is blind to engagement rate trends.
+- Storing CSVs without converting to Google Sheets. Possible but increases skill-side parsing complexity. Convert at upload time.
+- Choosing a narrow date range for content analytics export "for tidiness." The 90-day window for quarterly review needs full coverage; a fixed-start growing-range is safer.
+- Synthesizing engagement-received numbers from the data archive alone. The data archive doesn't have engagement received; don't fabricate.
