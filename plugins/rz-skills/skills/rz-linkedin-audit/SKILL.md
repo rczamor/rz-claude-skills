@@ -1,25 +1,19 @@
 ---
 name: rz-linkedin-audit
 description: >
-  Use this skill whenever Riché invokes /rz-linkedin-audit, asks to "run
-  the monthly LinkedIn audit", "audit my LinkedIn", "do my LinkedIn
-  monthly review", or when a Cowork shortcut fires the first-Sunday-of-
-  month trigger with the body "Run the rz-linkedin-audit skill." Also
-  invoke for any request that mentions LinkedIn audit, LinkedIn analytics
-  review, monthly LinkedIn review, post performance analysis, compounder
-  analysis, late bloomer analysis, format decay analysis, ICP match
-  analysis on LinkedIn followers, or newsletter gate progress check.
-  This is the orchestrating skill that runs the full monthly audit
-  across Reach & Velocity, Audience Composition, Thesis Resonance,
-  Conversion & North Star, Competitive Benchmarking, and Voice & Brand
-  Hygiene. Reads the latest 30-day LinkedIn Creator Analytics export
-  from Drive, updates the Master Tracker spreadsheet (Posts Master,
-  Snapshots, Monthly Summary, Compounders, Late Bloomers, Format Decay
-  Curves), produces a Notion page in the Monthly LinkedIn Audits
-  database, creates up to 3 P0/P1 Linear tasks in the Brand project,
-  and pings #brand in Slack with a one-line traffic-light headline.
-  Identifies Top 5 Deep Dive candidates for the separate per-post
-  enrichment sub-workflow.
+  Use when Riché invokes /rz-linkedin-audit, asks to "run the monthly
+  LinkedIn audit", "audit my LinkedIn", "do my LinkedIn monthly review",
+  "review LinkedIn post performance", or when a Cowork shortcut fires
+  the first-Sunday-of-month trigger with body "Run the rz-linkedin-audit
+  skill." Also invoke for: LinkedIn audit, monthly LinkedIn review,
+  compounder/late-bloomer/format-decay analysis, ICP match analysis,
+  newsletter gate progress check. Runs 6 pillars (Reach & Velocity,
+  Audience Composition, Thesis Resonance, Conversion & North Star,
+  Competitive Benchmarking, Voice & Brand Hygiene) against the latest
+  30-day LinkedIn Creator Analytics export. Updates the Master Tracker
+  Sheet, writes a page to the Monthly LinkedIn Audits Notion DB, issues
+  up to 3 Linear tasks, posts a one-line headline to #brand, and surfaces
+  Top 5 Deep Dive candidates for separate enrichment.
 ---
 
 # LinkedIn Audit — Riché Zamor
