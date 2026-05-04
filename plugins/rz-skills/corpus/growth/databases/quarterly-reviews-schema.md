@@ -10,7 +10,7 @@ related: [corpus/growth/playbook/quarterly-channel-review.md, corpus/growth/play
 # Quarterly Reviews Database Schema
 
 ## What it is
-The Notion database where each quarterly review (one per quarter, run on the first Sunday of January, April, July, October) lives as a single page. Database ID `TBD — Riché creates this DB once; populate ID in this entry and in `rz-quarterly-review` SKILL.md constants`. One page per quarter, named `Q{N} {YYYY} Review`. Properties summarize the quarter; the page body holds the full assembled review per `corpus/growth/playbook/quarterly-channel-review.md`.
+The Notion database where each quarterly review (one per quarter, run on the first Sunday of January, April, July, October) lives as a single page. Database ID `f51277cdd4d94f8e83c81cd1c08f82e8`, data source ID `1dadc999-7c9b-42de-98b4-75594c10a4b5`. Lives under Brand → Growth Strategy (page ID `356ac0ea4f6580828e68f93292e3ea9d`). One page per quarter, named `Q{N} {YYYY} Review`. Properties summarize the quarter; the page body holds the full assembled review per `corpus/growth/playbook/quarterly-channel-review.md`.
 
 | Property | Type | Notes |
 |---|---|---|
