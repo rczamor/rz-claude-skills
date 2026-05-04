@@ -48,7 +48,7 @@ The default and three alternatives are encoded in `corpus/linkedin-audit/deep-di
 ## Examples
 1. **Default criterion, May 2026.** Top 5 by absolute impressions: post A (33,148), post B (9,475), post C (4,946), post D (4,826), post E (4,730). Written to Notion property + narrative. Riché reviews next day; selects A and C for enrichment, skips others.
 2. **Compounder month.** Riché overrides criterion: `top-5-by-mom-delta`. Selection returns 5 posts with strongest positive deltas. Three are 4+ months old (true late-bloomer compounders).
-3. **Format-balance investigation.** P3 fired P1 for Context Intelligence underperformance. Riché overrides to `one-per-format` to surface the best of each format and inform Deep Dive scope.
+3. **Format-balance investigation.** P3 fired P1 for Context Layers & AI underperformance. Riché overrides to `one-per-format` to surface the best of each format and inform Deep Dive scope.
 
 ## Related entries
 - `corpus/linkedin-audit/deep-dive/trigger-criteria.md` — defines the selection logic per criterion

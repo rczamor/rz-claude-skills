@@ -101,7 +101,8 @@ NOTION_BRAND_PARENT_ID      = 333ac0ea4f658086bcafcd3f53299b89
 NOTION_AUDITS_PAGE_ID       = 356ac0ea4f6580278a7ac7be039b8987       (Brand → Audits — parent of LinkedIn Audits DB)
 NOTION_LINKEDIN_AUDIT_DB_ID = 9ccff092811d479891a684c402e6da91       (Monthly LinkedIn Audits DB)
 NOTION_LINKEDIN_AUDIT_DS_ID = d5206b14-756d-422d-b54b-74d57560e321   (Monthly LinkedIn Audits data source)
-CONTENT_TOPICS_DB_ID        = 2c224f29490d44f99e7b58cb2e377086
+CONTENT_TOPICS_DB_ID        = 0fcb9c17695f4c04a72b6b03fe074f8b       (Content Topics — actual published-content tracker; multi-select Format + Domain + Content Type)
+CONTENT_TOPICS_DS_ID        = bb5c7ff7-40ac-49d6-9d1a-7bbee1e3f92e   (Content Topics data source)
 COMPETITORS_DB_ID           = c99eaa6d2e7448f0859ce6feba22a3ac
 COMPETITORS_DS_ID           = 596ee7d6-46d8-464a-adfc-489576de0052
 

@@ -16,7 +16,7 @@ The Master Tracker tab that surfaces posts still accumulating impressions month-
 Most LinkedIn posts decay fast (24-hour half-life per `corpus/growth/metrics/content-decay-analysis.md`). When a post breaks that pattern — gaining impressions weeks or months after publish — it's a compounding asset. Identifying these posts tells Riché:
 
 1. **Which formats compound.** Frameworks and Deep Dives often, Hot Takes rarely.
-2. **Which topics compound.** Context Intelligence Deep Dives that get linked to, Suzy stories cited in conversations, framework explainers that get search-surfaced.
+2. **Which topics compound.** Context Layers & AI Deep Dives that get linked to, Suzy stories cited in conversations, framework explainers that get search-surfaced.
 3. **What to amplify.** A compounding post is often worth republishing on richezamor.com or referencing in a newsletter once active.
 
 Without an explicit Compounders view, these posts get lost in the sea of TOP POSTS by raw impressions and Riché never names what's working over time.

@@ -27,7 +27,7 @@ One row per post. Primary key: Post URL.
 | Activity ID | text | Parsed from URL: `urn:li:activity:NNN` |
 | Publish Date | date | LinkedIn export |
 | Format | select | Hot Take / Signal / Deep Dive / Framework / Story (from Content Topics DB or manual tag) |
-| Domain | select | Context Intelligence / PM / Leadership / Intersection (from Content Topics DB or manual tag) |
+| Domain | select | Context Layers & AI / PM / Leadership / Intersection (from Content Topics DB or manual tag) |
 | First Snapshot Month | text | First YYYY-MM the post appeared in any export |
 | First Snapshot Impressions | number | Impressions at first appearance |
 | First Snapshot Engagements | number | Engagements at first appearance |

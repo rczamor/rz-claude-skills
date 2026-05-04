@@ -43,9 +43,9 @@ Each finding written to the buffer:
 {
   pillar: "p3",
   severity: "P1",
-  headline: "Context Intelligence engagement rate at 1.2% (target 3%; ranks 3rd of 4 domains)",
-  evidence: "Period engagement breakdown: PM 4.1%, Leadership 2.8%, Intersection 2.3%, Context Intelligence 1.2%. The Context Intelligence thesis underperforms the broader feed.",
-  action: "Draft a Context Intelligence Deep Dive that opens with a counter-claim (per voice/fatal-fifteen.md hook patterns)."
+  headline: "Context Layers & AI engagement rate at 1.2% (target 3%; ranks 3rd of 4 domains)",
+  evidence: "Period engagement breakdown: PM 4.1%, Leadership 2.8%, Intersection 2.3%, Context Layers & AI 1.2%. The Context Layers & AI thesis underperforms the broader feed.",
+  action: "Draft a Context Layers & AI Deep Dive that opens with a counter-claim (per voice/fatal-fifteen.md hook patterns)."
 }
 ```
 
@@ -71,7 +71,7 @@ Pillars are mostly independent. Two soft dependencies:
 These are quotation references, not data dependencies. P3 still runs even if P2 fired P0.
 
 ## Examples
-1. **Standard run.** P1 fires 1 P1 (cadence at 18 posts vs 22 target). P2 clean. P3 fires 1 P1 (Context Intelligence engagement underperforms). P4 fires 1 P2 (recruiter inbound steady, content-cited inbound zero). P5 informational. P6 fires 1 P2 (1 Fatal Fifteen tell in a Tuesday post). Buffer: 4 findings, 2 P1s, 2 P2s. Step 8 will issue 2 Linear tasks.
+1. **Standard run.** P1 fires 1 P1 (cadence at 18 posts vs 22 target). P2 clean. P3 fires 1 P1 (Context Layers & AI engagement underperforms). P4 fires 1 P2 (recruiter inbound steady, content-cited inbound zero). P5 informational. P6 fires 1 P2 (1 Fatal Fifteen tell in a Tuesday post). Buffer: 4 findings, 2 P1s, 2 P2s. Step 8 will issue 2 Linear tasks.
 2. **P0 in P1.** Export parse anomaly detected — TOP POSTS schema changed. P1 fires P0. Steps 5-6 still run on what data is available. Audit page goes Red. Linear task: "Update export-parsing.md to handle new TOP POSTS schema."
 3. **Heavy-finding month.** 2 P0s (P1 export issue + P3 thesis collapse). 4 P1s. Step 8 caps tasks at 3 per `MAX_MONTHLY_TASKS`. Picks the 3 worst (2 P0s + 1 highest P1). Other findings narrate but don't seed tasks.
 

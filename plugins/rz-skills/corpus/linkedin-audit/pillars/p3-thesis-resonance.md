@@ -10,7 +10,7 @@ related: [corpus/linkedin-audit/methodology/pillar-analysis.md, corpus/linkedin-
 # P3 — Thesis Resonance
 
 ## Purpose
-Measures whether the **Context Intelligence thesis** — Riché's brand moat — is the dominant performer relative to the broader feed. The Context Intelligence positioning compounds only if it's seen, engaged with, and reshared at meaningful rates. P3 catches when CI underperforms (signaling thesis-market fit problems) or when the format mix has drifted away from the 50/30/20 target (CI/PM/Leadership).
+Measures whether the **Context Layers & AI thesis** — Riché's brand moat — is the dominant performer relative to the broader feed. The Context Layers & AI positioning compounds only if it's seen, engaged with, and reshared at meaningful rates. P3 catches when CI underperforms (signaling thesis-market fit problems) or when the format mix has drifted away from the 50/30/20 target (CI/PM/Leadership).
 
 P3 is the most strategically loaded pillar — it's the one most likely to fire actionable findings about *what to write next*.
 
@@ -32,7 +32,7 @@ P3 is the most strategically loaded pillar — it's the one most likely to fire 
 | Top performing post by domain | URL with highest impressions per domain | (qualitative — surfaces what's working) |
 
 Domain definitions:
-- **Context Intelligence (CI):** posts about context architecture, RAG, agent memory, retrieval, evals, the Five-Step Loop, Active Generation
+- **Context Layers & AI (CI):** posts about context architecture, RAG, agent memory, retrieval, evals, the Five-Step Loop, Active Generation
 - **PM:** posts about product management craft (specs, prioritization, frameworks, AI-PM career)
 - **Leadership:** posts about teams, founders, decision-making, hiring, building (often crossover)
 - **Intersection:** explicit cross-domain posts (e.g., "AI PM career") that don't sit cleanly in one bucket
@@ -41,9 +41,9 @@ Domain definitions:
 
 | Condition | Severity | Headline pattern |
 |---|---|---|
-| CI engagement rate is bottom-quartile across domains | **P0** | "Context Intelligence engagement bottom-quartile ({N}%). Thesis-market fit signal." |
+| CI engagement rate is bottom-quartile across domains | **P0** | "Context Layers & AI engagement bottom-quartile ({N}%). Thesis-market fit signal." |
 | Domain mix drifts ≥10pp from target on any domain | **P0** | "Domain mix drift: {domain} at {actual}% vs {target}% target." |
-| CI engagement rate < 1% | **P1** | "Context Intelligence engagement at {N}% — below action threshold." |
+| CI engagement rate < 1% | **P1** | "Context Layers & AI engagement at {N}% — below action threshold." |
 | Domain mix drifts 5-10pp from target | **P1** | "Domain mix drift: {domain} at {actual}% vs {target}% target." |
 | ≥5 unclassified posts in period | **P1** | "{N} period posts unclassified in Content Topics DB — tag before next audit." |
 | Format mix heavily skewed (one format >60% of posts) | **P1** | "Format skew: {format} is {pct}% of posts. Mix imbalance." |
@@ -71,7 +71,7 @@ Action:
 
 ## Action recommendations
 
-- **CI engagement bottom-quartile (P0):** "Draft a Context Intelligence Deep Dive that opens with a counter-claim (per `corpus/voice/` hook patterns). Reference the top-performing peer creators in the Context Intelligence space (per `corpus/linkedin-audit/pillars/p5-competitive-benchmarking.md`)."
+- **CI engagement bottom-quartile (P0):** "Draft a Context Layers & AI Deep Dive that opens with a counter-claim (per `corpus/voice/` hook patterns). Reference the top-performing peer creators in the Context Layers & AI space (per `corpus/linkedin-audit/pillars/p5-competitive-benchmarking.md`)."
 - **Domain mix drift (P0/P1):** "Rebalance next batch toward {underweighted domain}; cut {overweighted domain} by {N} posts. Reach `DOMAIN_BALANCE_TARGET` over 4 weeks."
 - **CI <1% engagement (P1):** "Investigate via P5 — what are CI peers doing differently? Likely hook quality or topic specificity issues."
 - **Unclassified posts (P1):** "Tag {N} posts in Content Topics DB before next audit. Without classification, P3 narratives miss the actual mix."
@@ -80,7 +80,7 @@ Action:
 ## Examples
 
 1. **On-target month.** CI 3.4%, PM 4.1%, Leadership 2.8%, Intersection 2.3%. Mix: CI 52%, PM 28%, Leadership 18%, Intersection 2%. CI is performing; mix on target. No finding fired. Narrative notes top CI post for celebration.
-2. **CI underperforming (P1).** CI 1.2% (rank 4 of 4). PM 4.1%, Leadership 2.8%, Intersection 2.3%. P1 fires: "Context Intelligence engagement at 1.2% — below action threshold." Action: draft a CI Deep Dive with a counter-claim hook.
+2. **CI underperforming (P1).** CI 1.2% (rank 4 of 4). PM 4.1%, Leadership 2.8%, Intersection 2.3%. P1 fires: "Context Layers & AI engagement at 1.2% — below action threshold." Action: draft a CI Deep Dive with a counter-claim hook.
 3. **Domain mix drift + CI collapse (P0 + P0).** CI engagement 0.4% (bottom-quartile P0). Mix: CI 28% (vs 50% target — 22pp drift, P0). Compounding signals: thesis-market fit problem. 2 P0s; first task issued is the CI Deep Dive; second is "Pause non-CI publishing for 2 weeks to rebalance."
 4. **Unclassified backlog (P1).** 8 period posts not tagged in Content Topics DB. P1 fires; without tagging, the % computations are degraded estimates.
 

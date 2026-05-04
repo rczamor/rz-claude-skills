@@ -91,7 +91,7 @@ Published {publish date}, {N} days old at deep-dive time.
 
 **Hook:** {hook type} — "{first 60 chars of post}"
 **Thesis:** {1-sentence summary}
-**Domain:** {Context Intelligence / PM / Leadership / Intersection}
+**Domain:** {Context Layers & AI / PM / Leadership / Intersection}
 **Format:** {Hot Take / Signal / Deep Dive / Framework / Story}
 
 **Engagement breakdown:**

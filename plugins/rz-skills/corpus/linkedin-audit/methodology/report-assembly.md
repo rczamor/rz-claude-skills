@@ -98,7 +98,7 @@ status = "🔴 Red"     if any P0 finding fires OR ≥2 newsletter gates regress
 
 The 1-line verdict accompanying the emoji synthesizes the dominant signal:
 - Green: "Cadence held, engagement rate at {N%}, on track for newsletter gate 2."
-- Yellow: "Engagement at {N%} — Context Intelligence underperforming target. {N} task(s) issued."
+- Yellow: "Engagement at {N%} — Context Layers & AI underperforming target. {N} task(s) issued."
 - Red: "{primary P0 description}. {N} tasks issued including {top task title}."
 
 Avoid hedge phrases ("things are looking…"). State the verdict.
@@ -126,7 +126,7 @@ Set the following from the assembled body:
 
 ## Examples
 1. **Green month.** All 6 pillars P2 or better; no gate regression; engagement rate at 2.1% (up 0.3pp). Headline: "🟢 Cadence held at 23 posts; engagement rate at 2.1%, trending toward gate 2." Body cleanly populated; 0 Linear tasks.
-2. **Yellow month.** P3 fires P1 (CI engagement at 1.2%); P6 fires P1 (2 Fatal Fifteen tells across 4-post sample). Headline: "🟡 Engagement at 1.4% — Context Intelligence underperforming. 2 tasks issued." 2 Linear tasks; gates unchanged.
+2. **Yellow month.** P3 fires P1 (CI engagement at 1.2%); P6 fires P1 (2 Fatal Fifteen tells across 4-post sample). Headline: "🟡 Engagement at 1.4% — Context Layers & AI underperforming. 2 tasks issued." 2 Linear tasks; gates unchanged.
 3. **Red month.** P1 fires P0 (export schema changed; partial parse). Headline: "🔴 Export parse failed mid-DEMOGRAPHICS — re-export required. P1 task issued; remaining pillars degraded." 1 Linear task; gates show "data unavailable."
 
 ## Related entries

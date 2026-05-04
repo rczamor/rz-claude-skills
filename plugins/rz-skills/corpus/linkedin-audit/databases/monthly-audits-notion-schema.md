@@ -29,7 +29,7 @@ The Notion database that holds one page per monthly audit. Database ID `9ccff092
 | Total Followers EOP | number | At period end |
 | ICP Match Pct | number | Senior + Director + CXO + Owner combined seniority share |
 | Top Format | select (Hot Take / Signal / Deep Dive / Framework / Story) | Best-performing format by impressions |
-| Top Domain | select (Context Intelligence / PM / Leadership / Intersection) | Best-performing domain by impressions |
+| Top Domain | select (Context Layers & AI / PM / Leadership / Intersection) | Best-performing domain by impressions |
 | Domain Mix Drift | select (On-target / CI under / PM over / Leadership over / Other) | Drift vs the 50/30/20 target |
 | Gate 1 Impressions | checkbox | 5,000+ avg sustained 8 weeks |
 | Gate 2 Engagement | checkbox | 3%+ sustained 8 weeks |
