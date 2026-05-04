@@ -170,5 +170,6 @@ The strategic keyword targets (`channels/website-seo-targets.md`) define WHAT to
 **Downstream (hands off to these for execution):**
 - `rz-content-optimize`. Uses `corpus/growth/seo/` for per-article SEO and AIO keyword choice.
 - `rz-website-audit`. Weekly tactical skill. Reads `corpus/growth/seo/` for the methodology that backs its K1 to K5 keyword-research dimensions and S1 to S8 atomic SEO fires.
-- `rz-quarterly-review`. Quarterly tactical skill. Reads the entire `corpus/growth/` corpus to run the 60-min channel review, gate-check deferred candidates, and set 1-3 next-quarter priorities into the Quarterly Reviews Notion DB. Output schema lives at `corpus/growth/databases/quarterly-reviews-schema.md`.
+- `rz-linkedin-audit`. Monthly tactical skill. Reads `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` for the upstream export workflow, plus `corpus/growth/segments/`, `corpus/growth/channels/linkedin-cadence.md`, `corpus/growth/creator-dynamics/authentic-voice-as-moat.md` for ICP/cadence/voice canon. Produces structured monthly audit pages that `rz-quarterly-review` then consumes for trend context.
+- `rz-quarterly-review`. Quarterly tactical skill. Reads the entire `corpus/growth/` corpus to run the 80-100 min channel review + strategy review, gate-check deferred candidates, and set 1-3 next-quarter priorities into the Quarterly Reviews Notion DB. Output schema lives at `corpus/growth/databases/quarterly-reviews-schema.md`.
 - `rz-graphic-design`. Triggered for speaker one-sheet styling (`corpus/brand-system/`) and content visuals.
