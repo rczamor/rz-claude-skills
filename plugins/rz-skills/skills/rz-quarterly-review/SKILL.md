@@ -1,7 +1,7 @@
 ---
 name: rz-quarterly-review
 description: >
-  Use when invoked via /rz-quarterly-review, when Riché asks to "run the quarterly review", "set Q[N] priorities", "do quarterly planning", "review the quarter", or on the first Sunday of January, April, July, or October. The structured 60-90 minute end-of-quarter process: pull metrics, re-score every active channel against the 5-criteria framework, gate-check deferred candidates (newsletter, YouTube, podcast hosting, etc.), pick 1-3 priorities for the next quarter using the priorities template, write the full review to the Quarterly Reviews Notion DB, and seed Linear tasks for the first concrete action of each priority. Tactical companion to the role-based `rz-growth-marketing`; reads strategic frames from `corpus/growth/` and produces a quarter-specific bet.
+  Use when invoked via /rz-quarterly-review, when Riché asks to "run the quarterly review", "set Q[N] priorities", "do quarterly planning", "review the quarter", "review my strategies", "check strategy alignment", "are my strategies still aligned", or on the first Sunday of January, April, July, or October. The structured 80-100 minute end-of-quarter process: pull metrics, re-score every active channel against the 5-criteria framework, gate-check deferred candidates (newsletter, YouTube, podcast hosting, etc.), review the 5 strategy documents (Product, Growth, Content, Channel, Audience Development) on 4 axes (effectiveness / alignment / drift / cross-doc misalignment), pick 1-3 priorities for the next quarter using the priorities template, write the full review to the Quarterly Reviews Notion DB, and seed Linear tasks for the first concrete action of each priority. Tactical companion to the role-based `rz-growth-marketing`; reads strategic frames from `corpus/growth/` and produces a quarter-specific bet.
 ---
 
 # Quarterly Review — Riché Zamor
@@ -37,10 +37,15 @@ LINEAR_TEAM_ID                 = 72132418-b477-4450-a30a-77391d5cfc47   (Riche Z
 LINEAR_PROJECT_ID              = 085484ef-b523-4142-bce2-7f9a23a05fa1   (Brand project)
 LINEAR_ASSIGNEE_ID             = 646e8aef-65f5-47de-ba40-4f2ad99bbc15   (Riché)
 NOTION_BRAND_PARENT_ID         = 333ac0ea4f658086bcafcd3f53299b89       (Brand)
-NOTION_GROWTH_STRATEGY_PAGE_ID = 356ac0ea4f6580828e68f93292e3ea9d       (Brand → Growth Strategy)
+NOTION_GROWTH_STRATEGY_PAGE_ID = 356ac0ea4f6580828e68f93292e3ea9d       (Brand → Growth Strategy — also holds Quarterly Reviews DB)
 NOTION_QUARTERLY_REVIEW_DB_ID  = f51277cdd4d94f8e83c81cd1c08f82e8       (Quarterly Reviews DB)
 NOTION_QUARTERLY_REVIEW_DS_ID  = 1dadc999-7c9b-42de-98b4-75594c10a4b5   (Quarterly Reviews data source)
 NOTION_AUDIT_DS_ID             = 889093b4-fb7d-4db5-a871-19e7bbe159fd   (Weekly Audits — read for trend context)
+NOTION_PRODUCT_STRATEGY_ID     = 333ac0ea4f658165b821ceecca624346       (Strategy doc 1/5)
+NOTION_GROWTH_STRATEGY_DOC_ID  = 356ac0ea4f6580828e68f93292e3ea9d       (Strategy doc 2/5 — same as GROWTH_STRATEGY_PAGE_ID)
+NOTION_CONTENT_STRATEGY_ID     = 333ac0ea4f6581518651d730d706e017       (Strategy doc 3/5)
+NOTION_CHANNEL_STRATEGY_ID     = 331ac0ea4f6581feaf8fe37afebaeaf5       (Strategy doc 4/5 — "Content Channel Strategy")
+NOTION_AUDIENCE_DEV_ID         = 33aac0ea4f65814f8b22f45410901cf6       (Strategy doc 5/5 — Audience Development Strategy)
 TARGET_KEYWORDS_DB_ID          = f5521fe72dec42c1808555fbac2d0d62
 COMPETITORS_DB_ID              = c99eaa6d2e7448f0859ce6feba22a3ac
 CONTENT_STRATEGY_PAGE_ID       = 333ac0ea4f6581518651d730d706e017
@@ -61,6 +66,7 @@ Read these in order before running. The corpus carries the strategic frames; thi
 - `corpus/growth/playbook/cutting-criteria.md` — retirement decision rules
 - `corpus/growth/playbook/budget-allocation.md` — the 5.25 hr ceiling
 - `corpus/growth/playbook/linkedin-monthly-dump-workflow.md` — the LinkedIn data archive convention used by Step 2e
+- `corpus/growth/playbook/strategy-review-protocol.md` — the 4-axis strategy review used by Step 5
 
 **Strategic frames (always)**
 - `corpus/growth/strategy/channel-evaluation-framework.md` — the 5-criteria scoring
@@ -231,61 +237,99 @@ Per `quarterly-channel-review.md` Blocks 3 + 4 combined:
 - Deferred candidates: gate-check per `corpus/growth/playbook/channel-gates-for-adding.md`. Note progress per gated channel; identify any that are now launchable.
 - Cut evaluation: any active channel meeting `corpus/growth/playbook/cutting-criteria.md`'s 3-criteria rule? If yes, mark as cut candidate for Block 5.
 
-### Step 5 — Decisions + priority setting (15 min)
+### Step 5 — Strategy review (15-20 min)
+Per `corpus/growth/playbook/strategy-review-protocol.md`. Review the 5 strategy documents in Notion against the data + scoring + stage decisions from Steps 2-4.
+
+**Read each of the 5 strategy docs via Notion MCP `notion-fetch`:**
+- Product Strategy: `NOTION_PRODUCT_STRATEGY_ID` (`333ac0ea4f658165b821ceecca624346`)
+- Growth Strategy: `NOTION_GROWTH_STRATEGY_DOC_ID` (`356ac0ea4f6580828e68f93292e3ea9d`)
+- Content Strategy: `NOTION_CONTENT_STRATEGY_ID` (`333ac0ea4f6581518651d730d706e017`)
+- Channel Strategy: `NOTION_CHANNEL_STRATEGY_ID` (`331ac0ea4f6581feaf8fe37afebaeaf5`)
+- Audience Development: `NOTION_AUDIENCE_DEV_ID` (`33aac0ea4f65814f8b22f45410901cf6`)
+
+For each doc, capture: stated targets, current focus, named segments/channels/priorities, last modified date.
+
+**Score each doc on 4 axes** (per `strategy-review-protocol.md`; budget 4 min/doc × 5 = 20 min cap):
+- **Effectiveness** vs Step 2 outcome data (channel ROI, segment proxies, audience composition)
+- **Alignment** vs prior-quarter priorities + current channel set
+- **Drift** vs last-modified date + decisions taken in the prior quarter
+- **Cross-doc misalignment** vs the other 4 docs (look for contradicting segment definitions, conflicting channel decisions, voice-tone mismatches, target-account contradictions)
+
+Each axis scored 🟢 / 🟡 / 🔴 with explicit evidence cited.
+
+**Aggregate to Strategy Drift headline** per the rules in `strategy-review-protocol.md`:
+- 🟢 Aligned: every doc 🟢 OR exactly one 🟡 across the matrix
+- 🟡 Minor drift: 2-3 🟡s, zero 🔴s
+- 🔴 Major misalignment: any 🔴 OR ≥4 🟡s
+
+**Surface strategy-update decisions:**
+- 🔴 findings → strategy-update task becomes a candidate quarterly priority for Step 6 (counts against MAX_PRIORITIES = 3)
+- 🟡 findings → strategy-update task becomes a P2 backlog item (does NOT count against priority cap; surfaces in the Strategy Review section but does not seed a Linear task)
+- 🟢 findings → no action
+
+**Output:** a "Strategy Review" section for the Quarterly Review page body, structured per `strategy-review-protocol.md`. Includes per-doc 4-axis scores with evidence, the aggregate Strategy Drift headline, and the list of recommended strategy updates with classification (priority vs P2).
+
+The Strategy Drift headline gets stored as the `Strategy Drift` property in the Quarterly Reviews DB (separate from the overall `Headline` property — strategy alignment is its own dimension, queryable across quarters).
+
+### Step 6 — Decisions + priority setting (15 min)
 Per `quarterly-channel-review.md` Block 5, extended with explicit priority setting:
 - **Active channel decisions:** GROW / MAINTAIN / REDUCE / CUT per channel
 - **Candidate decisions:** LAUNCH next quarter (with funded cut per `no-channel-sprawl.md`) or DEFER
 - **Time allocation lock:** total ≤5.25 hr/week; per-channel breakdown; ~15 min/week buffer
-- **Pick 1-3 priorities for next quarter** using `corpus/growth/playbook/quarterly-priorities-template.md`. Each priority must specify: imperative phrase, why-this-quarter, concrete target, strategic frame served, channels involved, time delta, reversal condition, quarterly review check.
+- **Pick 1-3 priorities for next quarter** using `corpus/growth/playbook/quarterly-priorities-template.md`. Strategy-update priorities from Step 5 (🔴 findings) are eligible for inclusion. Each priority must specify: imperative phrase, why-this-quarter, concrete target, strategic frame served, channels involved, time delta, reversal condition, quarterly review check.
 - **Compute Headline traffic light** per the rules in `corpus/growth/databases/quarterly-reviews-schema.md`.
 
-### Step 6 — Assemble review (10 min)
+### Step 7 — Assemble review (10 min)
 Build the full quarterly review page in memory before any Notion write. Sections per `corpus/growth/databases/quarterly-reviews-schema.md`:
 1. Executive summary (1 paragraph)
 2. Data pull summary (per-channel ROI table)
 3. Active channel scoring (with deltas)
 4. Stage transitions
 5. Deferred candidate gate progress
-6. Decisions
-7. Quarterly priorities (1-3 detailed)
-8. Time allocation lock
-9. Linear tasks (filled in next step)
+6. **Strategy review** (per Step 5 output: per-doc 4-axis scores + Strategy Drift headline + recommended updates)
+7. Decisions
+8. Quarterly priorities (1-3 detailed)
+9. Time allocation lock
+10. Linear tasks (filled in next step)
 
 Do not write to Notion yet.
 
-### Step 7 — Issue Linear seed tasks (10 min)
+### Step 8 — Issue Linear seed tasks (10 min)
 For each priority (max 3 tasks total): create a Linear issue in `LINEAR_PROJECT_ID`, assigned to `LINEAR_ASSIGNEE_ID`, with the first concrete action that advances the priority. Examples:
 - Newsletter-launch priority → Linear task: "Set up Beehiiv account and import holding list" with due date in week 1 of the quarter
 - GitHub-experiment priority → Linear task: "Publish first companion repo for the most-recent /thinking article" with due date in week 1
 - Cadence-rebuild priority → Linear task: "Re-establish Sunday batch session and pre-write 2 weeks ahead" with due date this Sunday
+- Strategy-update priority (from Step 5 🔴) → Linear task: "Reconcile Audience Development with Content Strategy on primary segment" with the specific edits to make
 
 Use the create-then-update pattern (create with title only, then update with full body) — direct create-with-full-payload is unreliable. Capture the TRZ-### IDs.
 
-### Step 8 — Write Notion page (5 min)
-Single create to `NOTION_QUARTERLY_REVIEW_DS_ID`. Page name `Q{N} {YYYY} Review`. Properties per `corpus/growth/databases/quarterly-reviews-schema.md`. Body = the assembly from Step 6 with Linear TRZ-### IDs filled in. Set Headline last, after task issuance is confirmed.
+### Step 9 — Write Notion page (5 min)
+Single create to `NOTION_QUARTERLY_REVIEW_DS_ID`. Page name `Q{N} {YYYY} Review`. Properties per `corpus/growth/databases/quarterly-reviews-schema.md` (including the `Strategy Drift` property from Step 5). Body = the assembly from Step 7 with Linear TRZ-### IDs filled in. Set Headline last, after task issuance is confirmed.
 
-### Step 9 — Slack notification (2 min)
+### Step 10 — Slack notification (2 min)
 One-line post to `SLACK_CHANNEL` (`#brand`):
 ```
-{traffic-light emoji} Q{N} {YYYY} Review complete — {N} priorities set ({TRZ-### IDs}). {Notion page link}
+{traffic-light emoji} Q{N} {YYYY} Review complete — {N} priorities set ({TRZ-### IDs}). Strategy: {strategy drift emoji}. {Notion page link}
 ```
-Same brevity discipline as the weekly audit Slack: index card + link, never the full body.
+Same brevity discipline as the weekly audit Slack: index card + link, never the full body. Includes the Strategy Drift headline so the Slack reader sees both signals.
 
-### Step 10 — Update growth-marketing reference (1 min)
+### Step 11 — Update growth-marketing reference (1 min)
 The growth-marketing skill should know what the current quarter's priorities are. Append a one-line note to a designated location (option A: a Notion sub-page; option B: a `current-priorities.md` file outside corpus that gets refreshed each quarter; option C: simply the most recent Quarterly Review page). The skill defaults to option C; the priorities are always queryable as the most-recent row in the DB.
 
 ## Output summary
 Every successful run produces:
-- One page in the Quarterly Reviews Notion DB (with Headline traffic light, all properties populated, body sections complete)
+- One page in the Quarterly Reviews Notion DB (with Headline traffic light, Strategy Drift headline, all properties populated, body sections complete)
 - 1-3 priorities written into the page body, structured per the priorities template
+- A Strategy Review section covering all 5 strategy docs on 4 axes
 - 1-3 Linear seed tasks (TRZ-### IDs) — one per priority — with due dates in the first week of the new quarter
-- One `#brand` Slack post (one line + Notion link)
+- One `#brand` Slack post (one line + both headlines + Notion link)
 
 ## What this skill does NOT do
 
 - It does not own strategic frames. The strategy lives in `corpus/growth/strategy/` and `corpus/growth/creator-dynamics/`. This skill applies them; it does not redefine them.
 - It does not modify channels mid-quarter. Decisions made here are next-quarter; in-quarter changes happen via diagnostics or weekly cadence work.
 - It does not substitute for the weekly website audit. The weekly audit covers richezamor.com health; this quarterly review covers the broader portfolio across all channels.
+- It does not edit the 5 strategy docs in Notion. The Strategy Review (Step 5) surfaces drift and misalignment as findings; Riché updates the docs himself (or the strategy-update task seeded for the next quarter handles it).
 - It does not auto-execute priorities. It seeds the first task for each priority; the work itself happens via cadence + targeted skill invocations across the quarter.
 - It does not retro-edit prior review pages. Each review lives in its own dated page; the time series is append-only.
 - It does not adjust the 5.25 hr/week budget upward to accommodate more priorities. The budget is the binding constraint; if the priorities don't fit, they get cut to ≤3 that do fit.
@@ -314,3 +358,6 @@ Every successful run produces:
 | Writing this run's priorities INTO the corpus | Corpus is evergreen; priorities are dated | Priorities live in the Notion DB; the corpus has the template only |
 | Skipping the prior-quarter review of priorities | The done/extended/dropped call is what makes the cycle work | Block 1 of every review starts with "what happened to last quarter's priorities" |
 | Treating Yellow as a problem | Yellow is the most common state; honest assessment | Headline is multi-criteria; mixed quarters get Yellow honestly |
+| Skipping the strategy review because "the docs probably haven't changed" | Misses silent drift and cross-doc misalignment that compounds over quarters | Step 5 is non-skippable; even a 5-min scan surfaces the obvious things |
+| Updating one strategy doc based on findings without checking the other 4 | Fixes one drift, creates new cross-doc misalignment | Strategy updates are batched: one quarter's review proposes the change, next quarter's verifies cross-doc fit |
+| Letting strategy-update tasks pile up as P2 backlog forever | The drift compounds; eventually a priority is forced | Two quarters of accumulated 🟡 strategy findings on the same doc → escalate to a priority |

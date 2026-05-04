@@ -1,6 +1,6 @@
 # corpus/growth/index.yaml
 # Flat index of every entry in this domain for skill-driven lookup.
-# Entry count: 112 across 13 sub-domain(s).
+# Entry count: 113 across 13 sub-domain(s).
 # Schema per entry: filename (relative to corpus/{domain}/), sub_domain, entry_type, one_liner.
 
 entries:
@@ -278,7 +278,7 @@ entries:
     one_liner: "The consolidated table of leading-indicator proxies across all four audience segments — 16 proxies total, 4 per segment."
 
   # ============================================================
-  # playbook (13 entries)
+  # playbook (14 entries)
   # ============================================================
   - filename: playbook/admin-tracking.md
     sub_domain: playbook
@@ -324,6 +324,10 @@ entries:
     sub_domain: playbook
     entry_type: pattern
     one_liner: "The single highest-ROI activity in the entire growth system."
+  - filename: playbook/strategy-review-protocol.md
+    sub_domain: playbook
+    entry_type: pattern
+    one_liner: "4-axis quarterly review of the 5 strategy docs (Product/Growth/Content/Channel/Audience): effectiveness, alignment, drift, cross-doc misalignment."
   - filename: playbook/time-budget-discipline.md
     sub_domain: playbook
     entry_type: rule

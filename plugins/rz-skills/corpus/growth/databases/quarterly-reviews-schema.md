@@ -19,6 +19,7 @@ The Notion database where each quarterly review (one per quarter, run on the fir
 | Year | number | 2026, 2027, etc. |
 | Date Conducted | date | The first Sunday the review ran |
 | Headline | select | 🟢 Green (on track) / 🟡 Yellow (mixed) / 🔴 Red (off track) |
+| Strategy Drift | select | 🟢 Aligned / 🟡 Minor drift / 🔴 Major misalignment — output of the Step 5 strategy review |
 | Active Channels | number | Total active channels at end-of-quarter |
 | Channels Added | number | New channels launched this quarter |
 | Channels Cut | number | Channels retired this quarter |
@@ -28,6 +29,7 @@ The Notion database where each quarterly review (one per quarter, run on the fir
 | LinkedIn Followers | number | End-of-quarter follower count |
 | Newsletter Subs | number | If newsletter active; null otherwise |
 | Number of Priorities Set | number | Should be 1-3 |
+| Strategy Updates Recommended | number | Count of strategy-update findings from Step 5 (priority-eligible + P2 backlog) |
 | Priorities Summary | rich_text | One-line per priority (max 3) |
 | Linear Tasks Issued | rich_text | TRZ-### links for priority seed tasks |
 | Notes | rich_text | Open-ended observations, lessons, anomalies |
@@ -38,10 +40,11 @@ The page body, when assembled, contains:
 3. Active channel scoring (with deltas vs prior quarter)
 4. Stage transitions (with date and rationale per channel)
 5. Deferred candidate gate progress (per gated channel)
-6. Decisions: keep/grow/reduce/cut active; launch/defer candidates
-7. Quarterly priorities (1-3 detailed entries per `quarterly-priorities-template.md`)
-8. Time allocation lock (per-channel breakdown summing to ≤5.25)
-9. Linear tasks issued (with TRZ-### IDs and due dates)
+6. **Strategy review** (per-doc 4-axis scores + Strategy Drift headline + recommended updates per `corpus/growth/playbook/strategy-review-protocol.md`)
+7. Decisions: keep/grow/reduce/cut active; launch/defer candidates
+8. Quarterly priorities (1-3 detailed entries per `quarterly-priorities-template.md`)
+9. Time allocation lock (per-channel breakdown summing to ≤5.25)
+10. Linear tasks issued (with TRZ-### IDs and due dates)
 
 ## Why it matters
 Quarterly reviews are time-series data at a 4x/year cadence — too sparse for the weekly Audits DB pattern but critical for trend recognition over 4-12 quarters. Without a structured DB, the review either lives in scattered Notion pages (no trend queries possible) or doesn't get written down at all (the review happens but the institutional memory evaporates).
@@ -60,6 +63,11 @@ The Priorities Summary property is critical: it lets future skills (and Riché) 
 - 🟢 Green: cadence held all quarter + ≥1 priority moved meaningfully forward + budget within 5.25
 - 🟡 Yellow: cadence broken in 1-2 weeks OR priority progress mixed OR owned-channel % below 30
 - 🔴 Red: cadence broken 3+ weeks OR no priority progress OR budget exceeded sustainably
+
+**Strategy Drift computation** (separate from Headline; per `corpus/growth/playbook/strategy-review-protocol.md`):
+- 🟢 Aligned: every strategy doc 🟢 across all 4 axes OR exactly one doc has one 🟡 and zero 🔴
+- 🟡 Minor drift: 2-3 🟡s across the doc-axis matrix, zero 🔴s
+- 🔴 Major misalignment: any 🔴 on any axis OR ≥4 🟡s across docs
 
 **Property population:**
 - `Active Channels` / `Channels Added` / `Channels Cut`: from Block 5 decisions
