@@ -21,7 +21,7 @@ Bootstrap is the only step that's allowed to refuse to run. Once data parsing st
 - Notion (`notion-fetch` on `NOTION_LINKEDIN_AUDIT_DB_ID`)
 - Linear (`list_teams` filtered to `LINEAR_TEAM_ID`)
 - Slack (search `#brand` for any post)
-- Google Drive (`search_files` rooted at `Career > Brand > Linkedin Archive > _Content Analytics`)
+- Google Drive (`search_files` rooted at `Brand > LinkedIn Archive > _Content Analytics`)
 
 If any fails, halt with: `Bootstrap failed: {connector} unreachable. {next-action}.`
 
@@ -62,7 +62,7 @@ If any fails, halt with: `Bootstrap failed: {connector} unreachable. {next-actio
 ## Examples
 1. **Standard run.** First Sunday of June 2026. Bootstrap finds `Content_2026-05-05_2026-06-04_RichéZamor` as latest, `Content_2026-04-04_2026-05-04_RichéZamor` as baseline. All connectors reachable. Master Tracker has 47 rows in Posts Master. Buffer initialized. Proceeds to Step 2.
 2. **First-run.** First audit ever. Only `Content_2026-04-04_2026-05-04_RichéZamor` exists. No baseline. Bootstrap proceeds with `baseline = none`; Step 3 will populate Posts Master from scratch.
-3. **Failed run (export missing).** Riché forgot to drop the June export. Bootstrap halts: `Bootstrap failed: no Content_* file with end-date in last 7 days at Career > Brand > Linkedin Archive > _Content Analytics > export/. Re-run after dropping the export.` Riché drops the export, re-runs, succeeds.
+3. **Failed run (export missing).** Riché forgot to drop the June export. Bootstrap halts: `Bootstrap failed: no Content_* file with end-date in last 7 days at Brand > LinkedIn Archive > _Content Analytics > export/. Re-run after dropping the export.` Riché drops the export, re-runs, succeeds.
 
 ## Related entries
 - `corpus/linkedin-audit/methodology/export-parsing.md` — Step 2, consumes the export located here

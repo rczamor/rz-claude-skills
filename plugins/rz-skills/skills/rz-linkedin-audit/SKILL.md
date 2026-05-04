@@ -89,9 +89,9 @@ DOMAIN_BALANCE_TARGET       = 50% Context Intelligence / 30% PM / 20% Leadership
 ICP_SENIORITY_FILTER        = Senior + Director + CXO + Owner
 VOICE_DRIFT_SAMPLE_SIZE     = 4
 
-DRIVE_EXPORT_FOLDER_PATH    = Career > Brand > Linkedin Archive > _Content Analytics > export
-DRIVE_TRACKER_FILE_PATH     = Career > Brand > Linkedin Archive > _Content Analytics > _LinkedIn_Post_Performance_Master.xlsx
-MASTER_TRACKER_FILE_ID      = TBD  (Riché creates the Sheet manually per master-tracker-sheet-schema.md; populate this constant after creation)
+DRIVE_EXPORT_FOLDER_PATH    = Brand > Linkedin Archive > _Content Analytics
+DRIVE_TRACKER_FILE_PATH     = Brand > Linkedin Archive > _Content Analytics > _LinkedIn_Post_Performance_Master
+MASTER_TRACKER_FILE_ID      = 17DPE9FNx3gOAJNgbaMNUPYMteKRwv59XDZyZEcNw2G4
 
 LINEAR_TEAM_ID              = 72132418-b477-4450-a30a-77391d5cfc47
 LINEAR_PROJECT_ID           = 085484ef-b523-4142-bce2-7f9a23a05fa1

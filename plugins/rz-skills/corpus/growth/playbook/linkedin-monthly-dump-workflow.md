@@ -28,7 +28,7 @@ Without this monthly cadence, the audit and quarterly review are blind to Linked
 
 ## Where the exports live
 
-**Path:** `Career > Brand > LinkedIn Archive/`
+**Path:** `Brand > LinkedIn Archive/`
 
 Within that folder:
 - **Monthly data archives:** subfolders named `{MM01YY}` (e.g., `05012026`, `06012026`). Contain the ~50 CSV files from "Get a copy of your data" plus sub-folders for Articles, Jobs, Verifications, Services Marketplace.
@@ -54,7 +54,7 @@ The folder structure and naming convention are LOCKED. Skills that consume this 
 4. **Extract locally** (1 min). Contains ~50 CSVs plus folders for Articles, Jobs, Verifications, Services Marketplace.
 
 5. **Upload to Google Drive** (5 min)
-   - Navigate to `Career > Brand > LinkedIn Archive/`
+   - Navigate to `Brand > LinkedIn Archive/`
    - Create a new folder named `{MM01YY}` (e.g., `05012026` for May 2026)
    - Upload all extracted files. Sub-folders preserved.
    - Convert CSVs to Google Sheets via right-click → Open with → Google Sheets → Save back. (Skills consume Google Sheets format.)
@@ -75,7 +75,7 @@ The folder structure and naming convention are LOCKED. Skills that consume this 
    - File downloads as something like `Content_2026-01-01_2026-05-04_RichéZamor.xlsx`.
 
 3. **Upload to Google Drive** (1 min)
-   - Navigate to `Career > Brand > LinkedIn Archive > _Content Analytics/`
+   - Navigate to `Brand > LinkedIn Archive > _Content Analytics/`
    - Upload the file. Convert to Google Sheets.
 
 4. **Verify** (1 min)
@@ -151,7 +151,7 @@ When patterns emerge in voice or content drift, self-improve reads the Shares Sh
 
 ## Examples
 1. **Standard monthly export.** First Sunday of June 2026, ~15 minutes total. Riché requests the data archive (Part A), and while waiting, exports Content Analytics for `2026-01-01_2026-06-07` (Part B), uploads to `_Content Analytics/`. When the data archive email arrives, downloads + extracts + uploads to `06012026/`. Done.
-2. **First-time setup (May 2026).** Riché creates `Career > Brand > LinkedIn Archive/` and `_Content Analytics/` subfolder. Runs the May 1 data archive export → uploads to `05012026/`. Runs the Content Analytics export for `2026-01-01_2026-05-04` → uploads to `_Content Analytics/`. From this point forward, monthly cadence holds.
+2. **First-time setup (May 2026).** Riché creates `Brand > LinkedIn Archive/` and `_Content Analytics/` subfolder. Runs the May 1 data archive export → uploads to `05012026/`. Runs the Content Analytics export for `2026-01-01_2026-05-04` → uploads to `_Content Analytics/`. From this point forward, monthly cadence holds.
 3. **Quarterly review consumption (Q3 2026).** First Sunday of October 2026. The skill identifies the most-recent monthly archive (`10012026/`) and the most-recent Content Analytics file (`Content_2026-01-01_2026-10-04_RichéZamor`). Filters Shares/Comments by Date for last 90 days. Filters Content Analytics daily-impressions table by Date for last 90 days. Uses the demographics section as-is (current snapshot). Produces a complete LinkedIn picture for Q3.
 
 ## Related entries

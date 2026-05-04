@@ -10,7 +10,7 @@ related: [corpus/linkedin-audit/methodology/master-tracker-update.md, corpus/lin
 # Master Tracker — Google Sheet Schema (6 tabs)
 
 ## What it is
-The Google Sheets file that holds the longitudinal LinkedIn post performance data. Path: `Career > Brand > Linkedin Archive > _Content Analytics > _LinkedIn_Post_Performance_Master.xlsx`. File ID stored in the `MASTER_TRACKER_FILE_ID` constant in SKILL.md.
+The Google Sheets file that holds the longitudinal LinkedIn post performance data. Path: `Brand > LinkedIn Archive > _Content Analytics > _LinkedIn_Post_Performance_Master.xlsx`. File ID stored in the `MASTER_TRACKER_FILE_ID` constant in SKILL.md.
 
 This is the only persistent data store the audit owns (Notion holds the audit pages; Drive holds the raw exports; the Master Tracker holds the post-by-post time series that links them).
 
@@ -88,7 +88,7 @@ Auto-computed pivot per `corpus/linkedin-audit/views/format-decay-curves.md`. Pi
 
 The audit skill consumes the tracker but does not build it. Riché creates the sheet via:
 
-1. **Create file.** New Google Sheets file at `Career > Brand > Linkedin Archive > _Content Analytics/`. Name: `_LinkedIn_Post_Performance_Master`.
+1. **Create file.** New Google Sheets file at `Brand > LinkedIn Archive > _Content Analytics/`. Name: `_LinkedIn_Post_Performance_Master`.
 2. **Create tabs.** 6 tabs with names exactly: `Posts Master`, `Snapshots`, `Monthly Summary`, `Compounders`, `Late Bloomers`, `Format Decay Curves`.
 3. **Add column headers** per the schema above. Match exactly — the audit reads columns by header name.
 4. **Add the formula columns** in Posts Master:
