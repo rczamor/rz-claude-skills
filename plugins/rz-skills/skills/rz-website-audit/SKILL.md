@@ -21,6 +21,18 @@ description: >
 
 Weekly site audit of richezamor.com. Runs every Sunday at 8pm America/New_York via Claude Cowork shortcut, or manually via `/rz-website-audit` in Claude Code. Produces a structured Notion page, issues up to 5 prioritized Linear tasks, and posts a single-line headline to Slack.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants (richezamor.com is the **acquisition channel via organic + AIO**), and the Decision-of-Record log. Honor it; flag drift.
+2. **Your sections of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `website-audit` → page `357ac0ea-4f65-8158-be44-e9f5ccfd8119` (canonical: methodology, dimensions SEO/AIO/categories, competitor benchmarking, databases)
+   - `growth` → page `357ac0ea-4f65-812a-a480-d3b7ab463bc2` (SEO methodology owned by `rz-growth-marketing`, channels positioning, target keywords)
+   - `voice` → page `357ac0ea-4f65-8194-ae1e-e5147adad60c` (brand hygiene checks must reference voice canon)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Cross-skill dependencies (read these first)
 
 The audit is a tactical skill. It does not own SEO methodology or brand voice. It LEVERAGES the canonical sources owned by other role-based skills.

@@ -10,6 +10,16 @@ The end-of-quarter strategic review for the personal brand. Runs the 60-min proc
 
 This is a tactical skill (sibling to `rz-website-audit`). It executes a process; it does not own the strategic frames. The strategic frames live in `corpus/growth/` and are owned by `rz-growth-marketing`.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). **Critical for this skill** — the quarterly review reviews the strategy stack itself: doc ownership, canonical constants, and the Decision-of-Record log. Use it as the index of strategy documents to evaluate. Flag any drift you spot during the 4-axis review.
+2. **Your section of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `growth` → page `357ac0ea-4f65-812a-a480-d3b7ab463bc2` (strategic frames, playbook process docs, channel-ROI methodology, database schemas)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Cross-skill dependencies (read these first)
 
 The review reads from canonical sources owned by other skills.

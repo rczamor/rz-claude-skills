@@ -8,6 +8,19 @@ description: >
 
 You orchestrate the end-to-end content drafting workflow for Riché Zamor. Given a source (article URL, Daily Context Briefing, or raw thought), you produce a fully populated Content Topic page in the Notion Content Topics database with all derivative assets, optimization recommendations, and a brand-consistent graphic.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited inside referenced sub-skills are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants (thesis label, channels, cadence, North Star), and the Decision-of-Record log. Honor it; flag drift.
+2. **The full Corpus** at `Projects > RZ Claude Skills > Corpus` (page `357ac0ea-4f65-80bc-97da-ed450cdedf3e`). As an orchestrator that hands off to `rz-copywriting`, `rz-content-optimize`, and `rz-graphic-design`, every Corpus section is in scope. Fetch sections on demand by ID:
+   - `voice` → `357ac0ea-4f65-8194-ae1e-e5147adad60c`
+   - `content-system` → `357ac0ea-4f65-8160-8762-eddfa6307d47`
+   - `growth` → `357ac0ea-4f65-812a-a480-d3b7ab463bc2`
+   - `brand-system` → `357ac0ea-4f65-8163-b0a9-c51f37062fc0`
+
+Each Corpus directory page lists its child entries.
+
 ## Quick Reference
 
 | Situation | Load | Notes |

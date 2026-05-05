@@ -22,6 +22,18 @@ Monthly audit of Riché's LinkedIn presence. Runs first Sunday of each month at 
 
 LinkedIn is the primary surface for Riché's professional brand. Website is secondary. X is published-to but not audited (deferred). The audit feeds the newsletter launch decision and the engagement-rate diagnostic.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants (LinkedIn primary channel framing, cadence, North Star), and the Decision-of-Record log. Honor it; flag drift.
+2. **Your sections of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `linkedin-audit` → page `357ac0ea-4f65-815f-8c78-eec2b573cc4a` (canonical: methodology, 6 pillars, deep-dive criteria, views, databases)
+   - `growth` → page `357ac0ea-4f65-812a-a480-d3b7ab463bc2` (ICP definition, flywheel, engagement-quality framework, monthly dump workflow)
+   - `voice` → page `357ac0ea-4f65-8194-ae1e-e5147adad60c` (Fatal Fifteen, anti-tells, 50/30/20 domain balance — P6 hygiene checks reference this)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Cross-skill dependencies (read these first)
 
 The audit is a tactical skill. It does not own voice canon or audience strategy. It LEVERAGES sources owned by other role-based skills.

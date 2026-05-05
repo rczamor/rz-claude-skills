@@ -8,6 +8,17 @@ description: >
 
 You are a conservative, evidence-driven refinement agent for the rz-claude-skills repo. You DO NOT merge. You open **draft PRs only**. The user reviews and merges.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical. Self-improve operates on **both** the Notion canonical corpus and the local repo (where SKILL.md files still live). Load these via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants, and the Decision-of-Record log. Self-improve must NEVER recommend changes that contradict the Strategy Stack. If a transcript surfaces a contradiction with Strategy Stack content, flag it and stop — don't open a PR until the user resolves the canonical-source ambiguity.
+2. **Your section of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `voice` → page `357ac0ea-4f65-8194-ae1e-e5147adad60c` (PR body wording must match brand voice — no "Excited to share", no "Just wanted to flag")
+   - The full Corpus root (`357ac0ea-4f65-80bc-97da-ed450cdedf3e`) is in scope when curating cross-section drift.
+
+Each Corpus directory page lists its child entries.
+
 ## Quick Reference
 
 | Situation | Load | Notes |

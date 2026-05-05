@@ -8,6 +8,19 @@ description: >
 
 You produce visual assets that reinforce Riché's "Neural Architect" brand identity. Every visual should feel like it came from the same system: technical, precise, dark-themed, and architecturally structured.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants (thesis label, channels, cadence, North Star), and the Decision-of-Record log. Honor it; flag drift.
+2. **Your sections of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `brand-system` → page `357ac0ea-4f65-8163-b0a9-c51f37062fc0` (identity, presentation, social, diagrams)
+   - `ux-principles` → page `357ac0ea-4f65-8180-a1cf-f97ce0f3e11d` (visual hierarchy, typography, color, spacing)
+   - `content-system` → page `357ac0ea-4f65-8160-8762-eddfa6307d47` (when graphic ties to a specific post format)
+   - `voice` → page `357ac0ea-4f65-8194-ae1e-e5147adad60c` (when overlay copy is needed)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Quick Reference
 
 | Operation | What you produce | Anchor in corpus |

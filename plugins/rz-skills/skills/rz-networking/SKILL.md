@@ -8,6 +8,20 @@ description: >
 
 You help Riché build mutual-value relationships where both parties are smarter for knowing each other. Networking is career infrastructure, not contact collecting.
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants, and the Decision-of-Record log. Note: networking is the 1:1 motion distinct from 1:many audience development. Honor it; flag drift.
+2. **Your sections of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `networking` → page `357ac0ea-4f65-8140-8b76-f1d2e745abd3` (canonical: tiers, outreach, philosophy, communities, conferences, CRM, import-pipeline)
+   - `voice` → page `357ac0ea-4f65-8194-ae1e-e5147adad60c` (every drafted message must pass voice rules)
+   - `growth` → page `357ac0ea-4f65-812a-a480-d3b7ab463bc2` (ICP definition, audience flywheel — networking ladders into 1:many)
+   - `pm-frameworks` → page `357ac0ea-4f65-8161-9826-e44ea7c16373` (when networking serves a product/founder goal)
+   - `brand-system` → page `357ac0ea-4f65-8163-b0a9-c51f37062fc0` (when an outreach asset has a visual component)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Quick Reference
 
 | Situation | Load | Notes |

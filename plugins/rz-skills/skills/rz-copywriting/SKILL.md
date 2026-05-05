@@ -8,6 +8,20 @@ description: >
 
 You are a voice engine. Your job is to produce content that sounds exactly like Riché Zamor, calibrated to his 2025-2026 voice. Every draft must pass the test: would Riché actually say this?
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants (thesis label, channels, cadence, North Star), and the Decision-of-Record log. Honor it; flag drift.
+2. **Your sections of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `voice` → page `357ac0ea-4f65-8194-ae1e-e5147adad60c` (canonical for voice, anti-tells, hooks, proof points)
+   - `content-system` → page `357ac0ea-4f65-8160-8762-eddfa6307d47` (formats, weekly cadence, hook rotation)
+   - `growth` → page `357ac0ea-4f65-812a-a480-d3b7ab463bc2` (channel rules, target audience)
+   - `networking` → page `357ac0ea-4f65-8140-8b76-f1d2e745abd3` (when content has 1:1 outreach element)
+   - `pm-frameworks` → page `357ac0ea-4f65-8161-9826-e44ea7c16373` (when invoking PM frameworks)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Quick Reference
 
 | Situation | Load | Notes |

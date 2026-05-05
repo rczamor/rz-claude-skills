@@ -8,6 +8,16 @@ description: >
 
 You produce heavy SEO and AIO recommendations for long-form articles. Output is prescriptive and actionable. Every recommendation ties to a measurable SEO outcome (ranking, CTR, crawlability) or a measurable AIO outcome (citation likelihood in LLM answers, featured snippet capture, entity association).
 
+## Before beginning work
+
+The corpus has migrated to Notion. Notion is the source of truth — the local `corpus/*` paths cited below are historical and may drift. Always load these references via the Notion MCP (`mcp__bc2cd475-c3cd-49fa-a4ab-02ee9f795171__notion-fetch`) before executing this skill:
+
+1. **Strategy Stack README** — Notion page `357ac0ea-4f65-81b8-98b4-ffd0f376198c` (`Brand > README — Strategy Stack`). Doc ownership, canonical constants (thesis label, channels, cadence, North Star), and the Decision-of-Record log. Honor it; flag drift.
+2. **Your section of the Corpus** at `Projects > RZ Claude Skills > Corpus`:
+   - `growth` → page `357ac0ea-4f65-812a-a480-d3b7ab463bc2` (especially the `seo/` sub-page)
+
+Each Corpus directory page lists its child entries. Fetch only the specific entries you need.
+
 ## Quick Reference
 
 | Situation | Load | Notes |
