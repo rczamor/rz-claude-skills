@@ -86,6 +86,11 @@ VOICE_DRIFT_SAMPLE_SIZE     = 4
 DRIVE_EXPORT_FOLDER_PATH    = Brand > Linkedin Archive > _Content Analytics
 DRIVE_TRACKER_FILE_PATH     = Brand > Linkedin Archive > _Content Analytics > _LinkedIn_Post_Performance_Master
 MASTER_TRACKER_FILE_ID      = 17DPE9FNx3gOAJNgbaMNUPYMteKRwv59XDZyZEcNw2G4
+MASTER_TRACKER_SHEET_ID     = 17DPE9FNx3gOAJNgbaMNUPYMteKRwv59XDZyZEcNw2G4
+
+ZAPIER_SHEETS_APP           = google-sheets
+ZAPIER_RAW_REQUEST          = _zap_raw_request
+SHEETS_API_BASE             = https://sheets.googleapis.com/v4/spreadsheets
 
 LINEAR_TEAM_ID              = 72132418-b477-4450-a30a-77391d5cfc47
 LINEAR_PROJECT_ID           = 085484ef-b523-4142-bce2-7f9a23a05fa1
@@ -120,7 +125,15 @@ Per `methodology/bootstrap.md`:
 Per `methodology/export-parsing.md`. Read all 5 sections: DISCOVERY, ENGAGEMENT, TOP POSTS by Engagements, TOP POSTS by Impressions, FOLLOWERS, DEMOGRAPHICS. Surface any parsing anomalies (unexpected schema changes from LinkedIn) as a P0 finding under P1 Reach & Velocity.
 
 ### Step 3 — Update the Master Tracker
-Per `methodology/master-tracker-update.md`. Upsert Posts Master, append Snapshots rows, append Monthly Summary row. Refresh the Compounders, Late Bloomers, and Format Decay Curves views (formula-driven; no manual recompute needed). For new posts not yet in Content Topics DB, write them to a `Unclassified Posts` log for manual tagging.
+Per `methodology/master-tracker-update.md`. Uses Zapier `_zap_raw_request` to call the Sheets API directly:
+
+1. Generate the three tab CSVs in bash.
+2. `values:batchUpdate` to upsert Posts Master rows (key = Post URL, column A).
+3. `values:append` to append Snapshots rows (append-only).
+4. `values:append` to append the Monthly Summary row.
+5. First run only: `values:batchClear` then `values:batchUpdate` to write QUERY formulas into A1 of Compounders and Late Bloomers tabs.
+
+Do NOT use Drive MCP (creates new files, can't update cells). Do NOT use Claude in Chrome MCP (`docs.google.com` blocked at policy level).
 
 ### Step 4 — Run the six pillars
 For each pillar corpus entry, evaluate against parsed export + updated tracker. Write findings to the buffer with severity (P0/P1/P2). Order:
@@ -174,6 +187,7 @@ Source: LinkedIn Community Management API once the context management system has
 - It does not own voice canon or audience strategy. Reads those from `rz-copywriting` and `rz-growth-marketing`.
 - It does not compute follower-count gates. The follower-count newsletter gate is retired (Riché surpassed it). Engagement quality is the gate.
 - It does not create the Master Tracker Google Sheet. Riché creates it once per `databases/master-tracker-sheet-schema.md`.
+- It does not use Claude in Chrome for Master Tracker updates. `docs.google.com` is blocked at policy level; Zapier Sheets API is the canonical path.
 
 ## Cross-skill connections
 

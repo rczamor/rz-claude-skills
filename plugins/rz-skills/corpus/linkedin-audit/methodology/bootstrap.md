@@ -22,6 +22,7 @@ Bootstrap is the only step that's allowed to refuse to run. Once data parsing st
 - Linear (`list_teams` filtered to `LINEAR_TEAM_ID`)
 - Slack (search `#brand` for any post)
 - Google Drive (`search_files` rooted at `Brand > LinkedIn Archive > _Content Analytics`)
+- Zapier — `google-sheets` app enabled (for Master Tracker writes). If not enabled, run `enable_zapier_action(app="google-sheets")` and prompt user to authenticate at the returned URL.
 
 If any fails, halt with: `Bootstrap failed: {connector} unreachable. {next-action}.`
 

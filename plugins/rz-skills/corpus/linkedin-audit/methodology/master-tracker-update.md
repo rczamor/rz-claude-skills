@@ -7,86 +7,83 @@ length_target: 500-900
 related: [corpus/linkedin-audit/databases/master-tracker-sheet-schema.md, corpus/linkedin-audit/methodology/export-parsing.md, corpus/linkedin-audit/views/compounders.md, corpus/linkedin-audit/views/late-bloomers.md]
 ---
 
-# Master Tracker Update
+# Master Tracker Update — Methodology
 
-## What it is
-Step 3 of the audit. Takes the parsed export from Step 2 and writes it into the Master Tracker Google Sheet (six tabs documented in `databases/master-tracker-sheet-schema.md`). The tracker is the longitudinal spine — without it the audit only knows this month's data; with it the audit can compute MoM deltas, decay curves, and compounder/late-bloomer status.
+## Mechanism
 
-## Why it matters
-The single 30-day export is a snapshot. Compounder analysis (which posts keep accumulating impressions month-over-month?), late-bloomer analysis (which posts re-entered top performers >30 days after publish?), and format decay curves (how fast does each format lose relevance?) all require the time series. The tracker is the time series.
+Use Zapier's `google-sheets` `_zap_raw_request` action. It wraps HTTP to `sheets.googleapis.com/v4/...` with auth from the user's Zapier→Google Sheets connection.
 
-The update is **append-only for snapshots, upsert for posts** — past months are immutable; only the most-recent month's snapshot is being added; existing posts get their `Latest Snapshot *` fields updated.
+If `google-sheets` isn't enabled in Zapier:
 
-## How to apply
+1. `list_enabled_zapier_actions(app="google-sheets")`
+2. If empty: `enable_zapier_action(app="google-sheets")`, then prompt user to visit the returned auth URL.
 
-### 1. Upsert Posts Master
+## Operations
 
-For each post in the union of `top_posts_by_engagements` and `top_posts_by_impressions`:
+All to `https://sheets.googleapis.com/v4/spreadsheets/{MASTER_TRACKER_SHEET_ID}`. `Content-Type: application/json`. `valueInputOption=USER_ENTERED` (NOT `RAW` — formulas need to evaluate).
 
-1. Compute `activity_id` by parsing `urn:li:activity:NNN` from the URL.
-2. Look up by URL in Posts Master.
-3. If found:
-   - Update `Latest Snapshot Month` = current month
-   - Update `Latest Snapshot Impressions` = max(impressions across both top-posts lists for this URL, this period)
-   - Update `Latest Snapshot Engagements` = max(engagements across both top-posts lists for this URL, this period)
-   - Recompute `Decay Status` per the formula in `databases/master-tracker-sheet-schema.md`
-4. If not found:
-   - Create new row with all "First Snapshot" fields populated for this period
-   - Lookup Format and Domain in Content Topics DB (`CONTENT_TOPICS_DB_ID`) by URL match. If found, populate. If not, leave blank and append URL to the `Unclassified Posts` log (a section at the bottom of the tracker for manual cleanup).
-   - Set `Latest Snapshot *` fields = `First Snapshot *` (same period for first appearance)
+### Posts Master upsert (key = Post URL, column A)
 
-### 2. Append Snapshots rows
+1. `GET values/Posts Master!A2:A?majorDimension=COLUMNS` for current Post URLs.
+2. For matched URLs: `PUT values/Posts Master!A{N}:O{N}?valueInputOption=USER_ENTERED` per row.
+3. For new URLs: `POST values/Posts Master!A:O:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS` with all new rows in one call.
 
-For each post in the upsert above:
-- Append one row to `Snapshots` tab: `{Post URL, Snapshot Month: YYYY-MM, Period Start, Period End, Impressions, Engagements}`.
-- The MoM delta formulas (`MoM Impression Delta`, `MoM Engagement Delta`) self-compute against the prior `Snapshots` row for the same URL.
+### Snapshots append
 
-**Append-only discipline:** never modify or delete past Snapshots rows. The time series is the time series; if a row is wrong, surface it as a P2 anomaly, don't rewrite history.
+`POST values/Snapshots!A:I:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS` with body `{"values": [...]}`.
 
-### 3. Append Monthly Summary row
+### Monthly Summary append
 
-One new row to `Monthly Summary` for this audit's month:
-- `Month` = YYYY-MM derived from Period End
-- `Posts Published` = count of posts with publish_date in [Period Start, Period End] (NOT the same as TOP POSTS rows — TOP POSTS includes older late-bloomers; "Posts Published" is the cadence metric)
-- `Total Impressions`, `Total Engagements` = period totals from DISCOVERY
-- `Engagement Rate` = computed via formula referencing this row
-- `Avg Impressions/Post` = computed via formula
-- `Top Format by Impressions`, `Top Domain by Impressions` = computed via QUERY against this period's Snapshots joined to Posts Master
-- `New Followers` = sum of daily_followers for the period
-- `Total Followers (EOP)` = manual capture (not in export); pulled from prior month's tracker + this period's growth, OR captured by Riché in the LinkedIn UI and entered (preferred for accuracy)
-- `ICP Match % (Senior+)` = Senior + Director + CXO + Owner pct from DEMOGRAPHICS
+`POST values/Monthly Summary!A:K:append?valueInputOption=USER_ENTERED&insertDataOption=INSERT_ROWS` with one row.
 
-### 4. Refresh views
+### Auto-view formulas (first run only — skip if A1 already has a formula)
 
-Compounders, Late Bloomers, and Format Decay Curves are formula-driven. After Steps 1-3, no manual recompute is needed — the formulas re-evaluate when the underlying data changes. Verify: open each view, confirm row counts match the new data state.
+1. `POST values:batchClear` with `{"ranges": ["Compounders!A:Z", "'Late Bloomers'!A:Z"]}`.
+2. `POST values:batchUpdate` with:
 
-### 5. Surface tracker anomalies
+```json
+{
+  "valueInputOption": "USER_ENTERED",
+  "data": [
+    {"range": "Compounders!A1", "values": [["=QUERY(Snapshots!A:I, \"SELECT A, B, E, G, I WHERE G > 0 AND I > 7 ORDER BY G DESC LIMIT 20\", 1)"]]},
+    {"range": "'Late Bloomers'!A1", "values": [["=QUERY('Posts Master'!A:O, \"SELECT A, C, N, F, I, J WHERE O = 'Late Bloomer'\", 1)"]]}
+  ]
+}
+```
 
-If anomalies were detected:
-- New posts not found in Content Topics DB → flag count and post URLs as P1 finding under P3 ("`{N}` posts unclassified — tag in Content Topics DB before next audit")
-- Posts in current TOP POSTS that were Decay-Status="Plateaued" last month → "late bloomer revival" candidates; flag in narrative
-- Posts older than 365 days appearing in TOP POSTS → unusually long tail; flag for narrative
+`Late Bloomers` has a space → single-quote in A1 notation. `Compounders` → no quotes.
 
-## First-run handling
+## Zapier call shape
 
-If `Posts Master` is empty (first audit ever):
-- Every post in this period's TOP POSTS is treated as "new" — all First Snapshot fields = current period
-- No MoM deltas can be computed; Snapshots will start populating from this run forward
-- Note in the audit narrative: "First-run audit; no MoM deltas available. Trend analysis begins next month."
+```python
+execute_zapier_write_action(
+    app="google-sheets",
+    action="_zap_raw_request",
+    instructions="<description>",
+    output="<what to return>",
+    params={
+        "method": "POST",
+        "url": "<full URL>",
+        "headers": {"Content-Type": "application/json"},
+        "body": "<JSON string>",
+        "fail_on_errors": "true"
+    }
+)
+```
 
-## Examples
-1. **Standard month.** May 2026. 47 posts in TOP POSTS Engagement union with TOP POSTS Impressions. 12 are new, 35 are upserts. 47 Snapshots rows appended. Monthly Summary: 1 row added. Compounders view auto-populates: 8 posts with positive MoM delta. Late Bloomers view: 3 posts. Tracker anomalies: 4 new posts not yet in Content Topics DB; flagged for P3.
-2. **First-run.** April 2026. Posts Master is empty. 31 posts in TOP POSTS union. All 31 treated as new with First Snapshot = April. No MoM deltas. Audit narrative notes the first-run state.
-3. **Decay status transition.** Post `urn:li:activity:7412...` was Active last month (positive MoM delta). This month, no longer in TOP POSTS by either ranking. Status flips to Plateaued. Will count toward `late bloomer revival` candidates if it ever re-enters.
+`body` is a JSON string, not an object. Escape inner quotes for QUERY formulas.
 
-## Related entries
-- `corpus/linkedin-audit/databases/master-tracker-sheet-schema.md` — defines the tabs and columns this step writes to
-- `corpus/linkedin-audit/methodology/export-parsing.md` — Step 2, source of the data this step writes
-- `corpus/linkedin-audit/views/compounders.md` — view that consumes the updated Snapshots
-- `corpus/linkedin-audit/views/late-bloomers.md` — view that consumes the updated Posts Master
+## Verification
 
-## Anti-patterns
-- Modifying or deleting past Snapshots rows. Append-only. Past data is the truth as of when it was captured; rewrites destroy the time series.
-- Computing Total Followers (EOP) by summing daily new-followers without baseline. Drift accumulates; capture the absolute count from LinkedIn UI quarterly to recalibrate.
-- Treating "post not in Content Topics DB" as a fatal error. It's a soft error — flag as P1 for cleanup, don't halt.
-- Refreshing formulas manually. They auto-compute; manual recompute often introduces errors.
+1. `GET values/Monthly Summary!A:K` — confirm new row.
+2. `GET values/Compounders!A1:E5` — confirm QUERY spilled (headers, not formula text).
+3. `GET values/'Late Bloomers'!A1:F5` — same.
+
+If A1 shows the literal `=QUERY(...)` string instead of headers, `valueInputOption` was wrong. Must be `USER_ENTERED`.
+
+## Common failures
+
+- **403:** Zapier auth not set up. Run `enable_zapier_action` then prompt for auth URL.
+- **Range parse error on Late Bloomers:** missing single quotes around tab name.
+- **`#REF!` in QUERY result:** existing content in A2+ blocked spill. Run `batchClear` first.
+- **Formula written as text:** `valueInputOption=RAW`. Use `USER_ENTERED`.
