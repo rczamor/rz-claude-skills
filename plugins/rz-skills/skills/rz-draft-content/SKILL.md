@@ -29,6 +29,7 @@ Each Corpus directory page lists its child entries.
 | Determining today's format | `references/step-5-determine-format.md` | Default to weekday calendar slot (Mon hot take, Fri story) |
 | Long-form article needing SEO | Hand off to `rz-content-optimize` (step 7) | Skip for short-forms |
 | Voice calibration on every draft | Hand off to `rz-copywriting` (in step 6) | Voice rules are loaded from there, never re-derived |
+| Newsletter CTA on every social post | `references/step-6-draft-assets.md` (Newsletter CTA section) | Every LinkedIn and X post ships with a first-comment CTA pointing to https://richezamor.com |
 | Final visual asset | Hand off to `rz-graphic-design` (step 8) | Output is SVG plus 2x PNG at 1200x630 |
 
 ## Invocation
@@ -73,6 +74,8 @@ Each step has its own reference file under `references/`. Load the file for the 
 | Invoking `rz-content-optimize` on short-forms | Wasted work; SEO and AIO only apply to long-form articles | Only run step 7 when the format produced an article (Wed deep dive, newsletter) |
 | Checkpointing between steps unnecessarily | Breaks autonomous mode, slows the user down | Only stop on blocking ambiguity (source unreachable, conflated topics, missing doc) |
 | Defaulting to today's calendar slot when topic demands otherwise | Format mismatch (e.g., a story forced into a hot take) | Override the calendar when `step-5` reasoning says the topic needs a different format |
+| Shipping a LinkedIn or X post without a newsletter first-comment CTA | Loses every published post's chance to convert reach into newsletter signups | Step 6 always produces a `# LinkedIn First Comment` and `# X Reply Comment` block linking to https://richezamor.com |
+| Putting the newsletter URL in the post body instead of the first comment | Algorithmic downrank on LinkedIn and X for outbound links in body | Keep the URL in the comment block; body stays clean |
 
 ## Cross-skill connections
 
