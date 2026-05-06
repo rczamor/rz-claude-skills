@@ -1,9 +1,10 @@
 # Step 2: Parallel data collection
 
-Per `corpus/website-audit/methodology/parallel-data-collection.md`. Run all 11 sub-steps concurrently where possible.
+Per `corpus/website-audit/methodology/parallel-data-collection.md`. Run all 10 sub-steps concurrently where possible.
 
-- GSC pulls via Ahrefs MCP (`gsc-keywords`, `gsc-pages`, `gsc-performance-history`, `gsc-anonymous-queries`)
+- GSC pulls via BigQuery bulk export at `rz-analytics-495304.searchconsole.*` (tables: `searchdata_url_impression` for keyword/page/position; `searchdata_site_impression` for the 12-week trend)
 - Technical QA: Lighthouse against home + 3 article pages; Core Web Vitals from `web-analytics-stats`
+- Indexability crawler (S4 source): sitemap-driven; per-URL HTTP status, robots.txt allowance, canonical correctness, internal-link-graph orphan detection
 - Vercel deployment health and build logs (read-only)
 - Chatbot probe: 3 known-good queries against `/api/chat`; capture latency, error rate, citation accuracy
 - AIO query set: run the 20-query set against AI Overviews / Perplexity / ChatGPT, capture citations
