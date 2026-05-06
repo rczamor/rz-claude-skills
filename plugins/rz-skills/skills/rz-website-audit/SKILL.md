@@ -9,7 +9,7 @@ description: >
   website regression check, weekly site review of richezamor.com, SEO
   health check, AIO health check, or competitor benchmarking against
   richezamor.com. This is the orchestrating skill that runs the full weekly
-  audit across SEO (S1–S8 atomic), AIO (A1–A7 atomic), Traffic & Engagement,
+  audit across SEO (S1–S7 atomic), AIO (A1–A7 atomic), Traffic & Engagement,
   Usability, Design, Brand, Technical QA, the Ask Riché chatbot, Keyword
   Research, and Competitor Benchmarking. Produces a Notion page in the
   Weekly Website Audits database, creates up to 5 P0/P1 Linear tasks in the
@@ -37,7 +37,9 @@ Each Corpus directory page lists its child entries. Fetch only the specific entr
 
 The audit is a tactical skill. It does not own SEO methodology or brand voice. It LEVERAGES the canonical sources owned by other role-based skills.
 
-**SEO and keyword research are owned by `rz-growth-marketing`.** Pull from `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's S1–S8 atomic dimensions and K1–K5 keyword-research category dimensions reference this corpus; they do NOT redefine SEO concepts.
+**SEO and keyword research are owned by `rz-growth-marketing`.** Pull from `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's S1–S7 atomic dimensions and K1–K5 keyword-research category dimensions reference this corpus; they do NOT redefine SEO concepts.
+
+**GSC data is sourced from BigQuery, not Ahrefs.** The audit reads the GSC bulk export at `rz-analytics-495304.searchconsole.*` (tables: `searchdata_url_impression`, `searchdata_site_impression`, `ExportLog`). The export is forward-only: ~48 hours after Search Console's bulk-export setting was enabled, daily snapshots arrive; there is no historical backfill. S1/S3/K2 require ~28 days of accumulated data before they can fire meaningfully. Anonymized rows in the export are URL-only — query strings are not retained — so anonymized-keyword recovery is out of scope at this stack tier.
 
 **Brand voice is owned by `rz-copywriting`.** Pull from `corpus/voice/` for the fatal-fifteen AI-tells list, voice anti-patterns, terminology rules, and the 50/30/20 domain balance frame. The audit's B1–B5 brand checks are detection rules ON TOP of the voice canon; they do NOT redefine voice rules.
 
@@ -68,7 +70,6 @@ Read these in order before running. The corpus carries the actual audit logic; t
 - `corpus/website-audit/dimensions/seo/s5-metadata-completeness.md`
 - `corpus/website-audit/dimensions/seo/s6-structured-data.md`
 - `corpus/website-audit/dimensions/seo/s7-internal-linking.md`
-- `corpus/website-audit/dimensions/seo/s8-backlink-loss.md`
 
 **AIO atomic dimensions**
 - `corpus/website-audit/dimensions/aio/a1-citation-absence.md`
@@ -129,15 +130,15 @@ QUARTERLY_REBASELINE_MONTHS = January, April, July, October (first Sunday)
 
 ### Step 1 — Bootstrap
 Per `methodology/bootstrap.md`:
-1. Verify required MCP connectors are reachable (Notion, Linear, Slack, Vercel, Tavily, Ahrefs).
+1. Verify required MCP connectors are reachable (Notion, Linear, Slack, Vercel, Tavily, BigQuery).
 2. Read prior audit page from Weekly Audits DS for diff baseline.
 3. Read Target Keywords DB and Competitors DB into memory.
 4. Initialize empty findings buffer for each dimension.
 
 ### Step 2 — Parallel data collection
 Per `methodology/parallel-data-collection.md`. Concurrent fetches:
-- GSC data via Ahrefs Webmaster Tools (positions, CTR, impressions, anonymous queries, link reports)
-- richezamor.com crawl: every page in sitemap, fetch + render-without-JS check
+- GSC data via BigQuery bulk export at `rz-analytics-495304.searchconsole.*` (positions, CTR, impressions, anonymized URL-level rows)
+- richezamor.com crawl: every page in sitemap, fetch + render-without-JS check + indexability heuristics (HTTP status, robots.txt allowance, canonical correctness, orphan detection — feeds S4)
 - AIO 20-query set across the LLMs Riché tracks
 - Competitors DB benchmarks per `competitor-benchmarking/read-protocol.md` (~30 min, the longest block)
 - Vercel deployment status and recent build logs
@@ -145,7 +146,7 @@ Per `methodology/parallel-data-collection.md`. Concurrent fetches:
 ### Step 3 — Run dimensions
 For each dimension corpus entry, evaluate against collected data. Write findings to the buffer with severity (P0/P1/P2) per `methodology/severity-scoring.md`. Order:
 
-1. SEO S1–S8 (atomic — each is its own corpus entry)
+1. SEO S1–S7 (atomic — each is its own corpus entry)
 2. AIO A1–A7 (atomic)
 3. Traffic & Engagement T1–T5 (single corpus entry)
 4. Usability U1–U4 (single corpus entry)
@@ -195,7 +196,7 @@ The constant `QUARTERLY_REBASELINE_MONTHS` flags this; bootstrap reads it.
 
 **Upstream (the audit reads from these for canonical knowledge):**
 
-- `rz-growth-marketing` — owns SEO and keyword research methodology. The audit reads `corpus/growth/seo/` for the free-stack approach, SERP review protocol, topic clusters, monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's K1–K5 dimensions and S1–S8 atomic fires use these as source of truth.
+- `rz-growth-marketing` — owns SEO and keyword research methodology. The audit reads `corpus/growth/seo/` for the free-stack approach, SERP review protocol, topic clusters, monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's K1–K5 dimensions and S1–S7 atomic fires use these as source of truth.
 - `rz-copywriting` — owns brand voice. The audit reads `corpus/voice/` for the fatal-fifteen AI tells and the 50/30/20 domain balance. B1–B5 dimensions detect drift against this canon.
 
 **Downstream (the audit hands off to these for fixes):**
