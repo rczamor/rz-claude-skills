@@ -39,7 +39,14 @@ The audit is a tactical skill. It does not own SEO methodology or brand voice. I
 
 **SEO and keyword research are owned by `rz-growth-marketing`.** Pull from `corpus/growth/seo/` for keyword research methodology, SERP review protocol, topic clusters, the monthly Keyword Planner workflow, and the Target Keywords DB schema. The audit's S1–S7 atomic dimensions and K1–K5 keyword-research category dimensions reference this corpus; they do NOT redefine SEO concepts.
 
-**GSC data is sourced from BigQuery, not Ahrefs.** The audit reads the GSC bulk export at `rz-analytics-495304.searchconsole.*` (tables: `searchdata_url_impression`, `searchdata_site_impression`, `ExportLog`). The export is forward-only: ~48 hours after Search Console's bulk-export setting was enabled, daily snapshots arrive; there is no historical backfill. S1/S3/K2 require ~28 days of accumulated data before they can fire meaningfully. Anonymized rows in the export are URL-only — query strings are not retained — so anonymized-keyword recovery is out of scope at this stack tier.
+**Canonical GCP project for analytics data: `rz-analytics-495304`.** Both web-analytics (GA4) and Google Search Console data for richezamor.com live in this single GCP project's BigQuery datasets:
+
+- `analytics_502945853` — GA4 web-analytics export (sessions, users, pageviews, events). Currently consumed by Step 2c Traffic via Zapier → GA; the BigQuery copy is the canonical store and any direct GA4 read should go through this dataset.
+- `searchconsole` — GSC bulk export (`searchdata_url_impression`, `searchdata_site_impression`, `ExportLog`). Source for S1, S2, S3, K2 (Step 2a SEO).
+
+Any skill that needs GA4 or GSC data MUST query this project. Do not stand up new GCP projects for analytics; do not query GA4 / GSC through third-party MCPs (e.g. Ahrefs).
+
+The GSC export is forward-only: ~48 hours after Search Console's bulk-export setting was enabled, daily snapshots arrive; there is no historical backfill. S1/S3/K2 require ~28 days of accumulated data before they can fire meaningfully. Anonymized rows in the GSC export are URL-only — query strings are not retained — so anonymized-keyword recovery is out of scope at this stack tier.
 
 **Brand voice is owned by `rz-copywriting`.** Pull from `corpus/voice/` for the fatal-fifteen AI-tells list, voice anti-patterns, terminology rules, and the 50/30/20 domain balance frame. The audit's B1–B5 brand checks are detection rules ON TOP of the voice canon; they do NOT redefine voice rules.
 
@@ -107,9 +114,10 @@ MAX_WEEKLY_TASKS            = 5
 RUN_TIMEZONE                = America/New_York
 VERCEL_PROJECT_ID           = prj_qtI2I2fvlAH5qeTnc4EVW52stG9t
 VERCEL_TEAM_ID              = team_G5bsJ43GY5r9RqMjT4iEYO5c
-GSC_BIGQUERY_PROJECT_ID     = rz-analytics-495304
-GSC_BIGQUERY_DATASET        = searchconsole
-GSC_BIGQUERY_TABLES         = searchdata_url_impression, searchdata_site_impression, ExportLog
+ANALYTICS_BIGQUERY_PROJECT_ID  = rz-analytics-495304
+ANALYTICS_GSC_DATASET          = searchconsole
+ANALYTICS_GSC_TABLES           = searchdata_url_impression, searchdata_site_impression, ExportLog
+ANALYTICS_GA4_DATASET          = analytics_502945853
 LINEAR_TEAM_ID              = 72132418-b477-4450-a30a-77391d5cfc47
 LINEAR_PROJECT_ID           = 085484ef-b523-4142-bce2-7f9a23a05fa1
 LINEAR_ASSIGNEE_ID          = 646e8aef-65f5-47de-ba40-4f2ad99bbc15
@@ -140,7 +148,8 @@ Per `methodology/bootstrap.md`:
 
 ### Step 2 — Parallel data collection
 Per `methodology/parallel-data-collection.md`. Concurrent fetches:
-- GSC data via BigQuery bulk export at `rz-analytics-495304.searchconsole.*` (positions, CTR, impressions, anonymized URL-level rows)
+- GSC data via BigQuery bulk export at `ANALYTICS_BIGQUERY_PROJECT_ID.ANALYTICS_GSC_DATASET.*` — i.e. `rz-analytics-495304.searchconsole.*` — (positions, CTR, impressions, anonymized URL-level rows)
+- GA4 web-analytics data lives in the same project at `ANALYTICS_BIGQUERY_PROJECT_ID.ANALYTICS_GA4_DATASET.*` — Step 2c currently reads it via Zapier → GA, but BigQuery is the canonical store
 - richezamor.com crawl: every page in sitemap, fetch + render-without-JS check + indexability heuristics (HTTP status, robots.txt allowance, canonical correctness, orphan detection — feeds S4)
 - AIO 20-query set across the LLMs Riché tracks
 - Competitors DB benchmarks per `competitor-benchmarking/read-protocol.md` (~30 min, the longest block)
